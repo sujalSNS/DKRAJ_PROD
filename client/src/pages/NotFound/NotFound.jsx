@@ -9,7 +9,7 @@ export const NotFound = () => {
         <p className="text-8xl font-bold text-black mb-2">404</p>
         <p className='text-2xl'>Page not found</p>
         </div>
-        <p className="text-2xl text-black mb-6">Looks like the page you are looking for doesn't exist.</p>
+        <p className="md:text-2xl text-base md:px-0 px-6 text-black mb-6">Looks like the page you are looking for doesn't exist.</p>
         <Link to="/" className='bg-black  mt-4 text-sm border border-black  text-white hover:text-black hover:bg-white px-12 py-2'>
           Go back to Home
         </Link>

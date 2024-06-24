@@ -12,6 +12,10 @@ import { Toaster } from 'react-hot-toast';
 import { Newsletter } from './components/Newsletter/Newsletter';
 import { Cart } from './pages/Cart/Cart';
 import { NotFound } from './pages/NotFound/NotFound';
+import { Success } from './pages/Success/Success';
+import { Profile } from './pages/Profile/Profile';
+import { Orders } from './pages/Orders/Orders';
+import { Wishlist } from './pages/Wishlist/Wishlist';
 
 function App() {
 
@@ -37,40 +41,28 @@ function App() {
 
 
 
-
-
-
-
-
   return (
     <>
 
 
-        <Navbar />
+      <Navbar />
       <Routes>
 
-        <Route  path="*" element={<NotFound/>} />
+        <Route path="*" element={<NotFound />} />
 
         <Route exact path="/" element={<Home />} />
-         <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/cart" element={<Cart/>} />
-        {/* <Route path="/profile" element={<Profile />} /> */}
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/wishlist" element={<Wishlist />} />
 
 
       </Routes>
-        <Newsletter />
-        <Footer />
-
-
-
-
-
-
-
-
-
-
+      <Newsletter />
+      <Footer />
 
 
       <Toaster

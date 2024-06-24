@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoMdSearch } from "react-icons/io";
-import { HiShoppingBag, HiMiniBars3 } from "react-icons/hi2";
-import { Drawer, Box, List, ListItem, ListItemText, IconButton } from '@mui/material';
+import { HiShoppingBag, HiMiniBars3, HiUser } from "react-icons/hi2";
+import { Drawer, IconButton } from '@mui/material';
+
 
 export const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const navigate = useNavigate();
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -13,6 +16,19 @@ export const Navbar = () => {
     }
     setDrawerOpen(open);
   };
+
+
+  
+
+  const handleSearchKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      navigate(`/shop/${searchValue}`);
+      setSearchValue("")
+    }
+  };
+
+  const login = false;
+
 
   return (
     <>
@@ -25,6 +41,11 @@ export const Navbar = () => {
                 type="text"
                 className="border-none w-40 px-2 outline-none"
                 placeholder="Search"
+                value={searchValue}
+                onChange={(e)=>{
+                  setSearchValue(e.target.value)
+                }}
+                onKeyDown={handleSearchKeyDown}
               />
               <IoMdSearch className="text-gray-400" />
             </div>
@@ -41,11 +62,19 @@ export const Navbar = () => {
           </div>
 
           <div className='flex justify-center items-center gap-8 mr-6'>
-            <span className='md:flex hidden'>
-              <Link to="/login" className='font-semibold text-sm animated-underline mt-1.5'>SIGN IN</Link>
+            <span className='flex'>
+              {
+                login ?
+                  <Link to="/profile" className='animated-underline ' ><HiUser size={25} className="text-gray-500 " /> </Link> :
+                  <span className='md:flex hidden'>
+
+                    <Link to="/login" className='font-semibold  text-sm animated-underline mt-1.5'>SIGN IN</Link>
+                  </span>
+
+              }
             </span>
-            <Link to="/cart">
-              <HiShoppingBag size={26} className="text-gray-500" />
+            <Link to="/cart" className='animated-underline '>
+              <HiShoppingBag size={26} className="text-gray-500 " />
             </Link>
           </div>
         </div>
@@ -64,7 +93,12 @@ export const Navbar = () => {
           <Link onClick={toggleDrawer(false)} to="/shop/jewelry" className="text-xl underline underline-offset-8">Jewelry</Link>
           <Link onClick={toggleDrawer(false)} to="/shop/watches" className="text-xl underline underline-offset-8 ">Watches</Link>
           <Link onClick={toggleDrawer(false)} to="/contact" className="text-xl underline underline-offset-8 ">Contact</Link>
-          <Link onClick={toggleDrawer(false)} to="/login" className="text-xl underline underline-offset-8 ">Sign In</Link>
+
+          {login ? <button onClick={toggleDrawer(false)} className="text-xl text-left w-full underline underline-offset-8 ">
+            Logout
+          </button> : <Link onClick={toggleDrawer(false)} to="/login" className="text-xl underline underline-offset-8 ">Sign In</Link>}
+
+
         </div>
       </Drawer>
     </>
