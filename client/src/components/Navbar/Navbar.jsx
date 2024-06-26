@@ -62,7 +62,7 @@ export const Navbar = () => {
             </IconButton>
           </div>
 
-          <div className='flex justify-center items-center md:mr-16'>
+          <div className='flex justify-center items-center md:mr-16 md:ml-0 ml-10'>
             <Link to="/" className='font-bold md:text-4xl text-2xl text-center'>DKRAJ JEWELS</Link>
           </div>
 

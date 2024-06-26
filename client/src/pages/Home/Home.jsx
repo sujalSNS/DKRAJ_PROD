@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Carousel } from './Carousal';
+import { CategoriesList } from './CategoriesList';
 
 
 
@@ -77,7 +78,7 @@ export const blog = [
 export const Home = () => {
 
   return (
-    <div className='min-h-screen pt-32'>
+    <div className='min-h-screen md:pt-32 pt-20'>
 
       <div className='py-6 md:flex hidden justify-center items-center gap-12'>
         {
@@ -89,9 +90,14 @@ export const Home = () => {
         }
       </div>
 
-      <div className="mt-4 mb-4 ">
+      <div className="my-4 ">
         <Carousel />
 
+      </div>
+
+
+      <div className='my-6'>
+        <CategoriesList/>
       </div>
 
 
