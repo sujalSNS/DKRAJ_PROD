@@ -52,12 +52,12 @@ export const Product = () => {
         <div className="min-h-screen md:pt-32 pt-20">
 
             <div>
-                <div className='grid md:grid-cols-2 grid-cols-1 md:gap-10 gap-3 mb-20'>
+                <div className='grid md:grid-cols-2  grid-cols-1 md:gap-10 gap-3 mb-20'>
                     <div className='md:p-14 md:pt-8 md:px-20 pt-8 px-5 flex justify-center '>
                         {/* <img src={product.img} className='object-cover h-5/6 ' alt="" /> */}
                         <ProductCarousal/>
                     </div>
-                    <div className='md:pl-12 md:px-0 px-6 md:pt-8'>
+                    <div className='md:pl-3 md:px-0 px-6 md:pt-8'>
                         <p> {product.productID} </p>
                         <p className='font-semibold md:text-4xl text-3xl mt-1'> {product.title} </p>
                         <div className='border-b border-black my-5 md:mr-20 mr-5'></div>
