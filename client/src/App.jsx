@@ -16,6 +16,7 @@ import { Success } from './pages/Success/Success';
 import { Profile } from './pages/Profile/Profile';
 import { Orders } from './pages/Orders/Orders';
 import { Wishlist } from './pages/Wishlist/Wishlist';
+import { Product } from './pages/Product/Product';
 
 function App() {
 
@@ -58,6 +59,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/shop/product/:productID" element={<Product />} />
 
 
       </Routes>

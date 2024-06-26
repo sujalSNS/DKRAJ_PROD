@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+  
 body{
     font-family: "Jost", sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -29,3 +32,6 @@ body{
     width: 100%;
     transition: width .3s;
 }
+
+
+
