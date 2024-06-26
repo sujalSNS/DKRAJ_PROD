@@ -5,7 +5,7 @@ export const Cart = () => {
     return (
         <>
 
-            <div className='min-h-screen pt-24'>
+            <div className='min-h-screen pt-32'>
 
 
                 <div className='mt-12 flex flex-col justify-center  items-center'>

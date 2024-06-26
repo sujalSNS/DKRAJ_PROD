@@ -19,7 +19,7 @@ export const Register = () => {
     return (
         <>
 
-            <div className='min-h-screen pt-24 flex justify-center items-center pb-24'>
+            <div className='min-h-screen pt-32 flex justify-center items-center pb-24'>
 
                 <form onSubmit={register} className='md:w-1/3 w-full md:mx-0 mx-10 md:mt-12 flex flex-col '>
                     <p className='text-center text-4xl font-semibold'>Create Account</p>

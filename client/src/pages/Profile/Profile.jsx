@@ -24,7 +24,7 @@ export const Profile = () => {
     return (
         <>
 
-            <div className='min-h-screen pt-24  '>
+            <div className='min-h-screen pt-32  '>
                 <div className='md:pt-14 pt-6 md:px-36 px-5 pb-20'>
                     <div className='flex justify-start items-center gap-8 pb-3 pl-5'>
 

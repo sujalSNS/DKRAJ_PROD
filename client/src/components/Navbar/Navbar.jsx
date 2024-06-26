@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoMdSearch } from "react-icons/io";
 import { HiShoppingBag, HiMiniBars3, HiUser } from "react-icons/hi2";
+import { MdFavorite } from "react-icons/md";
+
 import { Drawer, IconButton } from '@mui/material';
+import { PromotionLabel } from './PromotionLabel';
 
 
 export const Navbar = () => {
@@ -18,7 +21,7 @@ export const Navbar = () => {
   };
 
 
-  
+
 
   const handleSearchKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -32,8 +35,10 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className='fixed w-full bg-white'>
-        <div className='flex justify-between items-center pl-3 md:gap-0 md:px-16 md:pt-10 pt-6 pb-4'>
+      <nav className='fixed md:h-32 z-10 w-full bg-white '>
+        <PromotionLabel text={"GET RS.1000 CASHBACK ON PURCHASE OF RS.6000 | GET RS.2000 CASHBACK ON PURCHASE OF RS.10000"} />
+        
+        <div className='flex justify-between items-center pl-3 md:gap-0 md:px-16 md:pt-6 pt-6 pb-4'>
           <div className='md:flex hidden justify-center items-center gap-3'>
             <span>EN</span>
             <div className="flex items-center border border-gray-400 p-0.5 pr-1 bg-white">
@@ -42,7 +47,7 @@ export const Navbar = () => {
                 className="border-none w-40 px-2 outline-none"
                 placeholder="Search"
                 value={searchValue}
-                onChange={(e)=>{
+                onChange={(e) => {
                   setSearchValue(e.target.value)
                 }}
                 onKeyDown={handleSearchKeyDown}
@@ -57,11 +62,11 @@ export const Navbar = () => {
             </IconButton>
           </div>
 
-          <div className='flex justify-center items-center md:mr-20'>
+          <div className='flex justify-center items-center md:mr-16'>
             <Link to="/" className='font-bold md:text-4xl text-2xl text-center'>DKRAJ JEWELS</Link>
           </div>
 
-          <div className='flex justify-center items-center gap-8 mr-6'>
+          <div className='flex justify-center items-center gap-6 mr-4'>
             <span className='flex'>
               {
                 login ?
@@ -73,9 +78,13 @@ export const Navbar = () => {
 
               }
             </span>
+            <Link to="/wishlist" className='animated-underline '>
+              <MdFavorite size={26} className="text-gray-500 " />
+            </Link>
             <Link to="/cart" className='animated-underline '>
               <HiShoppingBag size={26} className="text-gray-500 " />
             </Link>
+
           </div>
         </div>
       </nav>

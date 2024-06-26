@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Carousel } from './Carousal';
 
 
 
@@ -76,7 +77,7 @@ export const blog = [
 export const Home = () => {
 
   return (
-    <div className='min-h-screen pt-24'>
+    <div className='min-h-screen pt-32'>
 
       <div className='py-6 md:flex hidden justify-center items-center gap-12'>
         {
@@ -88,9 +89,11 @@ export const Home = () => {
         }
       </div>
 
-      <div className='bg-black md:flex hidden text-base font-light text-white  py-2'>
-        <p className='text-center w-full'>GET RS.1000 CASHBACK ON PURCHASE OF RS.6000 | GET RS.2000 CASHBACK ON PURCHASE OF RS.10000</p>
+      <div className="mt-4 mb-4 ">
+        <Carousel />
+
       </div>
+
 
       <div className='mt-8 mb-4 '>
 
@@ -108,6 +111,8 @@ export const Home = () => {
         </div>
 
       </div>
+
+
 
       <div className='mt-8 mb-4 '>
         <p className='text-4xl font-semibold my-5 text-center '>Stories</p>
