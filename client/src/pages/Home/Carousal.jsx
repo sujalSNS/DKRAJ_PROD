@@ -4,9 +4,10 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 
 const images = [
-    'assets/images/jewel1.jpg',
-    'assets/images/jewel2.jpg',
-    'assets/images/jewel3.jpg',
+    'assets/images/carousal1.jpg',
+    'assets/images/carousal2.jpg',
+    'assets/images/carousal3.jpg',
+    'assets/images/carousal4.jpg',
 ];
 
 export const Carousel = () => {
@@ -15,17 +16,19 @@ export const Carousel = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 3000); // Change image every 3 seconds
+        }, 3000);
 
         return () => clearInterval(interval);
     }, []);
 
     return (
         <div className="relative w-full overflow-hidden">
-            <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+            <div className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
                 {images.map((image, index) => (
-                    <div key={index} className="w-full flex-shrink-0 ">
-                        <img src={image} alt={`Slide ${index + 1}`} className="w-full md:h-[34em] h-auto" />
+                    <div key={index} className="w-full flex-shrink-0 cursor-pointer">
+                        <img src={image} alt={`Slide ${index + 1}`} className="w-full  md:h-[34em] h-auto" />
                     </div>
                 ))}
             </div>

@@ -63,7 +63,7 @@ function App() {
 
 
       </Routes>
-      <Newsletter />
+      {/* <Newsletter /> */}
       <Footer />
 
 

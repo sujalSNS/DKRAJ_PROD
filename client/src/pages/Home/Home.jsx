@@ -2,25 +2,27 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Carousel } from './Carousal';
 import { CategoriesList } from './CategoriesList';
+import { FeaturedProducts } from './FeaturedProducts';
+import { CredibilityBoxes } from './CredibilityBoxes';
+import { Testimonials } from './Testimonials';
 
 
 
 const categoriesList = [
-  { label: "Rings", name: "rings" },
-  { label: "Earrings", name: "earrings" },
-  { label: "Bracelets", name: "bracelets" },
-  { label: "Bangles", name: "bangles" },
-  { label: "Mangalsutra", name: "mangalsutra" },
-  { label: "Nose Pins", name: "nosePins" },
-  { label: "Pendant Sets", name: "pendantSets" },
-  { label: "Wedding Sets", name: "weddingSets" },
+  { label: "Rings", name: "nosePins" },
+  { label: "Earring", name: "bangles" },
+  { label: "Bracelet", name: "earrings" },
+  { label: "Bangles", name: "rings" },
+  { label: "Mangalsutra", name: "pendantSets" },
+  { label: "Nose pins", name: "nosePins" },
+  { label: "Head Jewelry", name: "headJewelry" },
   { label: "Pendants", name: "pendants" },
+  { label: "Wedding Sets", name: "weddingSets" },
+  { label: "Necklace", name: "necklace" },
   { label: "Anklets", name: "anklets" },
   { label: "Toe Rings", name: "toeRings" },
-  { label: "Home Decor", name: "homeDecor" },
+  { label: "Home Decor", name: "homeDecor" }
 ]
-
-
 
 
 
@@ -78,9 +80,9 @@ export const blog = [
 export const Home = () => {
 
   return (
-    <div className='min-h-screen md:pt-32 pt-20'>
+    <div className='min-h-screen md:pt-32 pt-16'>
 
-      <div className='py-6 md:flex hidden justify-center items-center gap-12'>
+      <div className='py-6 md:flex hidden justify-center items-center gap-9'>
         {
 
           categoriesList.map((e, i) => (
@@ -97,11 +99,66 @@ export const Home = () => {
 
 
       <div className='my-6'>
-        <CategoriesList/>
+        <CategoriesList />
+      </div>
+
+      <div className='my-6 bg-gray-100  md:px-16 px-12 py-8'>
+
+        <div className='grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6'>
+          <div>
+            <img src="/assets/images/bangleNew.jpg" className='md:h-96 h-56 rounded-xl' alt="" />
+          </div>
+          <div className='flex  flex-col items-center text-center md:pt-14 pt-3'>
+            <p className='font-bold md:text-3xl text-2xl'>A Stylish Gold Bangle </p>
+            <div className='border-t border-gray-800 w-4/5 mt-3'></div>
+            <p className='font-semibold text-base text-gray-800 mt-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum animi, aut dignissimos eius cupiditate quos doloremque maxime aliquam ipsam tempora eveniet porro neque quia est magni suscipit velit alias vitae.</p>
+            <Link to="/shop" className='bg-black  mt-8 text-sm border border-black  text-white hover:text-black hover:bg-white px-20 py-2'>
+              Know More
+            </Link>
+          </div>
+        </div>
+
+      </div>
+
+      <div className='my-6 '>
+
+        <FeaturedProducts />
+
+      </div>
+
+      <div className='my-6 '>
+
+        <CredibilityBoxes />
+
+      </div>
+
+      <div className='my-6 '>
+
+        <Testimonials />
+
+      </div>
+
+      <div className=''>
+
+        <div className='flex items-center flex-col bg-gray-950 pt-12 pb-14'>
+          <div>
+            <img src="/assets/images/dkrajLogoVariant2White.png" className='md:w-72 w-56' alt="dkrajLogo" />
+          </div>
+          <div className="border border-yellow-900 mt-2 md:w-3/12 w-10/12"></div>
+
+          <p className='text-center text-gray-200 mt-4 md:text-sm text-xs px-4 md:w-3/5'>
+            Crafting timeless elegance with every piece, we blend tradition with modernity to create jewelry that speaks to the soul. Our dedication to quality and artistry shines through in every design, making each piece a true masterpiece.
+          </p>
+
+        </div>
+
       </div>
 
 
-      <div className='mt-8 mb-4 '>
+
+
+
+      {/* <div className='mt-8 mb-4 '>
 
         <div className='flex md:flex-row flex-col gap-4'>
           {
@@ -116,11 +173,11 @@ export const Home = () => {
           }
         </div>
 
-      </div>
+      </div> */}
 
 
 
-      <div className='mt-8 mb-4 '>
+      {/* <div className='mt-8 mb-4 '>
         <p className='text-4xl font-semibold my-5 text-center '>Stories</p>
 
         <div className='flex md:flex-row justify-center  flex-col md:gap-4 gap-6'>
@@ -146,7 +203,7 @@ export const Home = () => {
             ))
           }
         </div>
-      </div>
+      </div> */}
 
     </div>
   )
