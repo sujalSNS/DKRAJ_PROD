@@ -22,9 +22,10 @@ export const FeaturedProducts = () => {
                 <div className='grid md:grid-cols-3 grid-cols-1 justify-items-center md:gap-8 gap-5'>
                     {
                         images.map(e => (
-                            <div key={e.name} className=' w-full flex flex-col items-center gap-3  shadow-md shadow-gray-200 p-4'>
+                            <div key={e.name} className=' w-full flex flex-col items-center shadow-md shadow-gray-200 p-4'>
                                 <img src={e.img} alt={e.name} className='rounded-md' />
-                                <p className='text-xl font-semibold'>{e.name}</p>
+                                <p className='text-xl font-semibold mt-3'>{e.name}</p>
+                                <p className='text-sm text-center mt-1'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam consequatur dicta doloribus quos provident non voluptatem incidunt molestias velit</p>
                             </div>
                         ))
                     }
