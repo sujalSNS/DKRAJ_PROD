@@ -102,16 +102,16 @@ export const Home = () => {
         <CategoriesList />
       </div>
 
-      <div className='my-6 bg-gray-100  md:px-16 px-12 py-8'>
+      <div className='my-6 bg-gray-100  md:px-16 px-8 py-8'>
 
-        <div className='grid md:grid-cols-2 grid-cols-1 md:gap-12 gap-6'>
-          <div>
-            <img src="/assets/images/bangleNew.jpg" className='md:h-96 h-56 rounded-xl' alt="" />
+        <div className='grid md:grid-cols-2 grid-cols-1 md:gap-1 gap-6 md:px-16'>
+          <div className='flex justify-center'>
+            <img src="/assets/images/newlyLaunchedDkraj.jpg" className='md:h-[24em] h-[16em] rounded-xl' alt="" />
           </div>
           <div className='flex  flex-col items-center text-center md:pt-14 pt-3'>
             <p className='font-bold md:text-3xl text-2xl'>A Stylish Gold Bangle </p>
             <div className='border-t border-gray-800 w-4/5 mt-3'></div>
-            <p className='font-semibold text-base text-gray-800 mt-4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum animi, aut dignissimos eius cupiditate quos doloremque maxime aliquam ipsam tempora eveniet porro neque quia est magni suscipit velit alias vitae.</p>
+            <p className='md:font-semibold font-medium md:px-8 text-base text-gray-800 mt-4'>This exquisite gold bangle is the perfect blend of elegance and modern design. Its intricate craftsmanship ensures a timeless appeal, Whether you're dressing up for a special event or adding a touch of sophistication to your everyday look, this gold bangle is an ideal choice.</p>
             <Link to="/shop" className='bg-black  mt-8 text-sm border border-black  text-white hover:text-black hover:bg-white px-20 py-2'>
               Know More
             </Link>
