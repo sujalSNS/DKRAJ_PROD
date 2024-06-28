@@ -5,6 +5,7 @@ import { CategoriesList } from './CategoriesList';
 import { FeaturedProducts } from './FeaturedProducts';
 import { CredibilityBoxes } from './CredibilityBoxes';
 import { Testimonials } from './Testimonials';
+import CardSlider from './CardSlider';
 
 
 
@@ -138,6 +139,8 @@ export const Home = () => {
 
       </div>
 
+
+
       <div className=''>
 
         <div className='flex items-center flex-col bg-gray-950 pt-12 pb-14'>
@@ -158,52 +161,6 @@ export const Home = () => {
 
 
 
-      {/* <div className='mt-8 mb-4 '>
-
-        <div className='flex md:flex-row flex-col gap-4'>
-          {
-            categories.map((e, i) => (
-
-              <div key={e.id} className="bg-cover md:w-1/3 w-full h-64 bg-center flex justify-center items-center flex-col gap-4" style={{ backgroundImage: `url(${e.img})` }}>
-                <p className='text-white font-bold md:text-3xl text-2xl uppercase'>{e.title}</p>
-                <button className='flex px-3 py-2  bg-none border border-white hover:border-black text-white hover:text-white  hover:bg-black text-sm'>SHOP NOW</button>
-              </div>
-
-            ))
-          }
-        </div>
-
-      </div> */}
-
-
-
-      {/* <div className='mt-8 mb-4 '>
-        <p className='text-4xl font-semibold my-5 text-center '>Stories</p>
-
-        <div className='flex md:flex-row justify-center  flex-col md:gap-4 gap-6'>
-          {
-            blog.map((e, i) => (
-
-              <div key={e.id} className='flex flex-col pb-3  md:w-1/4 items-center'>
-
-                <div>
-                  <img src={e.img} alt={e.id} className='w-60' />
-                </div>
-                <div className='px-12 mt-4'>
-                  <p className='font-bold text-xl'>{e.title}</p>
-                  <p className='my-6'>{e.description}</p>
-                </div>
-                <div className='px-12  flex w-full'>
-                  <button className='bg-black text-sm border border-black  text-white hover:text-black hover:bg-white px-3 py-2'> READ MORE</button>
-                </div>
-
-              </div>
-
-
-            ))
-          }
-        </div>
-      </div> */}
 
     </div>
   )

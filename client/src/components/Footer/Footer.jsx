@@ -23,7 +23,7 @@ export const Footer = () => {
   return (
     <>
 
-      <div className='flex md:flex-row flex-col justify-start gap-14 items-center md:py-8 py-10 md:px-12 px-14'>
+      <div className='flex md:flex-row flex-col justify-start gap-14 items-center md:py-8 py-10 md:px-12 px-8'>
         <div className='md:w-1/3 w-full'>
           <p className="font-bold text-3xl">DKRAJ</p>
           <p className='text-sm mt-4'>
