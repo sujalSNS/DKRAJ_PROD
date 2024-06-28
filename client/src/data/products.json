@@ -38,7 +38,7 @@
         "productID": "512018EARRAA002EA002",
         "title": "Glamorous Pearl Earrings",
         "desc": "Glamorous pearl earrings with a touch of elegance. Set in 18 karat yellow gold.",
-        "img": "/assets/images/earring.jpg",
+        "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
             "Earrings",
@@ -73,7 +73,7 @@
         "productID": "511018BRCLAA003EA003",
         "title": "Stylish Gold Bracelet",
         "desc": "Stylish gold bracelet set in 22 karat yellow gold. Perfect for casual and formal wear.",
-        "img": "/assets/images/braclet.jpg",
+        "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
             "Bracelets",
@@ -109,7 +109,7 @@
         "productID": "511018BNGLAA004EA004",
         "title": "Classic Gold Bangle",
         "desc": "Classic gold bangle set in 22 karat yellow gold. A timeless piece for any jewelry collection.",
-        "img": "/assets/images/bangle.jpg",
+        "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
             "Bangles",
@@ -144,7 +144,7 @@
         "productID": "411018PNDTAA005EA005",
         "title": "Delicate Diamond Pendant",
         "desc": "Delicate diamond pendant set in 18 karat white gold. Perfect for adding a touch of sparkle.",
-        "img": "/assets/images/pendant.jpg",
+        "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
             "Pendants",
@@ -175,18 +175,51 @@
         ]
     },
     {
-        "productID": "411018RINGAA001EA001",
-        "title": "Elegant Diamond Ring",
-        "desc": "Elegant diamond ring set in 18 karat white gold. Perfect for engagements and special occasions.",
+        "productID": "611018NKLCAA006EA006",
+        "title": "Elegant Gold Necklace",
+        "desc": "Elegant gold necklace set in 22 karat yellow gold. Ideal for weddings and special occasions.",
+        "img": "/assets/images/goldRing.jpg",
+        "category": [
+            "Jewelry",
+            "Necklaces",
+            "Gold"
+        ],
+        "purity": [
+            "22K",
+            "24K"
+        ],
+        "size": [
+            "Medium",
+            "Large"
+        ],
+        "Gender": [
+            "Women"
+        ],
+        "price": 45000,
+        "popular": true,
+        "state": true,
+        "madeToOrder": true,
+        "stock": 20,
+        "labor": 300,
+        "packaging": 50,
+        "grams": [
+            10.0,
+            12.0,
+            14.0
+        ]
+    },
+    {
+        "productID": "512018HRNGAA007EA007",
+        "title": "Stylish Platinum Ring",
+        "desc": "Stylish platinum ring with a contemporary design. Perfect for modern style enthusiasts.",
         "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
             "Rings",
-            "Diamonds"
+            "Platinum"
         ],
         "purity": [
-            "18K",
-            "22K"
+            "950 Platinum"
         ],
         "size": [
             "6",
@@ -194,104 +227,33 @@
             "8"
         ],
         "Gender": [
-            "Women"
+            "Women",
+            "Men"
         ],
-        "price": 35423,
+        "price": 62000,
         "popular": true,
         "state": true,
         "madeToOrder": false,
-        "stock": 30,
-        "labor": 200,
-        "packaging": 30,
+        "stock": 10,
+        "labor": 400,
+        "packaging": 60,
         "grams": [
-            3.5,
-            4.0,
-            4.5
-        ]
-    },
-    {
-        "productID": "512018EARRAA002EA002",
-        "title": "Glamorous Pearl Earrings",
-        "desc": "Glamorous pearl earrings with a touch of elegance. Set in 18 karat yellow gold.",
-        "img": "/assets/images/earring.jpg",
-        "category": [
-            "Jewelry",
-            "Earrings",
-            "Pearls"
-        ],
-        "purity": [
-            "18K",
-            "22K"
-        ],
-        "size": [
-            "Small",
-            "Medium",
-            "Large"
-        ],
-        "Gender": [
-            "Women"
-        ],
-        "price": 18200,
-        "popular": true,
-        "state": true,
-        "madeToOrder": false,
-        "stock": 30,
-        "labor": 100,
-        "packaging": 20,
-        "grams": [
-            2.0,
-            2.5,
-            3.0
-        ]
-    },
-    {
-        "productID": "511018BRCLAA003EA003",
-        "title": "Stylish Gold Bracelet",
-        "desc": "Stylish gold bracelet set in 22 karat yellow gold. Perfect for casual and formal wear.",
-        "img": "/assets/images/braclet.jpg",
-        "category": [
-            "Jewelry",
-            "Bracelets",
-            "Gold"
-        ],
-        "purity": [
-            "18K",
-            "22K"
-        ],
-        "size": [
-            "7",
-            "8",
-            "9"
-        ],
-        "Gender": [
-            "Men",
-            "Women"
-        ],
-        "price": 29500,
-        "popular": true,
-        "state": true,
-        "madeToOrder": true,
-        "stock": 30,
-        "labor": 150,
-        "packaging": 25,
-        "grams": [
+            5.0,
             6.0,
-            6.5,
             7.0
         ]
     },
     {
-        "productID": "511018BNGLAA004EA004",
-        "title": "Classic Gold Bangle",
-        "desc": "Classic gold bangle set in 22 karat yellow gold. A timeless piece for any jewelry collection.",
-        "img": "/assets/images/bangle.jpg",
+        "productID": "313018BGLAAA008EA008",
+        "title": "Elegant Gold Bangle",
+        "desc": "Elegant gold bangle set in 24 karat yellow gold. A statement piece for any occasion.",
+        "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
             "Bangles",
             "Gold"
         ],
         "purity": [
-            "22K",
             "24K"
         ],
         "size": [
@@ -302,32 +264,64 @@
         "Gender": [
             "Women"
         ],
-        "price": 32000,
-        "popular": false,
+        "price": 52000,
+        "popular": true,
         "state": true,
         "madeToOrder": false,
-        "stock": 30,
-        "labor": 180,
-        "packaging": 20,
+        "stock": 15,
+        "labor": 250,
+        "packaging": 40,
         "grams": [
             8.0,
-            8.5,
-            9.0
+            9.0,
+            10.0
         ]
     },
     {
-        "productID": "411018PNDTAA005EA005",
-        "title": "Delicate Diamond Pendant",
-        "desc": "Delicate diamond pendant set in 18 karat white gold. Perfect for adding a touch of sparkle.",
-        "img": "/assets/images/pendant.jpg",
+        "productID": "213018NKLCAA009EA009",
+        "title": "Beautiful Diamond Necklace",
+        "desc": "Beautiful diamond necklace set in 18 karat white gold. Perfect for luxurious occasions.",
+        "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
-            "Pendants",
+            "Necklaces",
             "Diamonds"
         ],
         "purity": [
-            "18K",
-            "22K"
+            "18K"
+        ],
+        "size": [
+            "Medium",
+            "Large"
+        ],
+        "Gender": [
+            "Women"
+        ],
+        "price": 72000,
+        "popular": true,
+        "state": true,
+        "madeToOrder": false,
+        "stock": 12,
+        "labor": 500,
+        "packaging": 70,
+        "grams": [
+            15.0,
+            16.0,
+            17.0
+        ]
+    },
+    {
+        "productID": "513018PNDTAA010EA010",
+        "title": "Charming Gold Pendant",
+        "desc": "Charming gold pendant set in 18 karat yellow gold. Adds a touch of elegance to any outfit.",
+        "img": "/assets/images/goldRing.jpg",
+        "category": [
+            "Jewelry",
+            "Pendants",
+            "Gold"
+        ],
+        "purity": [
+            "18K"
         ],
         "size": [
             "Small",
@@ -336,28 +330,96 @@
         "Gender": [
             "Women"
         ],
-        "price": 17500,
+        "price": 19500,
         "popular": true,
         "state": true,
         "madeToOrder": false,
-        "stock": 30,
-        "labor": 120,
-        "packaging": 15,
+        "stock": 25,
+        "labor": 150,
+        "packaging": 30,
         "grams": [
-            1.5,
             2.0,
-            2.5
+            2.5,
+            3.0
         ]
     },
     {
-        "productID": "411018RINGAA001EA001",
-        "title": "Elegant Diamond Ring",
-        "desc": "Elegant diamond ring set in 18 karat white gold. Perfect for engagements and special occasions.",
+        "productID": "113018EARRAA011EA011",
+        "title": "Stunning Ruby Earrings",
+        "desc": "Stunning ruby earrings set in 18 karat yellow gold. Perfect for adding a pop of color.",
+        "img": "/assets/images/goldRing.jpg",
+        "category": [
+            "Jewelry",
+            "Earrings",
+            "Rubies"
+        ],
+        "purity": [
+            "18K"
+        ],
+        "size": [
+            "Small",
+            "Medium",
+            "Large"
+        ],
+        "Gender": [
+            "Women"
+        ],
+        "price": 32500,
+        "popular": true,
+        "state": true,
+        "madeToOrder": false,
+        "stock": 20,
+        "labor": 200,
+        "packaging": 40,
+        "grams": [
+            2.5,
+            3.0,
+            3.5
+        ]
+    },
+    {
+        "productID": "214018BRCLAA012EA012",
+        "title": "Elegant Diamond Bracelet",
+        "desc": "Elegant diamond bracelet set in 18 karat white gold. Ideal for special occasions.",
+        "img": "/assets/images/goldRing.jpg",
+        "category": [
+            "Jewelry",
+            "Bracelets",
+            "Diamonds"
+        ],
+        "purity": [
+            "18K"
+        ],
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "Gender": [
+            "Women"
+        ],
+        "price": 56000,
+        "popular": true,
+        "state": true,
+        "madeToOrder": true,
+        "stock": 18,
+        "labor": 350,
+        "packaging": 50,
+        "grams": [
+            5.0,
+            6.0,
+            7.0
+        ]
+    },
+    {
+        "productID": "411018RINGAA013EA013",
+        "title": "Elegant Sapphire Ring",
+        "desc": "Elegant sapphire ring set in 18 karat white gold. Perfect for engagements and special occasions.",
         "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
             "Rings",
-            "Diamonds"
+            "Sapphires"
         ],
         "purity": [
             "18K",
@@ -371,28 +433,28 @@
         "Gender": [
             "Women"
         ],
-        "price": 35423,
+        "price": 47000,
         "popular": true,
         "state": true,
         "madeToOrder": false,
-        "stock": 30,
-        "labor": 200,
-        "packaging": 30,
+        "stock": 25,
+        "labor": 250,
+        "packaging": 35,
         "grams": [
+            3.0,
             3.5,
-            4.0,
-            4.5
+            4.0
         ]
     },
     {
-        "productID": "512018EARRAA002EA002",
-        "title": "Glamorous Pearl Earrings",
-        "desc": "Glamorous pearl earrings with a touch of elegance. Set in 18 karat yellow gold.",
-        "img": "/assets/images/earring.jpg",
+        "productID": "512018EARRAA014EA014",
+        "title": "Glamorous Emerald Earrings",
+        "desc": "Glamorous emerald earrings with a touch of elegance. Set in 18 karat yellow gold.",
+        "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
             "Earrings",
-            "Pearls"
+            "Emeralds"
         ],
         "purity": [
             "18K",
@@ -406,68 +468,66 @@
         "Gender": [
             "Women"
         ],
-        "price": 18200,
+        "price": 38500,
         "popular": true,
         "state": true,
         "madeToOrder": false,
-        "stock": 30,
-        "labor": 100,
-        "packaging": 20,
+        "stock": 20,
+        "labor": 220,
+        "packaging": 30,
         "grams": [
-            2.0,
             2.5,
-            3.0
+            3.0,
+            3.5
         ]
     },
     {
-        "productID": "511018BRCLAA003EA003",
-        "title": "Stylish Gold Bracelet",
-        "desc": "Stylish gold bracelet set in 22 karat yellow gold. Perfect for casual and formal wear.",
-        "img": "/assets/images/braclet.jpg",
+        "productID": "611018NKLCAA015EA015",
+        "title": "Elegant Ruby Necklace",
+        "desc": "Elegant ruby necklace set in 22 karat yellow gold. Ideal for weddings and special occasions.",
+        "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
-            "Bracelets",
-            "Gold"
-        ],
-        "purity": [
-            "18K",
-            "22K"
-        ],
-        "size": [
-            "7",
-            "8",
-            "9"
-        ],
-        "Gender": [
-            "Men",
-            "Women"
-        ],
-        "price": 29500,
-        "popular": true,
-        "state": true,
-        "madeToOrder": true,
-        "stock": 30,
-        "labor": 150,
-        "packaging": 25,
-        "grams": [
-            6.0,
-            6.5,
-            7.0
-        ]
-    },
-    {
-        "productID": "511018BNGLAA004EA004",
-        "title": "Classic Gold Bangle",
-        "desc": "Classic gold bangle set in 22 karat yellow gold. A timeless piece for any jewelry collection.",
-        "img": "/assets/images/bangle.jpg",
-        "category": [
-            "Jewelry",
-            "Bangles",
-            "Gold"
+            "Necklaces",
+            "Rubies"
         ],
         "purity": [
             "22K",
             "24K"
+        ],
+        "size": [
+            "Medium",
+            "Large"
+        ],
+        "Gender": [
+            "Women"
+        ],
+        "price": 90000,
+        "popular": true,
+        "state": true,
+        "madeToOrder": true,
+        "stock": 15,
+        "labor": 400,
+        "packaging": 70,
+        "grams": [
+            12.0,
+            14.0,
+            16.0
+        ]
+    },
+    {
+        "productID": "313018BGLAAA016EA016",
+        "title": "Elegant Diamond Bangle",
+        "desc": "Elegant diamond bangle set in 18 karat white gold. A statement piece for any occasion.",
+        "img": "/assets/images/goldRing.jpg",
+        "category": [
+            "Jewelry",
+            "Bangles",
+            "Diamonds"
+        ],
+        "purity": [
+            "18K",
+            "22K"
         ],
         "size": [
             "6",
@@ -477,28 +537,64 @@
         "Gender": [
             "Women"
         ],
-        "price": 32000,
-        "popular": false,
+        "price": 78000,
+        "popular": true,
         "state": true,
         "madeToOrder": false,
-        "stock": 30,
-        "labor": 180,
-        "packaging": 20,
+        "stock": 12,
+        "labor": 350,
+        "packaging": 50,
         "grams": [
+            7.0,
             8.0,
-            8.5,
             9.0
         ]
     },
     {
-        "productID": "411018PNDTAA005EA005",
-        "title": "Delicate Diamond Pendant",
-        "desc": "Delicate diamond pendant set in 18 karat white gold. Perfect for adding a touch of sparkle.",
-        "img": "/assets/images/pendant.jpg",
+        "productID": "114018HRNGAA017EA017",
+        "title": "Stylish Gold Ring",
+        "desc": "Stylish gold ring with a contemporary design. Perfect for modern style enthusiasts.",
+        "img": "/assets/images/goldRing.jpg",
+        "category": [
+            "Jewelry",
+            "Rings",
+            "Gold"
+        ],
+        "purity": [
+            "18K",
+            "22K"
+        ],
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "Gender": [
+            "Women",
+            "Men"
+        ],
+        "price": 42000,
+        "popular": true,
+        "state": true,
+        "madeToOrder": false,
+        "stock": 20,
+        "labor": 250,
+        "packaging": 40,
+        "grams": [
+            4.0,
+            4.5,
+            5.0
+        ]
+    },
+    {
+        "productID": "114018PNDTAA018EA018",
+        "title": "Charming Emerald Pendant",
+        "desc": "Charming emerald pendant set in 18 karat yellow gold. Adds a touch of elegance to any outfit.",
+        "img": "/assets/images/goldRing.jpg",
         "category": [
             "Jewelry",
             "Pendants",
-            "Diamonds"
+            "Emeralds"
         ],
         "purity": [
             "18K",
@@ -511,17 +607,86 @@
         "Gender": [
             "Women"
         ],
-        "price": 17500,
+        "price": 27500,
         "popular": true,
         "state": true,
         "madeToOrder": false,
-        "stock": 30,
-        "labor": 120,
-        "packaging": 15,
+        "stock": 20,
+        "labor": 200,
+        "packaging": 30,
         "grams": [
             1.5,
             2.0,
             2.5
+        ]
+    },
+    {
+        "productID": "113018BRCLAA019EA019",
+        "title": "Elegant Sapphire Bracelet",
+        "desc": "Elegant sapphire bracelet set in 18 karat white gold. Ideal for special occasions.",
+        "img": "/assets/images/goldRing.jpg",
+        "category": [
+            "Jewelry",
+            "Bracelets",
+            "Sapphires"
+        ],
+        "purity": [
+            "18K"
+        ],
+        "size": [
+            "6",
+            "7",
+            "8"
+        ],
+        "Gender": [
+            "Women"
+        ],
+        "price": 68000,
+        "popular": true,
+        "state": true,
+        "madeToOrder": true,
+        "stock": 15,
+        "labor": 300,
+        "packaging": 50,
+        "grams": [
+            4.0,
+            5.0,
+            6.0
+        ]
+    },
+    {
+        "productID": "211018EARRAA020EA020",
+        "title": "Stunning Gold Earrings",
+        "desc": "Stunning gold earrings set in 18 karat yellow gold. Perfect for adding a touch of elegance.",
+        "img": "/assets/images/goldRing.jpg",
+        "category": [
+            "Jewelry",
+            "Earrings",
+            "Gold"
+        ],
+        "purity": [
+            "18K",
+            "22K"
+        ],
+        "size": [
+            "Small",
+            "Medium",
+            "Large"
+        ],
+        "Gender": [
+            "Women"
+        ],
+        "price": 31000,
+        "popular": true,
+        "state": true,
+        "madeToOrder": false,
+        "stock": 20,
+        "labor": 150,
+        "packaging": 30,
+        "grams": [
+            2.5,
+            3.0,
+            3.5
         ]
     }
 ]

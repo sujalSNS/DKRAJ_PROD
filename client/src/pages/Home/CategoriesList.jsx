@@ -14,6 +14,8 @@ const images = [
     { name: "Pendants", img: "assets/images/categories/pendants.jpg" }
 ]
 
+
+
 export const CategoriesList = () => {
     return (
         <>
