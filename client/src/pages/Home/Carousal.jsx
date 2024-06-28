@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 
-
 const images = [
-    'assets/images/carousal1.jpg',
-    'assets/images/carousal2.jpg',
-    'assets/images/carousal3.jpg',
-    'assets/images/carousal4.jpg',
+    '/assets/images/carousal1.jpg',
+    '/assets/images/carousal2.jpg',
+    '/assets/images/carousal3.jpg',
+    '/assets/images/carousal4.jpg',
 ];
 
 export const Carousel = () => {
@@ -21,16 +20,19 @@ export const Carousel = () => {
         return () => clearInterval(interval);
     }, []);
 
+    
     return (
         <div className="relative w-full overflow-hidden">
             <div className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
+             
                 {images.map((image, index) => (
                     <div key={index} className="w-full flex-shrink-0 cursor-pointer">
                         <img src={image} alt={`Slide ${index + 1}`} className="w-full  md:h-[34em] h-auto" />
-                    </div>
+                     </div>
                 ))}
+         
             </div>
             <div className="absolute inset-0 flex items-center justify-between p-4">
                 <button

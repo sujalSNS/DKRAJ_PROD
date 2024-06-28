@@ -5,7 +5,7 @@ import { CategoriesList } from './CategoriesList';
 import { FeaturedProducts } from './FeaturedProducts';
 import { CredibilityBoxes } from './CredibilityBoxes';
 import { Testimonials } from './Testimonials';
-import CardSlider from './CardSlider';
+import {CardSlider} from './CardSlider';
 
 
 
@@ -27,55 +27,6 @@ const categoriesList = [
 
 
 
-
-const categories = [
-  {
-    id: 1,
-    img: "https://images.unsplash.com/photo-1513122991877-4a5678e6d72f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGVuZGFudHN8ZW58MHx8MHx8fDA%3D",
-    title: "Pendants & Sets",
-    category: "Necklace",
-  },
-  {
-    id: 2,
-    img: "https://plus.unsplash.com/premium_photo-1671641737535-d717a70d6d51?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cmluZ3MlMjBicmFjZWxldHN8ZW58MHx8MHx8fDA%3D",
-    title: "Rings & Bracelets",
-    category: "Rings",
-  },
-  {
-    id: 3,
-    img: "https://plus.unsplash.com/premium_photo-1670266032676-61979dfff60b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZWFycmluZ3MlMjBub3NlcGluc3xlbnwwfHwwfHx8MA%3D%3D",
-    title: "Earrings & Nose Pins",
-    category: "Earrings",
-  },
-];
-
-
-export const blog = [
-  {
-    id: 1,
-    img: "https://images.unsplash.com/photo-1584811644165-33db3b146db5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    title: "Lorem ipsum dolor sit amet",
-    description:
-      "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    button: "Read more",
-  },
-  {
-    id: 2,
-    img: "https://images.unsplash.com/photo-1600427150683-348f588e815c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80",
-    title: "Sed ut perspiciatis unde omnis iste natus",
-    description:
-      "Error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-    button: "Read more",
-  },
-  {
-    id: 3,
-    img: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    title: "At vero eos et accusamus",
-    description:
-      "Et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.",
-    button: "Read more",
-  },
-];
 
 
 export const Home = () => {
@@ -138,6 +89,11 @@ export const Home = () => {
         <Testimonials />
 
       </div>
+      {/* <div className='my-6 '>
+
+        <CardSlider />
+
+      </div> */}
 
 
 
