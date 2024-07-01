@@ -25,6 +25,7 @@ import { DrawerNavigation } from './pages/Admin/DrawerNavigation';
 import { AddProduct } from './pages/Admin/AddProduct';
 import { Products } from './pages/Admin/Products';
 import { Orders } from './pages/Admin/Orders';
+import { UserOrder } from './pages/Orders/UserOrder';
 
 
 
@@ -80,6 +81,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/orders" element={<UserOrders/>} />
+        <Route path="/order/:orderID" element={<UserOrder/>} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/product/:productID" element={<Product />} />
         <Route path="/checkout" element={<Checkout />} />

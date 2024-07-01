@@ -1,31 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { RxCross2 } from "react-icons/rx";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const SampleNextArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      onClick={onClick}
-    >
-      <FaChevronRight size={15} />
-    </div>
-  );
-};
 
-const SamplePrevArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      onClick={onClick}
-    >
-      <FaChevronLeft size={15} />
-    </div>
-  );
-};
 
 export const Wishlist = () => {
   const cartProducts = [
@@ -81,15 +58,7 @@ export const Wishlist = () => {
     e.preventDefault();
     console.log(e);
   };
-
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
-  };
+;
 
   return (
     <div className='min-h-screen md:pt-32 pt-28'>
@@ -130,7 +99,7 @@ export const Wishlist = () => {
             <p>Your bag is currently empty.</p>
             <Link to="/shop" className='bg-black mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-12 py-2'>Continue Shopping</Link>
           </>
-        ) : <Link to="/shop" className='bg-black mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-12 py-2'>Continue Shopping</Link> }
+        ) : <Link to="/shop" className='bg-black mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-12 py-2'>Continue Shopping</Link>}
         <div className='w-full md:px-12 px-4 pt-12 pb-20'>
           <p className='text-left text-3xl font-semibold'>Shop more</p>
           <div className='flex items-center gap-5'>
