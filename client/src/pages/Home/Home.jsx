@@ -5,7 +5,7 @@ import { CategoriesList } from './CategoriesList';
 import { FeaturedProducts } from './FeaturedProducts';
 import { CredibilityBoxes } from './CredibilityBoxes';
 import { Testimonials } from './Testimonials';
-import {CardSlider} from './CardSlider';
+import { CardSlider } from './CardSlider';
 
 
 
@@ -32,7 +32,7 @@ const categoriesList = [
 export const Home = () => {
 
   return (
-    <div className='min-h-screen md:pt-32 pt-16'>
+    <div className='min-h-screen md:pt-32 pt-14'>
 
       <div className='py-6 md:flex hidden justify-center items-center gap-9'>
         {

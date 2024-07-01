@@ -56,8 +56,8 @@ export const Navbar = () => {
             </IconButton>
           </div>
 
-          <div className='flex justify-center items-center md:mr-16 md:ml-0 ml-10'>
-            <Link to="/" className='font-bold md:text-4xl text-xl text-center h-12 md:h-20 flex justify-center items-center'>
+          <div className='flex justify-center items-center md:mr-16 md:ml-0 ml-4'>
+            <Link to="/" className='font-bold md:text-4xl text-xl text-center h-12 md:h-20 flex justify-center items-center pb-3'>
               <img src="/assets/images/dkrajLogoVariant1Black.png" alt="DKRAJ JEWELS" className='object-cover 
               h-[2em]' />
             </Link>
@@ -77,6 +77,7 @@ export const Navbar = () => {
                 </span>
               )}
             </span>
+            <Link to="/login" className="text-sm md:hidden flex font-medium animated-underline">SignIn</Link>
             <Link to="/wishlist" className='animated-underline'>
               <MdFavorite size={26} className="text-gray-500" />
             </Link>
@@ -106,7 +107,7 @@ export const Navbar = () => {
               Logout
             </button>
           ) : (
-            <Link onClick={toggleDrawer(false)} to="/login" className="text-xl underline underline-offset-8">Sign In</Link>
+            null
           )}
         </div>
       </Drawer>
