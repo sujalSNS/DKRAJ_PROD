@@ -15,14 +15,14 @@ const categoriesList = [
   { label: "Bracelet", name: "earrings" },
   { label: "Bangles", name: "rings" },
   { label: "Mangalsutra", name: "pendantSets" },
-  { label: "Nose pins", name: "nosePins" },
-  { label: "Head Jewelry", name: "headJewelry" },
+  { label: "Nose\u00A0pins", name: "nosePins" },
+  { label: "Head\u00A0Jewelry", name: "headJewelry" },
   { label: "Pendants", name: "pendants" },
-  { label: "Wedding Sets", name: "weddingSets" },
+  { label: "Wedding\u00A0Sets", name: "weddingSets" },
   { label: "Necklace", name: "necklace" },
   { label: "Anklets", name: "anklets" },
-  { label: "Toe Rings", name: "toeRings" },
-  { label: "Home Decor", name: "homeDecor" }
+  { label: "Toe\u00A0Rings", name: "toeRings" },
+  { label: "Home\u00A0Decor", name: "homeDecor" }
 ]
 
 
@@ -35,6 +35,15 @@ export const Home = () => {
     <div className='min-h-screen md:pt-32 pt-14'>
 
       <div className='py-6 md:flex hidden justify-center items-center gap-9'>
+        {
+
+          categoriesList.map((e, i) => (
+            <Link to={`/shop/${e.name}`} className='font-medium text-sm animated-underline' key={e.name}>{e.label}</Link>
+          ))
+
+        }
+      </div>
+      <div className='py-6 md:hidden flex justify-center items-center overflow-auto max-w-96 gap-9'>
         {
 
           categoriesList.map((e, i) => (

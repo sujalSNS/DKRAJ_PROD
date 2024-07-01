@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { RxCross2 } from "react-icons/rx";
-
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const SampleNextArrow = (props) => {

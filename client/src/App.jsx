@@ -20,6 +20,10 @@ import { Wishlist } from './pages/Wishlist/Wishlist';
 import { Product } from './pages/Product/Product';
 import { Shop } from './pages/Shop/Shop';
 import { Checkout } from './pages/Checkout/Checkout';
+import { Dashboard } from './pages/Admin/Dashboard';
+import { DrawerNavigation } from './pages/Admin/DrawerNavigation';
+
+
 
 function App() {
 
@@ -43,12 +47,22 @@ function App() {
   //   LogOrNot()
   // }, []);
 
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
 
   return (
     <>
 
-      <ScrollToTop/>
+      <ScrollToTop />
 
       <Navbar />
       <Routes>
@@ -63,14 +77,20 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/shop" element={<Shop/>} />
+        <Route path="/shop" element={<Shop />} />
         <Route path="/shop/product/:productID" element={<Product />} />
-        <Route path="/checkout" element={<Checkout/>} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/admin/dashboard" element={<Dashboard toggleDrawer={toggleDrawer} />} />
 
 
       </Routes>
       {/* <Newsletter /> */}
       <Footer />
+
+
+      <DrawerNavigation drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} />
+
+
 
 
       <Toaster

@@ -63,21 +63,11 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          <div className='flex justify-center items-center gap-6 mr-4'>
-            <span className='flex'>
-              {login ? (
-                <Link to="/profile" className='animated-underline'>
-                  <HiUser size={25} className="text-gray-500" />
-                </Link>
-              ) : (
-                <span className='md:flex hidden'>
-                  <Link to="/login" className='font-semibold text-sm animated-underline mt-1.5'>
-                    SIGN IN
-                  </Link>
-                </span>
-              )}
-            </span>
-            <Link to="/login" className="text-sm md:hidden flex font-medium animated-underline">SignIn</Link>
+          <div className='md:flex hidden justify-center items-center gap-6 mr-4'>
+            <Link to={login? "/profile" : "/login"} className='animated-underline'>
+              <HiUser size={25} className="text-gray-500" />
+            </Link>
+
             <Link to="/wishlist" className='animated-underline'>
               <MdFavorite size={26} className="text-gray-500" />
             </Link>
@@ -85,6 +75,19 @@ export const Navbar = () => {
               <HiShoppingBag size={26} className="text-gray-500" />
             </Link>
           </div>
+          <div className='md:hidden flex justify-center items-center gap-5 mr-4'>
+            <Link to={login? "/profile" : "/login"} className='animated-underline'>
+              <HiUser size={22} className="text-gray-500" />
+            </Link>
+
+            <Link to="/wishlist" className='animated-underline'>
+              <MdFavorite size={22} className="text-gray-500" />
+            </Link>
+            <Link to="/cart" className='animated-underline'>
+              <HiShoppingBag size={22} className="text-gray-500" />
+            </Link>
+          </div>
+
         </div>
       </nav>
 

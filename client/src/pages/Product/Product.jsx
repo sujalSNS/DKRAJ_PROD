@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { ProductCarousal } from './ProductCarousal';
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 
 export const Product = () => {
@@ -34,19 +35,21 @@ export const Product = () => {
         return new Intl.NumberFormat('en-IN').format(number);
     }
 
-    const handleQtyIncre = ()=>{
-        setQty((cur)=>(
-            cur+1
+    const handleQtyIncre = () => {
+        setQty((cur) => (
+            cur + 1
         ))
     }
-    const handleQtyDecre = ()=>{
-        if(qty === 1){
+    const handleQtyDecre = () => {
+        if (qty === 1) {
             return;
         }
-        setQty((cur)=>(
-            cur-1
+        setQty((cur) => (
+            cur - 1
         ))
     }
+
+    const inWishList = true
 
     return (
         <div className="min-h-screen md:pt-32 pt-20">
@@ -55,10 +58,19 @@ export const Product = () => {
                 <div className='grid md:grid-cols-2  grid-cols-1 md:gap-10 gap-3 mb-20'>
                     <div className='md:p-14 md:pt-8 md:px-20 pt-8 px-5 flex justify-center '>
                         {/* <img src={product.img} className='object-cover h-5/6 ' alt="" /> */}
-                        <ProductCarousal/>
+                        <ProductCarousal />
                     </div>
                     <div className='md:pl-3 md:px-0 px-6 md:pt-8'>
-                        <p> {product.productID} </p>
+                        <div className='flex justify-between'>
+                            <p> {product.productID} </p>
+                            {inWishList ? <button className='md:mr-20'>
+                                <FaHeart size={20} />
+                            </button> : <button className='md:mr-20'>
+                                <FaRegHeart size={20} />
+                            </button>
+                            
+                        }
+                        </div>
                         <p className='font-semibold md:text-4xl text-3xl mt-1'> {product.title} </p>
                         <div className='border-b border-black my-5 md:mr-20 mr-5'></div>
                         <p> {product.desc} </p>
@@ -91,12 +103,12 @@ export const Product = () => {
                             <span className='font-semibold text-lg'>Qty: </span>
                             <div className='flex items-center gap-3'>
                                 <button onClick={handleQtyIncre} className='bg-gray-400 text-white p-3 rounded-full'>
-                                <FaPlus />
+                                    <FaPlus />
                                 </button>
-                                
+
                                 <span className='text-xl font-semibold w-6 text-center'>{qty}</span>
                                 <button onClick={handleQtyDecre} className='bg-gray-400 text-white p-3 rounded-full'>
-                                <FaMinus />
+                                    <FaMinus />
                                 </button>
                             </div>
 
