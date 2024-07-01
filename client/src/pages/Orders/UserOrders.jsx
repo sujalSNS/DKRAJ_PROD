@@ -163,8 +163,8 @@ export const UserOrders = () => {
                     <p> ₹{order.order.price}</p>
                   </div>
 
-                  <div className='flex gap-2 items-center'>
-                    <p className={`${order.orderStatus === "Processing" ? "text-blue-600" : "text-green-600"}`}><GoDotFill /></p> {order.orderStatus}
+                  <div className='flex gap-1 md:text-xl text-base items-center'>
+                    <p className={`${order.orderStatus === "Processing" ? "text-blue-600" : "text-green-600"}`}><GoDotFill /></p> <span>{order.orderStatus}</span>
                   </div>
 
                 </Link>
