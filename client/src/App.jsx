@@ -15,13 +15,16 @@ import { Cart } from './pages/Cart/Cart';
 import { NotFound } from './pages/NotFound/NotFound';
 import { Success } from './pages/Success/Success';
 import { Profile } from './pages/Profile/Profile';
-import { Orders } from './pages/Orders/Orders';
+import { UserOrders } from './pages/Orders/UserOrders';
 import { Wishlist } from './pages/Wishlist/Wishlist';
 import { Product } from './pages/Product/Product';
 import { Shop } from './pages/Shop/Shop';
 import { Checkout } from './pages/Checkout/Checkout';
 import { Dashboard } from './pages/Admin/Dashboard';
 import { DrawerNavigation } from './pages/Admin/DrawerNavigation';
+import { AddProduct } from './pages/Admin/AddProduct';
+import { Products } from './pages/Admin/Products';
+import { Orders } from './pages/Admin/Orders';
 
 
 
@@ -75,12 +78,15 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/success" element={<Success />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/orders" element={<Orders />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/orders" element={<UserOrders/>} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/product/:productID" element={<Product />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/dashboard" element={<Dashboard toggleDrawer={toggleDrawer} />} />
+        <Route path="/admin/add-product" element={<AddProduct toggleDrawer={toggleDrawer} />} />
+        <Route path="/admin/products" element={<Products toggleDrawer={toggleDrawer} />} />
+        <Route path="/admin/orders" element={<Orders toggleDrawer={toggleDrawer} />} />
 
 
       </Routes>

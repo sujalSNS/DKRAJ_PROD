@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import { HiBars3BottomLeft } from "react-icons/hi2";
 
 
-export const Dashboard = ({ toggleDrawer }) => {
+export const AddProduct = ({ toggleDrawer }) => {
 
 
     return (
@@ -16,7 +15,7 @@ export const Dashboard = ({ toggleDrawer }) => {
 
 
                 <div className="px-12 pt-5">
-                    Dashboard
+                Add Product
                 </div>
             </div>
         </>

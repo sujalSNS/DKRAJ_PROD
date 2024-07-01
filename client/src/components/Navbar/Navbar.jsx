@@ -25,7 +25,7 @@ export const Navbar = () => {
     }
   };
 
-  const login = false;
+  const login = true;
 
   return (
     <>
