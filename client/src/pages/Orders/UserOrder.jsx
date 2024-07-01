@@ -38,7 +38,7 @@ export const UserOrder = () => {
         <>
 
 
-            <div className='min-h-screen md:pt-28 pt-20'>
+            <div className='min-h-screen md:pt-28 pt-16'>
                 <div className='bg-gray-900 px-6 mt-2 text-white py-3'>
                     <p>Order ID: {order.id}</p>
                 </div>
