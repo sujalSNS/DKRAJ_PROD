@@ -7,9 +7,10 @@ import { useDispatch, useSelector } from 'react-redux'
 // import { IsLogin, getUser } from './actions/userActions'
 import { Navbar } from './components/Navbar/Navbar';
 import { Footer } from './components/Footer/Footer';
+import { ScrollToTop } from './components/Global/ScrollToTop';
 
 import { Toaster } from 'react-hot-toast';
-import { Newsletter } from './components/Newsletter/Newsletter';
+
 import { Cart } from './pages/Cart/Cart';
 import { NotFound } from './pages/NotFound/NotFound';
 import { Success } from './pages/Success/Success';
@@ -18,6 +19,7 @@ import { Orders } from './pages/Orders/Orders';
 import { Wishlist } from './pages/Wishlist/Wishlist';
 import { Product } from './pages/Product/Product';
 import { Shop } from './pages/Shop/Shop';
+import { Checkout } from './pages/Checkout/Checkout';
 
 function App() {
 
@@ -46,6 +48,7 @@ function App() {
   return (
     <>
 
+      <ScrollToTop/>
 
       <Navbar />
       <Routes>
@@ -62,6 +65,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/shop" element={<Shop/>} />
         <Route path="/shop/product/:productID" element={<Product />} />
+        <Route path="/checkout" element={<Checkout/>} />
 
 
       </Routes>

@@ -49,7 +49,7 @@ export const Shop = () => {
     return (
         <div className='min-h-screen pt-32 pb-24 flex'>
             <div className='w-1/4 py-5 h-full md:flex flex-col hidden'>
-                    <div className='bg-gray-300   font-bold px-4 py-3 text-2xl rounded-t-lg'>Filters</div>
+                <div className='bg-gray-300   font-bold px-4 py-3 text-2xl rounded-t-lg'>Filters</div>
                 <div className='sticky md:flex hidden flex-col top-32 bg-gray-100 rounded-lg overflow-y-auto' style={{ maxHeight: 'calc(90vh - 8rem)' }}>
                     <div className='py-4 px-5 space-y-4'>
                         <div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RxCross2 } from "react-icons/rx";
 
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -28,7 +28,11 @@ const SamplePrevArrow = (props) => {
     );
 };
 
+
 export const Cart = () => {
+
+    const navigate = useNavigate()
+
     const cartProducts = [
         {
             productID: "411018PNDTAA005EA005",
@@ -75,17 +79,17 @@ export const Cart = () => {
 
     const handleCartItemRemove = (e) => {
         e.preventDefault();
-        console.log(e);
     };
 
-    const settings = {
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
-    };
+
+    const handleCheckout = (e) => {
+        e.preventDefault();
+
+        navigate("/checkout")
+
+    }
+
+
 
     return (
         <div className='min-h-screen md:pt-32 pt-28'>
@@ -134,7 +138,7 @@ export const Cart = () => {
                             <div className='text-right '>₹0.00</div>
                         </div>
                         <div>
-                            <button type='submit' className='bg-black w-full mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-3 py-2'>CHECKOUT</button>
+                            <button onClick={handleCheckout} type='submit' className='bg-black w-full mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-3 py-2'>CHECKOUT</button>
                         </div>
                     </div>
                 </div>
@@ -163,4 +167,5 @@ export const Cart = () => {
         </div>
     );
 };
+
 
