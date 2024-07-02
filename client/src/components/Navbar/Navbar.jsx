@@ -3,12 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IoMdSearch } from "react-icons/io";
 import { HiShoppingBag, HiMiniBars3, HiUser } from "react-icons/hi2";
 import { MdFavorite } from "react-icons/md";
-import { Drawer, IconButton } from '@mui/material';
+import { Drawer, IconButton, Avatar, Menu, MenuItem, Popover } from '@mui/material';
 import { PromotionLabel } from './PromotionLabel';
 
 export const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
 
   const toggleDrawer = (open) => (event) => {
@@ -24,6 +25,15 @@ export const Navbar = () => {
       setSearchValue("");
     }
   };
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
 
   const login = true;
 
@@ -64,9 +74,36 @@ export const Navbar = () => {
           </div>
 
           <div className='md:flex hidden justify-center items-center gap-6 mr-4'>
-            <Link to={login? "/profile" : "/login"} className='animated-underline'>
+            {/* <Link to={login ? "/profile" : "/login"} className='animated-underline'>
               <HiUser size={25} className="text-gray-500" />
-            </Link>
+            </Link> */}
+
+            <button onClick={handleMenuOpen} className='animated-underline'>
+            <HiUser size={25} className="text-gray-500" />
+            </button>
+
+            
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+              disableScrollLock={true}
+              className='pt-1'
+
+              >
+                <MenuItem onClick={() => {
+                  navigate("/profile")
+                  handleMenuClose()
+                }} >
+                  <p className='font-semibold'>Profile</p>
+                </MenuItem>
+                <MenuItem onClick={() => {
+                  handleMenuClose()
+                }}  >
+                  <p className=' font-semibold'>Logout</p>
+                </MenuItem>
+              </Menu>
+              
 
             <Link to="/wishlist" className='animated-underline'>
               <MdFavorite size={26} className="text-gray-500" />
@@ -76,7 +113,7 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className='md:hidden flex justify-center items-center gap-5 mr-4'>
-            <Link to={login? "/profile" : "/login"} className='animated-underline'>
+            <Link to={login ? "/profile" : "/login"} className='animated-underline'>
               <HiUser size={22} className="text-gray-500" />
             </Link>
 

@@ -96,7 +96,7 @@ export const UserOrder = () => {
                 </div>
 
                 <div className='mt-12 px-6 mb-24'>
-                    <button className='px-12 py-2 rounded text-white font-semibold bg-red-600'>Cancel Order</button>
+                    <button className='px-12 py-2 rounded text-white font-semibold bg-red-700'>Cancel Order</button>
                 </div>
 
             </div>
