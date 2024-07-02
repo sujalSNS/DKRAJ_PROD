@@ -36,12 +36,6 @@ export const Footer = () => {
             <Link className='bg-black p-2 rounded-full'>
               <FaInstagram size={24} className=" text-white " />
             </Link>
-            <Link className='bg-black p-2 rounded-full'>
-              <FaTwitter size={24} className=" text-white " />
-            </Link>
-            <Link className='bg-black p-2 rounded-full'>
-              <FaPinterest size={24} className=" text-white " />
-            </Link>
           </div>
         </div>
         <div className='w-1/3 md:flex hidden flex-col'>

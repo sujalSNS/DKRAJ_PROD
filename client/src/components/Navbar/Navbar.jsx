@@ -25,17 +25,23 @@ export const Navbar = () => {
       setSearchValue("");
     }
   };
+  
+  const login = true;
 
   const handleMenuOpen = (event) => {
+    if(!login){
+      navigate("/login")
+      return ;
+    }
+
     setAnchorEl(event.currentTarget);
   };
-
+  
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+  
 
-
-  const login = true;
 
   return (
     <>
@@ -74,10 +80,7 @@ export const Navbar = () => {
           </div>
 
           <div className='md:flex hidden justify-center items-center gap-6 mr-4'>
-            {/* <Link to={login ? "/profile" : "/login"} className='animated-underline'>
-              <HiUser size={25} className="text-gray-500" />
-            </Link> */}
-
+            
             <button onClick={handleMenuOpen} className='animated-underline'>
             <HiUser size={25} className="text-gray-500" />
             </button>
@@ -113,9 +116,9 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className='md:hidden flex justify-center items-center gap-5 mr-4'>
-            <Link to={login ? "/profile" : "/login"} className='animated-underline'>
-              <HiUser size={22} className="text-gray-500" />
-            </Link>
+          <button onClick={handleMenuOpen} className='animated-underline'>
+            <HiUser size={25} className="text-gray-500" />
+            </button>
 
             <Link to="/wishlist" className='animated-underline'>
               <MdFavorite size={22} className="text-gray-500" />

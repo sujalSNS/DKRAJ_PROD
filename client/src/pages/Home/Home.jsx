@@ -6,23 +6,24 @@ import { FeaturedProducts } from './FeaturedProducts';
 import { CredibilityBoxes } from './CredibilityBoxes';
 import { Testimonials } from './Testimonials';
 import { CardSlider } from './CardSlider';
+import { CategoriesNavigationList } from './CategoriesNavigationList';
 
 
 
 const categoriesList = [
   { label: "Rings", name: "nosePins" },
-  { label: "Earring", name: "bangles" },
-  { label: "Bracelet", name: "earrings" },
+  { label: "Earrings", name: "bangles" },
+  { label: "Bracelets", name: "earrings" },
   { label: "Bangles", name: "rings" },
-  { label: "Mangalsutra", name: "pendantSets" },
-  { label: "Nose\u00A0pins", name: "nosePins" },
-  { label: "Head\u00A0Jewelry", name: "headJewelry" },
-  { label: "Pendants", name: "pendants" },
+  { label: "Mangalsutras", name: "pendantSets" },
+  { label: "Nose\u00A0Pins", name: "nosePins" },
+  { label: "Head\u00A0Jewelries", name: "headJewelries" },
+  { label: "Pendants\u00A0Sets", name: "pendants" },
   { label: "Wedding\u00A0Sets", name: "weddingSets" },
-  { label: "Necklace", name: "necklace" },
+  { label: "Pendants", name: "necklace" },
   { label: "Anklets", name: "anklets" },
   { label: "Toe\u00A0Rings", name: "toeRings" },
-  { label: "Home\u00A0Decor", name: "homeDecor" }
+  { label: "Home\u00A0Decors", name: "homeDecor" }
 ]
 
 
@@ -34,16 +35,7 @@ export const Home = () => {
   return (
     <div className='min-h-screen md:pt-32 pt-14'>
 
-      <div className='py-6 md:flex hidden justify-center items-center gap-9'>
-        {
-
-          categoriesList.map((e, i) => (
-            <Link to={`/shop/${e.name}`} className='font-medium text-sm animated-underline' key={e.name}>{e.label}</Link>
-          ))
-
-        }
-      </div>
-      <div className='py-6 md:hidden flex justify-center items-center overflow-auto max-w-96 gap-9'>
+      <div className='py-4 md:flex hidden justify-center items-center gap-9'>
         {
 
           categoriesList.map((e, i) => (
@@ -53,7 +45,15 @@ export const Home = () => {
         }
       </div>
 
-      <div className="my-4 ">
+
+      <div className=' py-4 md:hidden flex'>
+        <CategoriesNavigationList/>
+      </div>
+
+
+      
+
+      <div className="mt-2 mb-4 ">
         <Carousel />
 
       </div>

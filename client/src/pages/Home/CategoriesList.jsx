@@ -2,15 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const images = [
-    { name: "Bangles", img: "assets/images/categories/bangles.jpg" },
-    { name: "Bracelet", img: "assets/images/categories/bracelet.jpg" },
-    { name: "Head Jewelry", img: "assets/images/categories/headjewelry.jpg" },
-    { name: "Earring", img: "assets/images/categories/earring.jpg" },
-    { name: "Bridal Sets", img: "assets/images/categories/bridalSets.jpg" },
     { name: "Rings", img: "assets/images/categories/rings.jpg" },
-    { name: "Mangalsutra", img: "assets/images/categories/mangalsutra.jpg" },
-    { name: "Necklace", img: "assets/images/categories/necklace.jpg" },
-    { name: "Nose pins", img: "assets/images/categories/nosepin.jpg" },
+    { name: "Earrings", img: "assets/images/categories/earring.jpg" },
+    { name: "Bracelets", img: "assets/images/categories/bracelet.jpg" },
+    { name: "Bangles", img: "assets/images/categories/bangles.jpg" },
+    { name: "Mangalsutras", img: "assets/images/categories/mangalsutra.jpg" },
+    { name: "Nose Pins", img: "assets/images/categories/nosepin.jpg" },
+    { name: "Head Jewelries", img: "assets/images/categories/headjewelry.jpg" },
+    { name: "Wedding Sets", img: "assets/images/categories/bridalSets.jpg" },
+    // { name: "Necklaces", img: "assets/images/categories/necklace.jpg" },
     { name: "Pendants", img: "assets/images/categories/pendants.jpg" }
 ]
 

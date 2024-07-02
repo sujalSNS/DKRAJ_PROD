@@ -26,7 +26,7 @@ export const DrawerNavigation = ({ drawerOpen, toggleDrawer }) => {
                     className="pt-28 w-64 text-black "
                 >
                     <div>
-                        <button className='pl-2 mt-4  flex justify-center items-center '>
+                        <button className='pl-2 mt-4  flex justify-start  '>
                             <RxCross2 size={25} />
                         </button>
                         <div className='flex justify-center'>
