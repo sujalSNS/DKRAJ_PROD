@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc'; // Google icon
-import { FaFacebook } from 'react-icons/fa'; // Facebook icon
+import { FaGoogle, FaFacebook } from 'react-icons/fa';
+
 
 export const Login = () => {
     const [userData, setUserData] = useState({});
@@ -23,7 +23,7 @@ export const Login = () => {
 
     return (
         <div className='min-h-screen pt-32 flex justify-center items-center pb-24'>
-            <form onSubmit={login} className='md:w-1/3 w-full md:mx-0 mx-10 flex flex-col '>
+            <form onSubmit={login} className='md:w-1/3 w-full md:mx-0 mx-10 flex flex-col pt-16'>
                 <p className='text-center text-4xl font-semibold'>Sign In</p>
 
                 <div className='mt-5'>
@@ -63,25 +63,17 @@ export const Login = () => {
                     LOGIN
                 </button>
 
-                {/* <div className='mt-3 flex flex-col gap-2'>
-                    <p className='text-center'>OR</p>
-                    <button
-                        type='button'
-                        onClick={loginWithGoogle}
-                        className='bg-white w-full border border-gray-400 text-gray-700 hover:bg-gray-100 px-3 py-2 text-sm flex items-center justify-center gap-2'
-                    >
-                        <FcGoogle size={20} />
-                        Login with Google
-                    </button>
-                    <button
-                        type='button'
-                        onClick={loginWithFacebook}
-                        className='bg-blue-600 w-full border border-blue-600 text-white hover:bg-blue-700 px-3 py-2 text-sm flex items-center justify-center gap-2'
-                    >
-                        <FaFacebook size={20} />
-                        Login with Facebook
-                    </button>
-                </div> */}
+                <div className='flex items-center my-2'>
+                    <div className='flex-grow border-t border-gray-400'></div>
+                    <span className='mx-4 text-gray-400'>OR</span>
+                    <div className='flex-grow border-t border-gray-400'></div>
+                </div>
+                <button type='button' className='flex items-center justify-center  w-full mt-2 text-sm   border border-black px-3 py-2'>
+                    <FaGoogle className='mr-2' /> Login with Google
+                </button>
+                <button type='button' className='flex items-center justify-center bg-blue-600 w-full mt-4 text-sm border border-blue-600 text-white  px-3 py-2'>
+                    <FaFacebook className='mr-2' /> Login with Facebook
+                </button>
 
                 <div className='mt-3'>
                     <p>

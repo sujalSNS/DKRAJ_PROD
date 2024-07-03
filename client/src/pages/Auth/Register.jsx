@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
+import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
 export const Register = () => {
 
@@ -87,6 +87,20 @@ export const Register = () => {
 
 
                     <button type='submit' className='bg-black w-full mt-4 text-sm border border-black  text-white hover:text-black hover:bg-white px-3 py-2'> REGISTER</button>
+
+
+                    
+                <div className='flex items-center my-2'>
+                    <div className='flex-grow border-t border-gray-400'></div>
+                    <span className='mx-4 text-gray-400'>OR</span>
+                    <div className='flex-grow border-t border-gray-400'></div>
+                </div>
+                <button type='button' className='flex items-center justify-center  w-full mt-0 text-sm   border border-black px-3 py-2'>
+                    <FaGoogle className='mr-2' /> Continue with Google
+                </button>
+                <button type='button' className='flex items-center justify-center bg-blue-600 w-full mt-4 text-sm border border-blue-600 text-white  px-3 py-2'>
+                    <FaFacebook className='mr-2' /> Continue with Facebook
+                </button>
 
                     <div className='mt-3'>
                         <p>Already have an account? <Link to="/login" className='underline'>Login</Link>  here.</p>
