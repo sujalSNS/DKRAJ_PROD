@@ -17,7 +17,7 @@ const categoriesList = [
   { label: "Bangles", name: "rings" },
   { label: "Mangalsutras", name: "pendantSets" },
   { label: "Nose\u00A0Pins", name: "nosePins" },
-  { label: "Head\u00A0Jewelries", name: "headJewelries" },
+  { label: "Head\u00A0Jewellery", name: "headJewelries" },
   { label: "Pendants\u00A0Sets", name: "pendants" },
   { label: "Wedding\u00A0Sets", name: "weddingSets" },
   { label: "Pendants", name: "necklace" },
@@ -47,11 +47,11 @@ export const Home = () => {
 
 
       <div className=' py-4 md:hidden flex'>
-        <CategoriesNavigationList/>
+        <CategoriesNavigationList />
       </div>
 
 
-      
+
 
       <div className="mt-2 mb-4 ">
         <Carousel />
@@ -70,9 +70,9 @@ export const Home = () => {
             <img src="/assets/images/newlyLaunchedDkraj.jpg" className='md:h-[24em] h-[16em] rounded-xl' alt="" />
           </div>
           <div className='flex  flex-col items-center text-center md:pt-14 pt-3'>
-            <p className='font-bold md:text-3xl text-2xl'>A Stylish Gold Bangle </p>
+            <p className='font-bold md:text-3xl text-2xl'>A Stylish Earring </p>
             <div className='border-t border-gray-800 w-4/5 mt-3'></div>
-            <p className='md:font-semibold font-medium md:px-8 text-base text-gray-800 mt-4'>This exquisite gold bangle is the perfect blend of elegance and modern design. Its intricate craftsmanship ensures a timeless appeal, Whether you're dressing up for a special event or adding a touch of sophistication to your everyday look, this gold bangle is an ideal choice.</p>
+            <p className='md:font-semibold font-medium md:px-8 text-base text-gray-800 mt-4'>This exquisite earring is the perfect blend of elegance and modern design. Its intricate craftsmanship ensures a timeless appeal. Whether you're dressing up for a special event or adding a touch of sophistication to your everyday look, this earring is an ideal choice.</p>
             <Link to="/shop" className='bg-black  mt-8 text-sm border border-black  text-white hover:text-black hover:bg-white px-20 py-2'>
               Know More
             </Link>

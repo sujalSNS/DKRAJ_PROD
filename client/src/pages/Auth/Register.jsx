@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 export const Register = () => {
 
     const [userData, setUserData] = useState({});
+    const [isDateSelected, setIsDateSelected] = useState(false);
 
 
     const register = (e) => {
@@ -13,7 +14,8 @@ export const Register = () => {
 
         console.log(userData)
 
-    }
+    }   
+
 
 
     return (
@@ -56,6 +58,26 @@ export const Register = () => {
                             })
                         }} placeholder='Email' className='border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black' />
                     </div>
+                    {/* <div className='mt-5'>
+                        <input
+                            type="date"
+                            required
+                            value={userData.dob}
+                            onChange={(e) => {
+                                setUserData({
+                                    ...userData,
+                                    dob: e.target.value
+                                });
+                            }}
+                            placeholder='Date of Birth'
+                            className='border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black'
+                        />
+
+
+                    </div> */}
+                
+
+
 
                     <div className='mt-4'>
                         <input type="password" required onChange={(e) => {

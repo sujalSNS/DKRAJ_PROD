@@ -8,10 +8,13 @@ const images = [
     { name: "Bangles", img: "assets/images/categories/bangles.jpg" },
     { name: "Mangalsutras", img: "assets/images/categories/mangalsutra.jpg" },
     { name: "Nose Pins", img: "assets/images/categories/nosepin.jpg" },
-    { name: "Head Jewelries", img: "assets/images/categories/headjewelry.jpg" },
+    { name: "Head Jewellery", img: "assets/images/categories/headjewelry.jpg" },
+    { name: "Pendant Sets", img: "assets/images/categories/pendantsSets.jpg" },
     { name: "Wedding Sets", img: "assets/images/categories/bridalSets.jpg" },
-    // { name: "Necklaces", img: "assets/images/categories/necklace.jpg" },
-    { name: "Pendants", img: "assets/images/categories/pendants.jpg" }
+    { name: "Pendants", img: "assets/images/categories/pendants.jpg" },
+    { name: "Anklets", img: "assets/images/categories/anklets.jpg" },
+    { name: "Toe Rings", img: "assets/images/categories/toeRings.jpg" },
+    { name: "Home Decors", img: "assets/images/categories/homeDecors.jpg" },
 ]
 
 
@@ -31,7 +34,7 @@ export const CategoriesList = () => {
                 <div className="flex flex-wrap md:gap-8 gap-6 mb-12  w-full md:mt-12 mt-8 md:px-6  items-center justify-center">
                     {images.map((category, index) => (
                         <Link to={`/shop/${category.name.toLowerCase()}`} key={index} className="bg-white flex flex-col items-center shadow-lg rounded-md  border overflow-hidden">
-                            <img src={category.img} alt={category.name} className="md:w-full md:mx-8  md:h-40 w-full h-28 object-cover" />
+                            <img src={category.img} alt={category.name} className="md:w-full md:mx-10  md:h-40 w-full h-28 object-cover" />
                             <div className="py-2">
                                 <h2 className="md:text-lg text-base font-semibold text-gray-800 text-center">{category.name}</h2>
                             </div>
