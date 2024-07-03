@@ -23,7 +23,7 @@ export const Login = () => {
 
     return (
         <div className='min-h-screen pt-32 flex justify-center items-center pb-24'>
-            <form onSubmit={login} className='md:w-1/3 w-full md:mx-0 mx-10 flex flex-col pt-16'>
+            <form onSubmit={login} className='md:w-1/3 w-full md:mx-0 mx-10 flex flex-col md:pt-16'>
                 <p className='text-center text-4xl font-semibold'>Sign In</p>
 
                 <div className='mt-5'>
