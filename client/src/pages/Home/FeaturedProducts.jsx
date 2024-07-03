@@ -5,7 +5,7 @@ import React from 'react'
 const images = [
     {name: "Emrald Earring", img:'assets/images/featured1.jpg'},
     {name: "Pearl Ring", img:'assets/images/featured2.jpg'},
-    {name: "Diamonf Necklace", img:'assets/images/featured3.jpg'}
+    {name: "Diamond Necklace", img:'assets/images/featured3.jpg'}
 ];
 
 
