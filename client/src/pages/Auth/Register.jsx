@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-
-
 export const Register = () => {
 
     const [userData, setUserData] = useState({});
@@ -58,7 +56,7 @@ export const Register = () => {
                             })
                         }} placeholder='Email' className='border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black' />
                     </div>
-                    {/* <div className='mt-5'>
+                    <div className='mt-5'>
                         <input
                             type="date"
                             required
@@ -74,8 +72,10 @@ export const Register = () => {
                         />
 
 
-                    </div> */}
-                
+                    </div> 
+                            
+
+                            
 
 
 

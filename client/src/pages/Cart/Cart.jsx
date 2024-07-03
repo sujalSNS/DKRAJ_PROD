@@ -92,9 +92,9 @@ export const Cart = () => {
 
 
     return (
-        <div className='min-h-screen md:pt-32 pt-28'>
+        <div className='min-h-screen md:pt-28 pt-24'>
             <div className='md:mt-12 mb-24 flex flex-col justify-center items-center'>
-                <p className='text-center text-4xl font-semibold'>Your Bag</p>
+                <p className='text-center md:text-4xl text-2xl font-semibold'>Your Bag</p>
                 <div className="min-h-44 flex md:flex-row gap-5 w-full md:px-10 px-5 py-5 flex-col md:justify-between justify-center">
                     <div className='md:w-4/6 w-full flex flex-col justify-center gap-3'>
                         {cartProducts.map((product) => (
