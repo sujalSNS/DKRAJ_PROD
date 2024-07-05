@@ -26,7 +26,7 @@ export const Navbar = () => {
     }
   };
   
-  const login = false;
+  const login = true;
 
   const handleMenuOpen = (event) => {
     if(!login){
