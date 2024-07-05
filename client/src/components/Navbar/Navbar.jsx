@@ -59,11 +59,11 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className='fixed z-10 w-full bg-white'>
+      <nav className='fixed z-10 w-full bg-white border-b border-gray-300'>
         <PromotionLabel text={"GET RS.1000 CASHBACK ON PURCHASE OF RS.6000 | GET RS.2000 CASHBACK ON PURCHASE OF RS.10000"} />
 
         <div className='flex justify-between items-center pl-3 md:gap-0 md:px-16 md:pt-0 pt-4 md:pb-1 pb-1'>
-          <div className='md:flex hidden justify-center items-center gap-3'>
+          {/* <div className='md:flex hidden justify-center items-center gap-3'>
             <span>EN</span>
             <div className="flex items-center border border-gray-400 p-0.5 pr-1 bg-white">
               <input
@@ -78,7 +78,7 @@ export const Navbar = () => {
               />
               <IoMdSearch className="text-gray-400" />
             </div>
-          </div>
+          </div> */}
 
           <div className='md:hidden flex'>
             <IconButton onClick={toggleDrawer(true)}>
@@ -87,9 +87,17 @@ export const Navbar = () => {
           </div>
 
           <div className='flex justify-center items-center md:mr-16 md:ml-0 ml-4'>
-            <Link to="/" className='font-bold md:text-4xl text-xl text-center h-12 md:h-20 flex justify-center items-center pb-3'>
-              <img src="/assets/images/dkrajLogoVariant1Black.png" alt="DKRAJ JEWELS" className='object-cover h-[2em]' />
+            <Link to="/" className='font-bold md:text-4xl text-xl text-center h-10 md:h-20 flex justify-center items-center pb-3'>
+              <img src="/assets/images/dkrajLogoVariant1Black.png" alt="DKRAJ JEWELS" className='object-cover h-[1.9em]' />
             </Link>
+
+
+          <div className='md:flex items-center gap-16 ml-20 pt-5 justify-center hidden'>
+            <Link to="/" className='text-xl animated-underline'>Home</Link>
+            <Link to="/shop" className='text-xl animated-underline'>Shop</Link>
+            <Link to="/shop" className='text-xl animated-underline'>Featured</Link>
+            <Link to="/about" className='text-xl animated-underline'>About Us</Link>
+          </div>
           </div>
 
           <div className='md:flex hidden justify-center items-center gap-6 mr-4'>
