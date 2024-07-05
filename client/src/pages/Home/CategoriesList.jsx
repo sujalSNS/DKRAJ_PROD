@@ -8,7 +8,7 @@ const images = [
     { name: "Bangles", img: "assets/images/categories/bangles.jpg" },
     { name: "Mangalsutras", img: "assets/images/categories/mangalsutra.jpg" },
     { name: "Nose Pins", img: "assets/images/categories/nosepin.jpg" },
-    { name: "Head Jewellery", img: "assets/images/categories/headjewelry.jpg" },
+    { name: "Head Jewelleries", img: "assets/images/categories/headjewelry.jpg" },
     { name: "Pendant Sets", img: "assets/images/categories/pendantsSets.jpg" },
     { name: "Wedding Sets", img: "assets/images/categories/bridalSets.jpg" },
     { name: "Pendants", img: "assets/images/categories/pendants.jpg" },

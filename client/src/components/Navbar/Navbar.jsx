@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IoMdSearch } from "react-icons/io";
 import { HiShoppingBag, HiMiniBars3, HiUser } from "react-icons/hi2";
 import { MdFavorite } from "react-icons/md";
-import { Drawer, IconButton, Modal, Box, Button, Checkbox, Menu, MenuItem } from '@mui/material';
+import { Drawer, IconButton,  Menu, MenuItem } from '@mui/material';
 import { PromotionLabel } from './PromotionLabel';
-import { FaFacebook, FaGoogle } from 'react-icons/fa';
+import { AuthModel } from './AuthModels';
 
 export const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -15,7 +15,6 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
 
-  const [userData, setUserData] = useState({});
 
   const login = false
 
@@ -161,100 +160,13 @@ export const Navbar = () => {
             null
           )}
         </div>
-      </Drawer>
-
-      {/* Login Modal */}
-      <Modal
-        open={showLoginModal}
-        onClose={handleCloseLoginModal}
-        aria-labelledby="login-modal"
-        aria-describedby="login-form"
-        disableScrollLock
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-
-            boxShadow: 24,
-
-            maxHeight: '80vh', // Maximum height with vertical scrolling
-            overflowY: 'auto', // Enable vertical scrolling
-          }}
-        >
-
-          <div className='relative '>
-            <div className='flex items-center sticky w-full top-0 flex-col bg-gray-950 md:pt-2 pt-5 md:pb-5 pb-4'>
-              <img src="/assets/images/dkrajLogoVariant2White.png" className='md:w-56 w-44' alt="dkrajLogo" />
-            </div>
+      </Drawer> 
 
 
 
+      <AuthModel handleCloseLoginModal={handleCloseLoginModal} showLoginModal={showLoginModal} />
 
-            <div className="bg-white">
-
-              <form onSubmit={handleLogin} className='flex flex-col gap-2 md:px-3 md:py-4 px-4 py-4 md:w-[35vw] w-[83vw]'>
-                <div className='mt-5'>
-                  <input
-                    type="text"
-                    required
-                    onChange={(e) => {
-                      setUserData({
-                        ...userData,
-                        username: e.target.value
-                      });
-                    }}
-                    placeholder='Username'
-                    className='border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black'
-                  />
-                </div>
-
-                <div className='mt-4'>
-                  <input
-                    type="password"
-                    required
-                    onChange={(e) => {
-                      setUserData({
-                        ...userData,
-                        password: e.target.value
-                      });
-                    }}
-                    placeholder='Password'
-                    className='border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black'
-                  />
-                  <div className='mt-2'>
-                    <Link className='underline'>Forgot Password?</Link>
-                  </div>
-                </div>
-
-                <button type='submit' className='bg-black w-full mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-3 py-2'>
-                  SIGN IN
-                </button>
-
-                <div className='flex items-center '>
-                  <div className='flex-grow border-t border-gray-400'></div>
-                  <span className='mx-4 text-gray-400'>OR</span>
-                  <div className='flex-grow border-t border-gray-400'></div>
-                </div>
-                <button type='button' className='flex items-center justify-center  w-full  text-sm   border border-black px-3 py-2'>
-                  <FaGoogle className='mr-2' /> Login with Google
-                </button>
-                <button type='button' className='flex items-center justify-center bg-blue-600 w-full mt-2 text-sm border border-blue-600 text-white  px-3 py-2'>
-                  <FaFacebook className='mr-2' /> Login with Facebook
-                </button>
-
-                <div className='mt-3'>
-                  <p>
-                    Don't have an account? <Link to="/register" className='underline'>Register</Link> here.
-                  </p>
-                </div>
-              </form>
-            </div>
-          </div>
-        </Box>
-      </Modal>
+      
 
 
     </>

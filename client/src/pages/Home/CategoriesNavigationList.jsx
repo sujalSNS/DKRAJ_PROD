@@ -11,7 +11,7 @@ const categoriesList = [
     { label: "Bangles", name: "bangles" },
     { label: "Mangalsutras", name: "mangalsutras" },
     { label: "Nose Pins", name: "nosePins" },
-    { label: "Head Jewellery", name: "headJewelries" },
+    { label: "Head Jewelleries", name: "headJewelries" },
     { label: "Pendants Sets", name: "pendantSets" },
     { label: "Wedding Sets", name: "weddingSets" },
     { label: "Pendants", name: "pendants" },
