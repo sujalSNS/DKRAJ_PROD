@@ -93,10 +93,10 @@ export const Navbar = () => {
 
 
           <div className='md:flex items-center gap-16 ml-20 pt-5 justify-center hidden'>
-            <Link to="/" className='text-xl animated-underline'>Home</Link>
-            <Link to="/shop" className='text-xl animated-underline'>Shop</Link>
-            <Link to="/shop" className='text-xl animated-underline'>Featured</Link>
-            <Link to="/about" className='text-xl animated-underline'>About Us</Link>
+            <Link to="/" className='text-lg animated-underline'>Home</Link>
+            <Link to="/shop" className='text-lg animated-underline'>Shop</Link>
+            <Link to="/shop" className='text-lg animated-underline'>Featured</Link>
+            <Link to="/about" className='text-lg animated-underline'>About Us</Link>
           </div>
           </div>
 

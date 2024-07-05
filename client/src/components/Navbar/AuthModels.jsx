@@ -234,6 +234,7 @@ export const AuthModel = ({ showLoginModal, handleCloseLoginModal }) => {
                         <div className='flex items-center sticky w-full top-0 z-10 flex-col bg-gray-950 md:pt-2 pt-5 md:pb-5 pb-4'>
                             <button onClick={handleCloseLoginModal} className='text-white absolute right-3 top-3'><RxCross2 size={24} /></button>
                             <img src="/assets/images/dkrajLogoVariant2White.png" className='md:w-56 w-44' alt="dkrajLogo" />
+                            
                         </div>
                         <div className='bg-gray-950 border-t py-2 border-white md:w-[35vw] w-[88vw]'>
                             <Marquee autoFill speed={30} >
