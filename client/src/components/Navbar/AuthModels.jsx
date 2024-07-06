@@ -77,7 +77,7 @@ const loginForm = ({ setToggleAuth }) => {
                         </div>
                     </div>
 
-                    <button type='submit' className='bg-black w-full mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-3 py-2'>
+                    <button type='submit' className='bg-black w-full mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-3 py-3'>
                         SIGN IN
                     </button>
 
@@ -181,7 +181,7 @@ const registerForm = ({ setToggleAuth }) => {
 
 
 
-                    <button type='submit' className='bg-black w-full mt-4 text-sm border border-black  text-white hover:text-black hover:bg-white px-3 py-2'> REGISTER</button>
+                    <button type='submit' className='bg-black w-full mt-4 text-sm border border-black  text-white hover:text-black hover:bg-white px-3 py-3'> REGISTER</button>
 
                     
                   
@@ -225,8 +225,8 @@ export const AuthModel = ({ showLoginModal, handleCloseLoginModal }) => {
 
                         boxShadow: 24,
 
-                        height: '80vh', // Maximum height with vertical scrolling
-                        overflowY: 'auto', // Enable vertical scrolling
+                        height: '80vh', 
+                        overflowY: 'auto', 
                     }}
                 >
 
