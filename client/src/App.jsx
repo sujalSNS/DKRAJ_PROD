@@ -26,6 +26,7 @@ import { AddProduct } from './pages/Admin/AddProduct';
 import { Products } from './pages/Admin/Products';
 import { Orders } from './pages/Admin/Orders';
 import { UserOrder } from './pages/Orders/UserOrder';
+import { verify } from './actions/userActions';
 
 
 
@@ -33,10 +34,11 @@ function App() {
 
 
 
-  // const { isLogin } = useSelector(state => state.user);
+ 
+  const { isLogin } = useSelector(state => state.user);
 
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   // useEffect(() => {
 
@@ -44,12 +46,15 @@ function App() {
 
   // }, [dispatch, isLogin]);
 
-  // useEffect(() => {
-  //   const LogOrNot = () => {
-  //     dispatch(IsLogin());
-  //   }
-  //   LogOrNot()
-  // }, []);
+  useEffect(() => {
+    const verifyAuth = () => {
+      dispatch(verify());
+    }
+    verifyAuth()
+  }, [dispatch]);
+
+
+
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 

@@ -6,6 +6,10 @@ import { MdFavorite } from "react-icons/md";
 import { Drawer, IconButton,  Menu, MenuItem } from '@mui/material';
 import { PromotionLabel } from './PromotionLabel';
 import { AuthModel } from './AuthModels';
+import { useSelector, useDispatch } from 'react-redux';
+import { verify } from '../../actions/userActions';
+import toast from 'react-hot-toast';
+
 
 export const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -14,9 +18,9 @@ export const Navbar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false); // State for controlling login modal
   const navigate = useNavigate();
 
+  const { isLogin } = useSelector((state) => state.user)
 
-
-  const login = false
+  const dispatch = useDispatch()
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -33,7 +37,7 @@ export const Navbar = () => {
   };
 
   const handleMenuOpen = (event) => {
-    if (!login) {
+    if (!isLogin) {
       // Open the login modal instead of navigating to "/login"
       setShowLoginModal(true);
       return;
@@ -46,16 +50,16 @@ export const Navbar = () => {
     setAnchorEl(null);
   };
 
-  const handleCloseLoginModal = () => {
+  const handleCloseAuthModal = () => {
     setShowLoginModal(false);
   };
 
-  const handleLogin = () => {
-    // Handle login functionality here
-    // After successful login, you can close the modal and set login state
-    setShowLoginModal(false);
-    // Optionally update login state or perform other actions
-  };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    dispatch(verify())
+    handleMenuClose() ;
+    toast.success("Logout Successfull!")
+  }
 
   return (
     <>
@@ -63,22 +67,7 @@ export const Navbar = () => {
         <PromotionLabel text={"GET RS.1000 CASHBACK ON PURCHASE OF RS.6000 | GET RS.2000 CASHBACK ON PURCHASE OF RS.10000"} />
 
         <div className='flex justify-between items-center pl-3 md:gap-0 md:px-16 md:pt-0 pt-4 md:pb-1 pb-1'>
-          {/* <div className='md:flex hidden justify-center items-center gap-3'>
-            <span>EN</span>
-            <div className="flex items-center border border-gray-400 p-0.5 pr-1 bg-white">
-              <input
-                type="text"
-                className="border-none w-40 px-2 outline-none"
-                placeholder="Search"
-                value={searchValue}
-                onChange={(e) => {
-                  setSearchValue(e.target.value);
-                }}
-                onKeyDown={handleSearchKeyDown}
-              />
-              <IoMdSearch className="text-gray-400" />
-            </div>
-          </div> */}
+         
 
           <div className='md:hidden flex'>
             <IconButton onClick={toggleDrawer(true)}>
@@ -118,7 +107,7 @@ export const Navbar = () => {
               }}>
                 <p className='font-semibold'>Profile</p>
               </MenuItem>
-              <MenuItem onClick={handleMenuClose}>
+              <MenuItem onClick={handleLogout}>
                 <p className='font-semibold'>Logout</p>
               </MenuItem>
             </Menu>
@@ -160,7 +149,7 @@ export const Navbar = () => {
           <Link onClick={toggleDrawer(false)} to="/shop/watches" className="text-xl underline underline-offset-8">Watches</Link>
           <Link onClick={toggleDrawer(false)} to="/contact" className="text-xl underline underline-offset-8">Contact</Link>
 
-          {login ? (
+          {isLogin ? (
             <button onClick={toggleDrawer(false)} className="text-xl text-left w-full underline underline-offset-8">
               Logout
             </button>
@@ -172,7 +161,7 @@ export const Navbar = () => {
 
 
 
-      <AuthModel handleCloseLoginModal={handleCloseLoginModal} showLoginModal={showLoginModal} />
+      <AuthModel handleCloseAuthModal={handleCloseAuthModal} showLoginModal={showLoginModal} />
 
       
 

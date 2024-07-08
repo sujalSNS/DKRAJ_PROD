@@ -2,25 +2,16 @@ module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define("User", {
         firstName: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
+            allowNull: true, 
         },
         lastName: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
+            allowNull: true, 
         },
         username: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true, 
             unique: true,
-            validate: {
-                notEmpty: true
-            }
         },
         email: {
             type: DataTypes.STRING,
@@ -28,28 +19,26 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
             validate: {
                 notEmpty: true,
-                isEmail: true
-            }
+                isEmail: true,
+            },
         },
         dob: {
             type: DataTypes.DATEONLY,
-            allowNull: false,
+            allowNull: true, 
             validate: {
-                notEmpty: true,
-                isDate: true
-            }
+                isDate: true,
+            },
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true, 
             validate: {
-                notEmpty: true,
-                len: [6, 100] 
-            }
+                len: [6, 100], 
+            },
         },
         isAdmin: {
             type: DataTypes.BOOLEAN,
-            defaultValue: false
+            defaultValue: false,
         }
     });
 
