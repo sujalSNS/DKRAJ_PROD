@@ -29,7 +29,7 @@ export const Carousel = () => {
              
                 {images.map((image, index) => (
                     <div key={index} className="w-full flex-shrink-0 cursor-pointer">
-                        <img src={image} alt={`Slide ${index + 1}`} className="w-full  md:h-[34em] h-auto" />
+                        <img src={image} alt={`Slide ${index + 1}`} className="w-full  md:h-[36em] 2xl:h-[43em] h-auto" />
                      </div>
                 ))}
          

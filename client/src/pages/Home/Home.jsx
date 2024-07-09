@@ -7,6 +7,12 @@ import { CredibilityBoxes } from './CredibilityBoxes';
 import { Testimonials } from './Testimonials';
 import { CardSlider } from './CardSlider';
 import { CategoriesNavigationList } from './CategoriesNavigationList';
+import { BestOfBest } from './BestOfBest';
+import { Trending } from './Trending';
+import { NewCollectionJewelry } from './NewCollectionJewelry';
+import { OurStory } from './OurStory';
+import { ShopByGender } from './ShopByGender';
+import { FeaturedProductsSlideshow } from './FeaturedProductsSlideshow';
 
 
 
@@ -33,9 +39,9 @@ const categoriesList = [
 export const Home = () => {
 
   return (
-    <div className='min-h-screen md:pt-32 pt-14'>
+    <div className='min-h-screen md:pt-28 pt-14'>
 
-      <div className='py-4 md:flex hidden justify-center items-center gap-9'>
+      {/* <div className='py-4 md:flex hidden justify-center items-center gap-9'>
         {
 
           categoriesList.map((e, i) => (
@@ -43,7 +49,7 @@ export const Home = () => {
           ))
 
         }
-      </div>
+      </div> */}
 
 
       <div className=' py-4 md:hidden flex'>
@@ -61,6 +67,30 @@ export const Home = () => {
 
       <div className='my-6'>
         <CategoriesList />
+      </div>
+
+      <div className='my-6'>
+        <BestOfBest />
+      </div>
+
+      <div className='my-6'>
+        <Trending />
+      </div>
+
+      <div className='my-6'>
+        <NewCollectionJewelry />
+      </div>
+
+      <div className='my-6'>
+        <OurStory />
+      </div>
+
+      <div className='my-6'>
+        <ShopByGender />
+      </div>
+
+      <div className='my-6'>
+        <FeaturedProductsSlideshow />
       </div>
 
       <div className='my-6 bg-gray-100  md:px-16 px-8 py-8'>

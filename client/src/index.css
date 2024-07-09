@@ -59,3 +59,15 @@ body{
         transform: rotate(360deg);
     }
     } 
+
+
+
+.slick-next{
+    z-index: 0;
+}
+
+.slick-prev{
+    z-index: 0;
+
+}
+

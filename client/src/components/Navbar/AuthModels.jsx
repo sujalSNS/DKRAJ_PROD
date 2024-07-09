@@ -313,7 +313,7 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
 
     const handleContinueWithGoogle = () => {
 
-        
+
 
         dispatch(googleAuth())
     }
@@ -354,25 +354,32 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
                         top: '50%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
-
                         boxShadow: 24,
-
                         height: '80vh',
                         overflowY: 'auto',
+                        '::-webkit-scrollbar': {
+                            display: 'none'
+                        },
+                        '-ms-overflow-style': 'none',
+                        'scrollbar-width': 'none'
                     }}
                 >
 
-                    <div className=' bg-gray-950 '>
+                    <div className='bg-gray-950'>
                         <div className='flex items-center sticky w-full top-0 z-10 flex-col bg-gray-950 md:pt-2 pt-5 md:pb-5 pb-4'>
                             <button onClick={handleOnClose} className='text-white absolute right-3 top-3'><RxCross2 size={24} /></button>
-                            <img src="/assets/images/dkrajLogoVariant2White.png" className='md:w-56 w-44' alt="dkrajLogo" />
+                            <img src="/assets/images/dkrajLogoVariant2White.png" className='md:w-52 w-36' alt="dkrajLogo" />
+
+                            <p className='text-gray-200 2xl:text-sm text-xs pt-3 uppercase'>Join the DKRAJ Club
+                                Become a member and get multiple benefits.
+                            </p>
 
                         </div>
                         <div className='bg-gray-950 border-t py-2 border-white md:w-[35vw] w-[88vw]'>
                             <Marquee autoFill speed={30} >
                                 {
                                     textMarquee.map((e) => (
-                                        <span key={e.label} className='font-medium text-white text-sm mx-4 ' >{e.label}</span>
+                                        <span key={e.label} className='font-medium text-white text-xs mx-4 ' >{e.label}</span>
                                     ))
                                 }
                             </Marquee>

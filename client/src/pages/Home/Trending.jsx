@@ -6,19 +6,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const images = [
-    { name: "Rings", img: "assets/images/categories/rings.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Earrings", img: "assets/images/categories/earring.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Bracelets", img: "assets/images/categories/bracelet.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Bangles", img: "assets/images/categories/bangles.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Mangalsutras", img: "assets/images/categories/mangalsutra.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Nose Pins", img: "assets/images/categories/nosepin.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Head Jewelleries", img: "assets/images/categories/headjewelry.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Pendant Sets", img: "assets/images/categories/pendantsSets.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Wedding Sets", img: "assets/images/categories/bridalSets.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Pendants", img: "assets/images/categories/pendants.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Anklets", img: "assets/images/categories/anklets.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Toe Rings", img: "assets/images/categories/toeRings.jpg", hoverImg: "assets/images/modalImg.jpg" },
-    { name: "Home Decors", img: "assets/images/categories/homeDecors.jpg", hoverImg: "assets/images/modalImg.jpg" },
+    { name: "Bangle", img: "assets/images/bangle.jpg", hoverImg: "assets/images/modalImg.jpg" },
+    { name: "Braclet", img: "assets/images/braclet.jpg", hoverImg: "assets/images/modalImg.jpg" },
+    { name: "Earring", img: "assets/images/earring.jpg", hoverImg: "assets/images/modalImg.jpg" },
+    { name: "Gold Ring", img: "assets/images/goldRing.jpg", hoverImg: "assets/images/modalImg.jpg" },
+    { name: "Pendant", img: "assets/images/pendant.jpg", hoverImg: "assets/images/modalImg.jpg" },
 ];
 
 const NextArrow = ({ onClick }) => {
@@ -44,7 +36,7 @@ const PrevArrow = ({ onClick }) => {
 
 
 
-export const CategoriesList = () => {
+export const Trending = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
 
     const settings = {
@@ -80,9 +72,9 @@ export const CategoriesList = () => {
     return (
         <div className="md:p-6">
             <div className="md:mb-10 mb-5 md:pl-8 pl-4">
-                <p className="md:text-3xl text-xl font-semibold text-gray-800">Explore Our Collections</p>
+                <p  className="md:text-3xl text-xl font-semibold text-gray-800">Trending</p>
                 <p className="mt-2 md:text-base text-sm text-gray-600">
-                    Discover the Finest Jewelry Crafted with Excellence and Elegance
+                    Discover the some of our trending jewelleries from dkraj jewelleries
                 </p>
             </div>
             <Slider {...settings} className="relative">

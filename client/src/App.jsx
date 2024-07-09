@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navbar } from './components/Navbar/Navbar';
 import { Footer } from './components/Footer/Footer';
 import { ScrollToTop } from './components/Global/ScrollToTop';
+import { CookieConsentModal } from './components/Global/CookieConsentModal';
 
 import { Toaster } from 'react-hot-toast';
 
@@ -27,6 +28,7 @@ import { Products } from './pages/Admin/Products';
 import { Orders } from './pages/Admin/Orders';
 import { UserOrder } from './pages/Orders/UserOrder';
 import { verify } from './actions/userActions';
+import { WelcomeModal } from './components/Global/WelcomeModal';
 
 
 
@@ -104,8 +106,9 @@ function App() {
       <DrawerNavigation drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} />
 
 
-
-
+          <WelcomeModal/>
+          <CookieConsentModal/>
+        
       <Toaster
         position="top-center"
         reverseOrder={false}

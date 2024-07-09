@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { IoMdSearch } from "react-icons/io";
 import { HiShoppingBag, HiMiniBars3, HiUser } from "react-icons/hi2";
 import { MdFavorite } from "react-icons/md";
-import { Drawer, IconButton,  Menu, MenuItem } from '@mui/material';
+import { Drawer, IconButton, Menu, MenuItem } from '@mui/material';
 import { PromotionLabel } from './PromotionLabel';
 import { AuthModel } from './AuthModels';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,7 +15,7 @@ export const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [anchorEl, setAnchorEl] = useState(null);
-  const [showLoginModal, setShowLoginModal] = useState(false); // State for controlling login modal
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const navigate = useNavigate();
 
   const { isLogin } = useSelector((state) => state.user)
@@ -57,7 +57,7 @@ export const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     dispatch(verify())
-    handleMenuClose() ;
+    handleMenuClose();
     toast.success("Logout Successfull!")
   }
 
@@ -66,8 +66,8 @@ export const Navbar = () => {
       <nav className='fixed z-10 w-full bg-white border-b border-gray-300'>
         <PromotionLabel text={"GET RS.1000 CASHBACK ON PURCHASE OF RS.6000 | GET RS.2000 CASHBACK ON PURCHASE OF RS.10000"} />
 
-        <div className='flex justify-between items-center pl-3 md:gap-0 md:px-16 md:pt-0 pt-4 md:pb-1 pb-1'>
-         
+        <div className='flex justify-between items-center pl-3 md:gap-0 md:px-16 md:pt-0 pt-3  md:pb-1 pb-1'>
+
 
           <div className='md:hidden flex'>
             <IconButton onClick={toggleDrawer(true)}>
@@ -76,22 +76,26 @@ export const Navbar = () => {
           </div>
 
           <div className='flex justify-center items-center md:mr-16 md:ml-0 ml-4'>
-            <Link to="/" className='font-bold md:text-4xl text-xl text-center h-10 md:h-20 flex justify-center items-center pb-3'>
-              <img src="/assets/images/dkrajLogoVariant1Black.png" alt="DKRAJ JEWELS" className='object-cover h-[1.9em]' />
+            <Link to="/" className='font-bold md:text-4xl text-xl text-center h-10 md:h-20 flex justify-center items-center pb-1'>
+              <img src="/assets/images/dkrajLogoVariant1Black.png" alt="DKRAJ JEWELS" className='object-cover h-[1.6em]' />
             </Link>
 
 
-          <div className='md:flex items-center gap-16 ml-20 pt-5 justify-center hidden'>
-            <Link to="/" className='text-lg animated-underline'>Home</Link>
-            <Link to="/shop" className='text-lg animated-underline'>Shop</Link>
-            <Link to="/shop" className='text-lg animated-underline'>Featured</Link>
-            <Link to="/about" className='text-lg animated-underline'>About Us</Link>
-          </div>
+            <div className='md:flex items-center gap-12 ml-20 pt-3 justify-center hidden'>
+              <Link to="/" className='text-xs 2xl:text-lg animated-underline'>SHOP BY</Link>
+              <Link to="/shop" className='text-xs 2xl:text-lg animated-underline'>NEW</Link>
+              <Link to="/shop" className='text-xs 2xl:text-lg animated-underline'>BEST SELLERS</Link>
+              <Link to="/about" className='text-xs 2xl:text-lg animated-underline'>EARRINGS</Link>
+              <Link to="/about" className='text-xs 2xl:text-lg animated-underline'>RINGS</Link>
+              <Link to="/about" className='text-xs 2xl:text-lg animated-underline'>NECKLACES</Link>
+              <Link to="/about" className='text-xs 2xl:text-lg animated-underline'>BRACELETS</Link>
+              <Link to="/about" className='text-xs 2xl:text-lg animated-underline'>MEN'S</Link>
+            </div>
           </div>
 
           <div className='md:flex hidden justify-center items-center gap-6 mr-4'>
             <button onClick={handleMenuOpen} className='animated-underline'>
-              <HiUser size={25} className="text-gray-500" />
+              <HiUser size={23} className="text-gray-500" />
             </button>
 
             <Menu
@@ -113,10 +117,10 @@ export const Navbar = () => {
             </Menu>
 
             <Link to="/wishlist" className='animated-underline'>
-              <MdFavorite size={26} className="text-gray-500" />
+              <MdFavorite size={24} className="text-gray-500" />
             </Link>
             <Link to="/cart" className='animated-underline'>
-              <HiShoppingBag size={26} className="text-gray-500" />
+              <HiShoppingBag size={24} className="text-gray-500" />
             </Link>
           </div>
 
@@ -157,13 +161,13 @@ export const Navbar = () => {
             null
           )}
         </div>
-      </Drawer> 
+      </Drawer>
 
 
 
       <AuthModel handleCloseAuthModal={handleCloseAuthModal} showLoginModal={showLoginModal} />
 
-      
+
 
 
     </>
