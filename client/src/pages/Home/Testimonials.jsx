@@ -24,27 +24,7 @@ const testimonials = [
   {
     text: "I'm in love with my new anklet. It's delicate yet sturdy, and it adds a lovely charm to my summer outfits. The customer service was also exceptional. Thank you!",
     user: "Annapurni Subramaniyam",
-  },
-  {
-    text: "Absolutely love my new necklace! It's even more beautiful in person. The craftsmanship is impeccable, and it adds a perfect touch to any outfit. Highly recommend!",
-    user: "Sanjana Saxena",
-  },
-  {
-    text: "The earrings are simply gorgeous! They are lightweight and comfortable to wear all day. The sparkle is incredible, and they really catch the light beautifully. So happy I bought them!",
-    user: "Mansi Agarwal",
-  },
-  {
-    text: "The quality of the bracelet is outstanding. It's so well-made and durable. I've received so many compliments from friends and family, and it has quickly become my favorite piece of jewelry!",
-    user: "Riddhima Taneja",
-  },
-  {
-    text: "This ring is stunning and fits perfectly. The design is unique and elegant. Couldn't be happier with my purchase. It was a great experience from start to finish!",
-    user: "Ragini Vadra",
-  },
-  {
-    text: "I'm in love with my new anklet. It's delicate yet sturdy, and it adds a lovely charm to my summer outfits. The customer service was also exceptional. Thank you!",
-    user: "Annapurni Subramaniyam",
-  },
+  }
 ];
 
 export const Testimonials = () => {
