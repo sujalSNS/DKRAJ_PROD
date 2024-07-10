@@ -55,12 +55,7 @@ export const signInSignUpWithGoogle = async () => {
 
         const token = await result.user.getIdToken();
 
-        const user = {
-            name: result.user.displayName, 
-            email: result.user.email
-        } ;
-
-        return { user, token };
+        return token;
 
 
     } catch (error) {
@@ -73,20 +68,15 @@ export const signInSignUpWithFacebook = async () => {
     try {
 
         const result = await signInWithPopup(auth, facebookProvider);
-        
+
         const token = await result.user.getIdToken();
 
-        const user = {
-            name: result.user.displayName, 
-            email: result.user.email
-        } ;
-
-        return { user, token };
+        return token;
 
 
     } catch (error) {
         // Handle errors, such as user cancellation or authentication failure
-        console.error("Google Sign In Error:", error.message);
+        console.error("Facebok Sign In Error:", error.message);
         return null;
     }
 }

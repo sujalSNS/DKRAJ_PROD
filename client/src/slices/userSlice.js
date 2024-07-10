@@ -4,30 +4,38 @@ const userSlice = createSlice({
     name: 'User',
     initialState: {
         loading: false,
+        authLoading: false,
         error: null,
         isLogin: false,
-        user:{}
+        user:{
+            firstName: "",
+            lastName: "",
+            username: "",
+            email: "",
+            dob: "",
+            isAdmin: false,
+        }
     },
     reducers:{
         registerRequest: (state)=>{
-            state.loading = true
+            state.authLoading = true
         },
         registerSuccess: (state)=>{
-            state.loading = false
+            state.authLoading = false
         },
         registerFail: (state, action)=>{
-            state.loading = false;
+            state.authLoading = false;
             state.error = action.payload
         },
 
         loginRequest: (state)=>{
-            state.loading = true
+            state.authLoading = true
         },
         loginSuccess: (state)=>{
-            state.loading = false
+            state.authLoading = false
         },
         loginFail: (state, action)=>{
-            state.loading = false;
+            state.authLoading = false;
             state.error = action.payload
         },
 

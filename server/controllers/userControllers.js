@@ -7,23 +7,32 @@ const { createToken } = require('../middlewares/auth.js');
 // Register User 
 exports.register = async (req, res, next) => {
   try {
-    const { firstName, lastName, username, email, dob, password } = req.body;
+    const { firstName, lastName, username, email, dob, password, confirmPassword} = req.body;
 
     // Validate request data
     if (!firstName || !lastName || !username || !email || !dob || !password) {
       return res.status(400).json({
         success: false,
-        message: 'Invalid data',
+        message: 'Invalid data!',
       });
     }
 
     // Check if password is at least 6 characters long
+    if (password !== confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: 'Password does not match!',
+      });
+    }
+
     if (password.length < 6) {
       return res.status(400).json({
         success: false,
-        message: 'Password must be at least 6 characters long',
+        message: 'Password must be at least 6 characters long!',
       });
     }
+
+    
 
     // Check if username already exists
     const existingUsername = await User.findOne({ where: { username } });
@@ -108,6 +117,13 @@ exports.login = async (req, res, next) => {
       });
     }
 
+    if (user.isFirebaseAuth) {
+      return res.status(400).json({
+        success: false,
+        message: 'Wrong credentials',
+      });
+    }
+
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
@@ -130,14 +146,15 @@ exports.login = async (req, res, next) => {
   }
 };
 
-// Google Auth
-exports.googleAuth = async (req, res, next) => {
+// Google and Facebook Auth through firebase
+exports.firbaseAuth = async (req, res, next) => {
   try {
     const { email, name } = req.user;
 
     let user = await User.findOne({ where: { email } });
     if (!user) {
       user = await User.create({
+        isFirebaseAuth: true,
         email,
         firstName: name.split(' ')[0],
         lastName: name.split(' ')[1]
@@ -155,76 +172,48 @@ exports.googleAuth = async (req, res, next) => {
     return next(err);
   }
 };
-
-// Facebook Auth
-exports.facebookAuth = async (req, res, next) => {
-  try {
-    const { email, name } = req.user;
-
-    let user = await User.findOne({ where: { email } });
-    if (!user) {
-      user = await User.create({
-        email,
-        firstName: name.split(' ')[0],
-        lastName: name.split(' ')[1]
-      });
-    }
-
-    const token = createToken(user.id, user.email);
-
-    res.status(200).json({
-      success: true,
-      message: 'User authenticated successfully',
-      token,
-    });
-  } catch (err) {
-    return next(err);
-  }
-};
-
 
 
 
 
 // Auth verify
 exports.verify = async (req, res, next) => {
-    try {
-        const user = req.user
+  try {
+    const user = req.user
 
-        if (user) {
-            return res.status(200).json({
-                success: true,
-                isLogin: true
-            })
-        }
-        if (!user) {
-            return res.status(200).json({
-                success: true,
-                isLogin: false
-            })
-        }
-
-    } catch (err) {
-        return next(err);
+    if (user) {
+      return res.status(200).json({
+        success: true,
+        isLogin: true
+      })
     }
-} 
+    if (!user) {
+      return res.status(200).json({
+        success: true,
+        isLogin: false
+      })
+    }
+
+  } catch (err) {
+    return next(err);
+  }
+}
 
 
 
 
 exports.getUsers = async (req, res, next) => {
-    try {
-        
-        // Check if username already exists
-        const users = await User.findAll();
+  try {
 
-        res.status(200).json({
-            success: true,
-            users
-        });
+    // Check if username already exists
+    const users = await User.findAll();
 
-    } catch (err) {
-        return next(err);
-    }
+    res.status(200).json({
+      success: true,
+      users
+    });
+
+  } catch (err) {
+    return next(err);
+  }
 };
- 

@@ -8,6 +8,7 @@ import { PromotionLabel } from './PromotionLabel';
 import { AuthModel } from './AuthModels';
 import { useSelector, useDispatch } from 'react-redux';
 import { verify } from '../../actions/userActions';
+import { LogoutDialog } from './LogoutDialog';
 import toast from 'react-hot-toast';
 
 
@@ -16,6 +17,7 @@ export const Navbar = () => {
   const [searchValue, setSearchValue] = useState('');
   const [anchorEl, setAnchorEl] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
   const navigate = useNavigate();
 
   const { isLogin } = useSelector((state) => state.user)
@@ -54,12 +56,25 @@ export const Navbar = () => {
     setShowLoginModal(false);
   };
 
+
+  const handleLogoutDialogOpen = () => {
+    setLogoutDialogOpen(true);
+    handleMenuClose();
+  };
+
+  const handleLogoutDialogClose = () => {
+    setLogoutDialogOpen(false);
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("token");
-    dispatch(verify())
-    handleMenuClose();
-    toast.success("Logout Successfull!")
-  }
+    dispatch(verify());
+    handleLogoutDialogClose();
+    toast.success("Logout Successful!");
+  };
+
+
+
 
   return (
     <>
@@ -111,7 +126,7 @@ export const Navbar = () => {
               }}>
                 <p className='font-semibold'>Profile</p>
               </MenuItem>
-              <MenuItem onClick={handleLogout}>
+              <MenuItem onClick={handleLogoutDialogOpen}>
                 <p className='font-semibold'>Logout</p>
               </MenuItem>
             </Menu>
@@ -139,6 +154,12 @@ export const Navbar = () => {
         </div>
       </nav>
 
+
+      <LogoutDialog
+        open={logoutDialogOpen}
+        handleClose={handleLogoutDialogClose}
+        handleLogout={handleLogout}
+      />
       <Drawer
         anchor='left'
         open={drawerOpen}
@@ -153,13 +174,13 @@ export const Navbar = () => {
           <Link onClick={toggleDrawer(false)} to="/shop/watches" className="text-xl underline underline-offset-8">Watches</Link>
           <Link onClick={toggleDrawer(false)} to="/contact" className="text-xl underline underline-offset-8">Contact</Link>
 
-          {isLogin ? (
+          {/* {isLogin ? (
             <button onClick={toggleDrawer(false)} className="text-xl text-left w-full underline underline-offset-8">
               Logout
             </button>
           ) : (
             null
-          )}
+          )} */}
         </div>
       </Drawer>
 

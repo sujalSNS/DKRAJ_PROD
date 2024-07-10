@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Home } from './pages/Home/Home';
-import { Login } from './pages/Auth/Login';
-import { Register } from './pages/Auth/Register';
 import { useDispatch, useSelector } from 'react-redux'
-// import { IsLogin, getUser } from './actions/userActions'
 import { Navbar } from './components/Navbar/Navbar';
 import { Footer } from './components/Footer/Footer';
 import { ScrollToTop } from './components/Global/ScrollToTop';
@@ -36,7 +33,7 @@ function App() {
 
 
 
- 
+
   const { isLogin } = useSelector(state => state.user);
 
 
@@ -81,14 +78,12 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route exact path="/" element={<Home />} />
-        {/* <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} /> */}
         <Route path="/cart" element={<Cart />} />
         <Route path="/success" element={<Success />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/orders" element={<UserOrders/>} />
-        <Route path="/order/:orderID" element={<UserOrder/>} />
+        <Route path="/orders" element={<UserOrders />} />
+        <Route path="/order/:orderID" element={<UserOrder />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/product/:productID" element={<Product />} />
         <Route path="/checkout" element={<Checkout />} />
@@ -99,16 +94,16 @@ function App() {
 
 
       </Routes>
-      {/* <Newsletter /> */}
+
       <Footer />
 
 
       <DrawerNavigation drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} />
 
 
-          <WelcomeModal/>
-          <CookieConsentModal/>
-        
+      <WelcomeModal />
+      <CookieConsentModal />
+
       <Toaster
         position="top-center"
         reverseOrder={false}

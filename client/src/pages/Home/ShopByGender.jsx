@@ -5,7 +5,7 @@ export const ShopByGender = () => {
     return (
         <>
 
-            <div className='py-12'>
+            <div className='py-12 md:px-0 px-8'>
                 <div className='py-3 text-center'>
                     <p className='text-3xl font-semibold'>Shop By Gender</p>
                     <p>First-class jewelry for first-class Men, Women & Children.</p>

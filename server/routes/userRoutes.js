@@ -1,5 +1,5 @@
 const express = require('express')
-const { register, login, googleAuth, facebookAuth, verify, getUsers } = require('../controllers/userControllers')
+const { register, login, firbaseAuth, verify, getUsers } = require('../controllers/userControllers')
 const { isAuthenticated } = require('../middlewares/auth')
 const verifyFirebaseToken = require('../middlewares/verifyFirebaseToken');
 
@@ -10,10 +10,7 @@ router.post('/auth/register', register);
 router.post('/auth/login', login);
 
 // Google OAuth routes
-router.post('/auth/google', verifyFirebaseToken, googleAuth);
-
-// Facebook OAuth routes
-router.post('/auth/facebook', verifyFirebaseToken, facebookAuth);
+router.post('/auth/firebase', verifyFirebaseToken, firbaseAuth);
 
 router.route("/auth/verify").get(isAuthenticated, verify);
 

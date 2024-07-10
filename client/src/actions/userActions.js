@@ -1,9 +1,13 @@
 import axios from 'axios'
-import {registerRequest, registerSuccess,registerFail,loginRequest ,loginSuccess,loginFail, verifyLoginRequest, verifyLoginSuccess, verifyLoginFail, getUserRequest, getUserSuccess, getUserFail} from '../slices/userSlice'
-import {toast} from 'react-hot-toast'
+import { registerRequest, registerSuccess, registerFail, loginRequest, loginSuccess, loginFail, verifyLoginRequest, verifyLoginSuccess, verifyLoginFail, getUserRequest, getUserSuccess, getUserFail } from '../slices/userSlice'
+import { toast } from 'react-hot-toast'
+import { signInSignUpWithFacebook, signInSignUpWithGoogle } from '../firebase';
 
 
-export const login = (userData,setSuccessToggle) => async (dispatch) => {
+const API_KEY = import.meta.env.VITE_API_KEY;
+
+
+export const login = (userData, setSuccessToggle) => async (dispatch) => {
     try {
         dispatch(loginRequest());
 
@@ -13,26 +17,21 @@ export const login = (userData,setSuccessToggle) => async (dispatch) => {
             }
         };
 
-        // console.log(userData);
-
-        const { data } = await axios.post(`http://localhost:5000/api/auth/login`, userData, config);
-        
-        // toast.success(data.response.data.message)
-
-        console.log("login", data);
+        const { data } = await axios.post(`${API_KEY}/api/auth/login`, userData, config);
 
         localStorage.setItem('token', data.token);
 
-        dispatch(loginSuccess(data));
+        dispatch(loginSuccess());
         setSuccessToggle(true)
         dispatch(verify())
         toast.success("Login Successful!");
     } catch (err) {
-        // dispatch(loginFail(err.response.data.message));
+        dispatch(loginFail(err.response.data.message));
         console.log(err);
         toast.error(err.response.data.message);
     }
 };
+
 export const register = (userData, setSuccessToggle) => async (dispatch) => {
     try {
 
@@ -45,11 +44,11 @@ export const register = (userData, setSuccessToggle) => async (dispatch) => {
             }
         };
 
-        const { data } = await axios.post(`http://localhost:5000/api/auth/register`, userData, config)
+        const { data } = await axios.post(`${API_KEY}/api/auth/register`, userData, config)
 
         localStorage.setItem('token', data.token)
 
-        dispatch(registerSuccess(data));
+        dispatch(registerSuccess());
         dispatch(verify())
         toast.success("Register Successful !");
         setSuccessToggle(true)
@@ -61,7 +60,6 @@ export const register = (userData, setSuccessToggle) => async (dispatch) => {
     }
 }
 
-
 export const verify = () => async (dispatch) => {
     try {
 
@@ -71,9 +69,9 @@ export const verify = () => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.get(`http://localhost:5000/api/auth/verify`, config);
+        const { data } = await axios.get(`${API_KEY}/api/auth/verify`, config);
 
-        console.log("data",data)
+        // console.log("data", data)
 
         dispatch(verifyLoginSuccess(data))
 
@@ -83,22 +81,63 @@ export const verify = () => async (dispatch) => {
     }
 }
 
+export const googleAuth = (setSuccessToggle) => async (dispatch) => {
 
-export const googleAuth = () => async (dispatch) => {
-    try{
-
+    try {
         
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
+        const token = await signInSignUpWithGoogle();
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
 
-        const { data } = await axios.post(`http://localhost:5000/api/auth/google`, { }, config);
+            const { data } = await axios.post(`${API_KEY}/api/auth/firebase`, { token }, config);
 
-        toast.success("Login Successful!");
+            localStorage.setItem('token', data.token);
 
-    }catch(err){
+            dispatch(loginSuccess());
+            setSuccessToggle(true)
+            dispatch(verify())
+            toast.success("Authentication Successful!");
 
+        } catch (err) {
+            console.error(err);
+            dispatch(loginFail(err.response.data.message));
+        }
+    } catch (err) {
+        console.error(err);
     }
+
+}
+
+export const facebookAuth = (setSuccessToggle) => async (dispatch) => {
+
+    try {
+        const token = await signInSignUpWithFacebook();
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            const { data } = await axios.post(`${API_KEY}/api/auth/firebase`, { token }, config);
+
+            localStorage.setItem('token', data.token);
+
+            dispatch(loginSuccess());
+            setSuccessToggle(true)
+            dispatch(verify())
+            toast.success("Authentication Successful!");
+
+        } catch (err) {
+            console.error(err);
+            dispatch(loginFail(err.response.data.message));
+        }
+    } catch (err) {
+        console.error(err);
+    }
+
 }

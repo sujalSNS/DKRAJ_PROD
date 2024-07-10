@@ -6,12 +6,9 @@ import { Link } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Marquee from 'react-fast-marquee';
-import { signInSignUpWithGoogle, signInSignUpWithFacebook } from '../../firebase';
 import { CgSpinnerTwoAlt } from "react-icons/cg";
 import { useDispatch, useSelector } from 'react-redux';
-import { login, register, googleAuth } from '../../actions/userActions';
-import toast from 'react-hot-toast';
-
+import { login, register, googleAuth, facebookAuth } from '../../actions/userActions';
 
 
 const textMarquee = [
@@ -23,7 +20,7 @@ const textMarquee = [
 
 
 
-const loginForm = ({ setToggleAuth, dispatch, userLoginData, setUserLoginData, setSuccessToggle }) => {
+const loginForm = ({ setToggleAuth, dispatch, authLoading, userLoginData, setUserLoginData, setSuccessToggle, handleContinueWithGoogle, handleContinueWithFacebook }) => {
 
 
     const handleLogin = (e) => {
@@ -32,23 +29,6 @@ const loginForm = ({ setToggleAuth, dispatch, userLoginData, setUserLoginData, s
         dispatch(login(userLoginData, setSuccessToggle));
     };
 
-    const handleGoogleLogin = async () => {
-        try {
-            const googleUserData = await signInSignUpWithGoogle();
-            console.log(googleUserData);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    const handleFacebookLogin = async () => {
-        try {
-            const facebookUserData = await signInSignUpWithFacebook();
-            console.log(facebookUserData);
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
     const handleChangeToRegister = (e) => {
         e.preventDefault();
@@ -61,11 +41,11 @@ const loginForm = ({ setToggleAuth, dispatch, userLoginData, setUserLoginData, s
 
     return (
         <div className="bg-white">
-            <form onSubmit={handleLogin} className='flex flex-col gap-2 md:px-3 md:py-4 px-4 py-4 md:w-[35vw] w-[88vw]'>
-                <button onClick={handleGoogleLogin} type='button' className='flex hover:bg-gray-100 items-center justify-center  w-full mt-0 text-sm   border border-black px-3 py-2'>
+            <form onSubmit={handleLogin} className='flex flex-col gap-2 md:px-8 md:py-7 px-5 py-5 md:w-[35vw] w-[88vw]'>
+                <button onClick={handleContinueWithGoogle} type='button' className='flex hover:bg-gray-100 items-center justify-center  w-full mt-0 text-sm   border border-black px-3 py-2'>
                     <FaGoogle className='mr-2' /> CONTINUE WITH GOOGLE
                 </button>
-                <button onClick={handleFacebookLogin} type='button' className='flex items-center justify-center hover:bg-blue-700 bg-blue-600 w-full mt-2 text-sm border border-blue-600 text-white  px-3 py-2'>
+                <button onClick={handleContinueWithFacebook} type='button' className='flex items-center justify-center hover:bg-blue-700 bg-blue-600 w-full mt-2 text-sm border border-blue-600 text-white  px-3 py-2'>
                     <FaFacebook className='mr-2' /> CONTINUE WITH FACEBOOK
                 </button>
                 <div className='flex items-center '>
@@ -90,27 +70,34 @@ const loginForm = ({ setToggleAuth, dispatch, userLoginData, setUserLoginData, s
                     />
                 </div>
                 <div className='mt-3'>
-                    <input
-                        type="password"
-                        required
-                        name="loginPassword"
-                        value={userLoginData.password || ""}
-                        onChange={(e) => {
-                            setUserLoginData({
-                                ...userLoginData,
-                                password: e.target.value
-                            });
-                        }}
-                        placeholder='Password'
-                        className='border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black'
-                    />
+                    <div className="flex items-center">
+                        <input
+                            type="password"
+                            required
+                            name="loginPassword"
+                            value={userLoginData.password || ""}
+                            onChange={(e) => {
+                                setUserLoginData({
+                                    ...userLoginData,
+                                    password: e.target.value
+                                });
+                            }}
+                            placeholder='Password'
+                            className='border py-2 w-full  border-gray-400 px-2 focus:outline-none focus:border-black'
+                        />
+                    </div>
                     <div className='mt-2'>
                         <Link className='underline'>Forgot Password?</Link>
                     </div>
                 </div>
-                <button type='submit' className='bg-black w-full mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-3 py-3'>
-                    SIGN IN
-                </button>
+                {authLoading ?
+                    <button disbaled className='bg-white w-full mt-4 flex items-center justify-center text-sm border border-black text-black cursor-default px-3 py-2'>
+                        <CgSpinnerTwoAlt className='animate-spin my-0.5' size={24} />
+                    </button> :
+                    <button type='submit' className='bg-black w-full mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-3 py-3'>
+                        SIGN IN
+                    </button>
+                }
                 <div className='mt-3'>
                     <p>
                         Don't have an account? <button onClick={handleChangeToRegister} className='underline'>Register</button> here.
@@ -121,21 +108,12 @@ const loginForm = ({ setToggleAuth, dispatch, userLoginData, setUserLoginData, s
     );
 }
 
-const registerForm = ({ setToggleAuth, dispatch, userRegisterData, setUserRegisterData, setSuccessToggle }) => {
+const registerForm = ({ setToggleAuth, dispatch, authLoading, userRegisterData, setUserRegisterData, setSuccessToggle, handleContinueWithGoogle, handleContinueWithFacebook }) => {
 
 
     const handleRegister = (e) => {
         e.preventDefault();
-
-        if (userRegisterData.password != userRegisterData.confirmPassword) {
-            toast.error("Password does'nt match!")
-        } else if (userRegisterData.password.length < 6) {
-            toast.error("Password should atleast contains 6 characters")
-        } else {
-            dispatch(register(userRegisterData, setSuccessToggle));
-
-
-        }
+        dispatch(register(userRegisterData, setSuccessToggle));
     };
 
     const handleChangeToLogin = (e) => {
@@ -154,11 +132,12 @@ const registerForm = ({ setToggleAuth, dispatch, userRegisterData, setUserRegist
 
     return (
         <div className="bg-white">
-            <form onSubmit={handleRegister} className='flex flex-col gap-2 md:px-3 md:py-4 px-4 py-4 md:w-[35vw] w-[88vw]'>
-                <button type='button' className='flex hover:bg-gray-100 items-center justify-center  w-full mt-0 text-sm   border border-black px-3 py-2'>
+            <form onSubmit={handleRegister} className='flex flex-col gap-2 md:px-8 md:py-7 px-5 py-5 
+            md:w-[35vw] w-[88vw]'>
+                <button onClick={handleContinueWithGoogle} type='button' className='flex hover:bg-gray-100 items-center justify-center  w-full mt-0 text-sm   border border-black px-3 py-2'>
                     <FaGoogle className='mr-2' /> CONTINUE WITH GOOGLE
                 </button>
-                <button type='button' className='flex items-center justify-center hover:bg-blue-700 bg-blue-600 w-full mt-2 text-sm border border-blue-600 text-white  px-3 py-2'>
+                <button onClick={handleContinueWithFacebook} type='button' className='flex items-center justify-center hover:bg-blue-700 bg-blue-600 w-full mt-2 text-sm border border-blue-600 text-white  px-3 py-2'>
                     <FaFacebook className='mr-2' /> CONTINUE WITH FACEBOOK
                 </button>
                 <div className='flex items-center '>
@@ -266,9 +245,16 @@ const registerForm = ({ setToggleAuth, dispatch, userRegisterData, setUserRegist
                     />
                     <p className='mt-2 text-sm'> By creating an account, I consent to the processing of my personal data in accordance with the <span className='font-semibold'>PRIVACY POLICY</span>.</p>
                 </div>
-                <button type='submit' className='bg-black w-full mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-3 py-3'>
-                    REGISTER
-                </button>
+
+
+                {authLoading ?
+                    <button disbaled className='bg-white w-full mt-4 flex items-center justify-center text-sm border border-black text-black cursor-default px-3 py-2'>
+                        <CgSpinnerTwoAlt className='animate-spin my-0.5' size={24} />
+                    </button> :
+                    <button type='submit' className='bg-black w-full mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-3 py-3'>
+                        REGISTER
+                    </button>
+                }
                 <div className='mt-3'>
                     <p>
                         Already have an account? <button onClick={handleChangeToLogin} className='underline'>Login</button> here.
@@ -300,7 +286,7 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
         confirmPassword: ""
     });
 
-    const { loading } = useSelector((state) => state.user)
+    const { authLoading } = useSelector((state) => state.user)
 
     const dispatch = useDispatch()
 
@@ -313,9 +299,12 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
 
     const handleContinueWithGoogle = () => {
 
+        dispatch(googleAuth(setSuccessToggle))
+    }
 
+    const handleContinueWithFacebook = () => {
 
-        dispatch(googleAuth())
+        dispatch(facebookAuth(setSuccessToggle))
     }
 
     const handleOnClose = () => {
@@ -346,16 +335,16 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
                 onClose={handleOnClose}
                 aria-labelledby="login-modal"
                 aria-describedby="login-form"
-
             >
                 <Box
+
                     sx={{
                         position: 'absolute',
                         top: '50%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                         boxShadow: 24,
-                        height: '80vh',
+                        height: '83vh',
                         overflowY: 'auto',
                         '::-webkit-scrollbar': {
                             display: 'none'
@@ -370,7 +359,7 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
                             <button onClick={handleOnClose} className='text-white absolute right-3 top-3'><RxCross2 size={24} /></button>
                             <img src="/assets/images/dkrajLogoVariant2White.png" className='md:w-52 w-36' alt="dkrajLogo" />
 
-                            <p className='text-gray-200 2xl:text-sm text-xs pt-3 uppercase'>Join the DKRAJ Club
+                            <p className='text-gray-200 2xl:text-sm text-xs pt-3 text-center uppercase'>Join the DKRAJ Club
                                 Become a member and get multiple benefits.
                             </p>
 
@@ -388,8 +377,8 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
 
 
                         {toggleAuth === "login" ?
-                            loginForm({ setToggleAuth, dispatch, userLoginData, setUserLoginData, handleOnClose, setSuccessToggle }) :
-                            registerForm({ setToggleAuth, dispatch, userRegisterData, setUserRegisterData, handleOnClose, setSuccessToggle })}
+                            loginForm({ setToggleAuth, dispatch, authLoading, userLoginData, setUserLoginData, handleOnClose, setSuccessToggle, handleContinueWithGoogle, handleContinueWithFacebook }) :
+                            registerForm({ setToggleAuth, dispatch, authLoading, userRegisterData, setUserRegisterData, handleOnClose, setSuccessToggle, handleContinueWithGoogle, handleContinueWithFacebook })}
 
 
                     </div>
