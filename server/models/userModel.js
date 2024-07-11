@@ -1,5 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define("User", {
+        userID: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true,
+            allowNull: false
+        },
         firstName: {
             type: DataTypes.STRING,
             allowNull: true, 
@@ -45,6 +51,19 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: false,
         }
     });
+
+
+
+    
+    User.associate = function(models) {
+        User.hasMany(models.Product, {
+            foreignKey: {
+                allowNull: false,
+            },
+            onDelete: 'CASCADE',
+        });
+    };
+
 
     return User;
 };

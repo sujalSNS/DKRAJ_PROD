@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { registerRequest, registerSuccess, registerFail, loginRequest, loginSuccess, loginFail, verifyLoginRequest, verifyLoginSuccess, verifyLoginFail, getUserRequest, getUserSuccess, getUserFail } from '../slices/userSlice'
+import { registerRequest, registerSuccess, registerFail, loginRequest, loginSuccess, loginFail, verifyLoginSuccess, verifyLoginFail, getUserRequest, getUserSuccess, getUserFail } from '../slices/userSlice'
 import { toast } from 'react-hot-toast'
 import { signInSignUpWithFacebook, signInSignUpWithGoogle } from '../firebase';
 
@@ -140,4 +140,31 @@ export const facebookAuth = (setSuccessToggle) => async (dispatch) => {
         console.error(err);
     }
 
+}
+
+
+
+
+export const getUser = () => async (dispatch) => {
+    try {
+
+        dispatch(getUserRequest())
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }
+
+        const { data } = await axios.get(`${API_KEY}/api/user`, config);
+
+        console.log("data", data.user)
+
+        dispatch(getUserSuccess(data.user))
+
+
+
+    } catch (err) {
+        dispatch(getUserFail());
+    }
 }

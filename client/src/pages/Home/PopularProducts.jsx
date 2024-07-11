@@ -10,11 +10,11 @@ const images = [
 
 
 
-export const FeaturedProducts = () => {
+export const PopularProducts = () => {
     return (
         <>
             <div className=' md:px-12 px-5 md:py-14 py-4'>
-                <p className='text-center font-semibold md:text-3xl text-xl mb-2'>Featured Products</p>
+                <p className='text-center font-semibold md:text-3xl text-xl mb-2'>Popular Products</p>
                 <p className="text-center md:text-base text-sm text-gray-600 mb-9">
                     Handpicked Selection of Our Most Popular Pieces
                 </p>

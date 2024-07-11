@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { UnAuthorized } from '../../components/Global/UnAuthorized'
 
 
 const user = {
@@ -21,11 +22,20 @@ const firstUpper = (name) => {
 }
 
 export const Profile = () => {
+
+
+    
+
+  const { isLogin, user, loading } = useSelector(state => state.user);
+
+  const dispatch = useDispatch() ;
+
+
     return (
         <>
 
             <div className='min-h-screen md:pt-32 pt-20'>
-                <div className='md:pt-14  md:px-36 px-1 pb-20'>
+                {isLogin ?<div className='md:pt-14  md:px-36 px-1 pb-20'>
                     <div className='flex justify-start md:items-center items-start md:flex-row flex-col gap-8 pb-3 md:pl-5 pl-10'>
 
                         <div className=' md:text-5xl text-4xl rounded-full bg-gray-200 md:p-14 p-12 shadow-sm shadow-gray-200'>
@@ -42,7 +52,7 @@ export const Profile = () => {
 
                         <div className='mx-10'>
                             <p className="font-medium">User ID</p>
-                            <p className="bg-gray-200 px-3 font-semibold mt-2 py-2 text-sm">{user.id}</p>
+                            <p className="bg-gray-200 px-3 font-semibold mt-2 py-2 text-sm">{user.userID}</p>
                         </div>
                         <div className='mx-10'>
                             <p className="font-medium">Name</p>
@@ -75,7 +85,7 @@ export const Profile = () => {
 
 
                     </div>
-                </div>
+                </div> : <UnAuthorized />}
             </div>
 
         </>

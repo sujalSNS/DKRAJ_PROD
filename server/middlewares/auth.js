@@ -2,10 +2,10 @@ const jwt = require('jsonwebtoken')
 const { User } = require('../models');
 
 // Create Token
-exports.createToken = (id, email) => {
+exports.createToken = (userID, email) => {
     const token = jwt.sign(
         {
-            id, email
+            userID, email
         }, process.env.SECRET_KEY,
         {
             expiresIn: '5d'
@@ -39,7 +39,7 @@ exports.isAuthenticated = async (req, res, next) => {
             }
 
             try {
-                const user = await User.findByPk(decoded.id, {
+                const user = await User.findByPk(decoded.userID, {
                     attributes: { exclude: ['password'] }
                 });
 

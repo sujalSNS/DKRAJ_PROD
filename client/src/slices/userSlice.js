@@ -7,13 +7,18 @@ const userSlice = createSlice({
         authLoading: false,
         error: null,
         isLogin: false,
+        showLoginModal: false,
         user:{
+            userID: "",
             firstName: "",
             lastName: "",
             username: "",
             email: "",
             dob: "",
             isAdmin: false,
+            isFirebaseAuth: false,
+            createdAt: "",
+            updatedAt: ""
         }
     },
     reducers:{
@@ -53,7 +58,7 @@ const userSlice = createSlice({
         getUserRequest: (state)=>{
             state.loading = true
         },
-        getUserSuccess: (state)=>{
+        getUserSuccess: (state, action)=>{
             state.loading = false
             state.user = action.payload
         },
@@ -61,10 +66,17 @@ const userSlice = createSlice({
             state.loading = false;
             state.error = action.payload
         },
+
+        setShowLoginModalTrue: (state)=>{
+            state.showLoginModal = true 
+        },
+        setShowLoginModalFalse: (state)=>{
+            state.showLoginModal = false 
+        }
     }
 })
 
-export const {registerRequest, registerSuccess,registerFail,loginRequest ,loginSuccess,loginFail, verifyLoginRequest, verifyLoginSuccess, verifyLoginFail, getUserRequest, getUserSuccess, getUserFail} = userSlice.actions 
+export const {registerRequest, registerSuccess,registerFail,loginRequest ,loginSuccess,loginFail, verifyLoginRequest, verifyLoginSuccess, verifyLoginFail, getUserRequest, getUserSuccess, getUserFail, setShowLoginModalTrue, setShowLoginModalFalse} = userSlice.actions 
 
 
 export default userSlice.reducer

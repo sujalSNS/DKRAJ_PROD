@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Carousel } from './Carousal';
 import { CategoriesList } from './CategoriesList';
-import { FeaturedProducts } from './FeaturedProducts';
+import { PopularProducts } from './PopularProducts';
 import { CredibilityBoxes } from './CredibilityBoxes';
 import { Testimonials } from './Testimonials';
 import { CardSlider } from './CardSlider';
@@ -115,7 +115,7 @@ export const Home = () => {
 
       <div className='my-6 '>
 
-        <FeaturedProducts />
+        <PopularProducts />
 
       </div>
 

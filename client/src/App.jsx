@@ -24,7 +24,7 @@ import { AddProduct } from './pages/Admin/AddProduct';
 import { Products } from './pages/Admin/Products';
 import { Orders } from './pages/Admin/Orders';
 import { UserOrder } from './pages/Orders/UserOrder';
-import { verify } from './actions/userActions';
+import { verify, getUser } from './actions/userActions';
 import { WelcomeModal } from './components/Global/WelcomeModal';
 
 
@@ -34,16 +34,16 @@ function App() {
 
 
 
-  const { isLogin } = useSelector(state => state.user);
+  const { isLogin, user } = useSelector(state => state.user);
 
 
   const dispatch = useDispatch()
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   dispatch(getUser());
+    dispatch(getUser());
 
-  // }, [dispatch, isLogin]);
+  }, [dispatch, isLogin]);
 
   useEffect(() => {
     const verifyAuth = () => {

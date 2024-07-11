@@ -1,5 +1,5 @@
 const express = require('express')
-const { register, login, firbaseAuth, verify, getUsers } = require('../controllers/userControllers')
+const { register, login, firbaseAuth, verify, getUsers, getUser, updateUser } = require('../controllers/userControllers')
 const { isAuthenticated } = require('../middlewares/auth')
 const verifyFirebaseToken = require('../middlewares/verifyFirebaseToken');
 
@@ -13,6 +13,9 @@ router.post('/auth/login', login);
 router.post('/auth/firebase', verifyFirebaseToken, firbaseAuth);
 
 router.route("/auth/verify").get(isAuthenticated, verify);
+
+router.route("/user").get(isAuthenticated, getUser);
+router.route("/user/update").put(isAuthenticated, updateUser);
 
 
 router.route("/users").get(getUsers);

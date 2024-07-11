@@ -17,9 +17,11 @@ app.use(cors({
 
 // Routes Import
 const user = require("./routes/userRoutes.js")
+const product = require("./routes/productRoutes.js")
 
 
 app.use("/api/", user);
+app.use("/api/", product);
 
 app.use(errorHandler);
 

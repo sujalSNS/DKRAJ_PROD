@@ -10,17 +10,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { verify } from '../../actions/userActions';
 import { LogoutDialog } from './LogoutDialog';
 import toast from 'react-hot-toast';
+import {setShowLoginModalTrue, setShowLoginModalFalse} from "../../slices/userSlice"
 
 
 export const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [anchorEl, setAnchorEl] = useState(null);
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  // const [showLoginModal, setShowLoginModal] = useState(false);
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
   const navigate = useNavigate();
 
-  const { isLogin } = useSelector((state) => state.user)
+  const { isLogin, showLoginModal } = useSelector((state) => state.user)
 
   const dispatch = useDispatch()
 
@@ -31,17 +32,12 @@ export const Navbar = () => {
     setDrawerOpen(open);
   };
 
-  const handleSearchKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      navigate(`/shop/${searchValue}`);
-      setSearchValue("");
-    }
-  };
 
   const handleMenuOpen = (event) => {
     if (!isLogin) {
       // Open the login modal instead of navigating to "/login"
-      setShowLoginModal(true);
+      // setShowLoginModal(true);
+      dispatch(setShowLoginModalTrue())
       return;
     }
 
@@ -53,7 +49,8 @@ export const Navbar = () => {
   };
 
   const handleCloseAuthModal = () => {
-    setShowLoginModal(false);
+    // setShowLoginModal(false);
+    dispatch(setShowLoginModalFalse())
   };
 
 

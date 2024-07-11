@@ -7,7 +7,7 @@ const { createToken } = require('../middlewares/auth.js');
 // Register User 
 exports.register = async (req, res, next) => {
   try {
-    const { firstName, lastName, username, email, dob, password, confirmPassword} = req.body;
+    const { firstName, lastName, username, email, dob, password, confirmPassword } = req.body;
 
     // Validate request data
     if (!firstName || !lastName || !username || !email || !dob || !password) {
@@ -32,7 +32,7 @@ exports.register = async (req, res, next) => {
       });
     }
 
-    
+
 
     // Check if username already exists
     const existingUsername = await User.findOne({ where: { username } });
@@ -66,14 +66,14 @@ exports.register = async (req, res, next) => {
     });
 
     // Generate a token
-    const token = createToken(user.id, user.email);
+    const token = createToken(user.userID, user.email);
 
     // Return response with user data and token
     res.status(201).json({
       success: true,
       message: 'User registered successfully',
       user: {
-        id: user.id,
+        userID: user.userID,
         firstName: user.firstName,
         lastName: user.lastName,
         username: user.username,
@@ -134,7 +134,7 @@ exports.login = async (req, res, next) => {
     }
 
     // Generate a token
-    const token = createToken(user.id, user.email);
+    const token = createToken(user.userID, user.email);
 
     res.status(200).json({
       success: true,
@@ -161,7 +161,7 @@ exports.firbaseAuth = async (req, res, next) => {
       });
     }
 
-    const token = createToken(user.id, user.email);
+    const token = createToken(user.userID, user.email);
 
     res.status(200).json({
       success: true,
@@ -199,9 +199,59 @@ exports.verify = async (req, res, next) => {
   }
 }
 
+// Get logged in User
+exports.getUser = async (req, res, next) => {
+  try {
+
+    res.status(200).json({
+      success: true,
+      user: req.user
+    })
+
+  } catch (err) {
+    return next(err);
+  }
+}
 
 
+// Update user
+exports.updateUser = async (req, res, next) => {
+  try{
 
+    const { firstName, lastName, username, email, dob } = req.body ;
+
+    if(!firstName || !lastName || !username || !email || !dob){
+      return res.status(400).json({
+        success: false,
+        message: "Invalid Data"
+      })
+    }
+
+    const user = await User.findByPk(req.user.userID);
+
+    // Check if the user exists
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const updatedUser = await user.update({firstName, lastName, username, email, dob});
+
+    res.status(200).json({
+      success: true,
+      message: "User updated successfully!",
+      updatedUser
+    })
+
+  }catch(err){
+    return next(err)
+  }
+}
+
+
+// all users
 exports.getUsers = async (req, res, next) => {
   try {
 

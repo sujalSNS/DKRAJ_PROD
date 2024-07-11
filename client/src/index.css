@@ -147,3 +147,70 @@ body{
   .carousel-button.next {
     right: 0;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .slide img {
+    /* width: 20rem; */
+    z-index: 0;
+    
+  }
+  
+  .slide {
+    transform: scale(0.4);
+    transition: transform 300ms;
+    opacity: 0.5;
+  }
+  
+  .activeSlide {
+    transform: scale(0.7);
+    opacity: 1;
+  }
+  
+  @media (max-width: 768px) {
+    .slide {
+      transform: scale(0.9); /* Adjust the scale for mobile */
+      opacity: 0.5;
+    }
+  
+    .activeSlide {
+      transform: scale(2); /* Adjust the scale for mobile */
+      opacity: 1;
+    }
+  }
+
+  .arrow {
+    background-color: #fff;
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .arrow svg {
+    transition: color 300ms;
+  }
+  
+
+  
+  .next {
+    right: 0%;
+    top: 50%;
+  }
+  
+  .prev {
+    left: 0%;
+    top: 50%;
+  }

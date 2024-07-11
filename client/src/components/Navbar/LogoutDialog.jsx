@@ -1,4 +1,5 @@
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from '@mui/material';
+import { RxCross2 } from "react-icons/rx";
 
 
 export const LogoutDialog = ({ open, handleClose, handleLogout }) => {
@@ -6,6 +7,7 @@ export const LogoutDialog = ({ open, handleClose, handleLogout }) => {
         <>
             <Dialog open={open} onClose={handleClose}>
                 <div className='flex md:px-10 py-7 p-5 flex-col'>
+                    <button onClick={handleClose} className='absolute top-3 right-3'><RxCross2 size={20}/></button>
                 <p className='text-2xl font-semibold'>Confirm Logout</p>
                 <div className='mt-4'>
                     <p className='text-xl '>
