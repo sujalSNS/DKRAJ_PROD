@@ -60,7 +60,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="text-center py-2 bg-gray-200 text-gray-700 md:text-sm text-xs md:xp-0 px-4">
-        &copy; 2023 DKRAJ JEWELS. All Rights Reserved by DKRAJ India. Powered and secured by DKRAJ JEWELS.
+        &copy; 2023 DKRAJ JEWELS. All Rights Reserved by DKRAJ India. Powered and secured by <Link className='font-semibold text-black' to="https://www.snsincmedia.com/" target='_blank'>SnS Inc.</Link>.
       </div>
     </>
   );
