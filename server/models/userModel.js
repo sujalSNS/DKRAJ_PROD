@@ -52,18 +52,16 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-
-
-    
     User.associate = function(models) {
         User.hasMany(models.Product, {
-            foreignKey: {
-                allowNull: false,
-            },
+            foreignKey: 'UserId', 
+            onDelete: 'CASCADE',
+        });
+        User.hasMany(models.Order, {
+            foreignKey: 'UserId', 
             onDelete: 'CASCADE',
         });
     };
-
 
     return User;
 };

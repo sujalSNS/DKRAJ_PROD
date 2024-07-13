@@ -5,7 +5,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const images = [
+const images = [ 
     { name: "Rings", img: "assets/images/categories/rings.jpg", hoverImg: "assets/images/modalImg.jpg" },
     { name: "Earrings", img: "assets/images/categories/earring.jpg", hoverImg: "assets/images/modalImg.jpg" },
     { name: "Bracelets", img: "assets/images/categories/bracelet.jpg", hoverImg: "assets/images/modalImg.jpg" },

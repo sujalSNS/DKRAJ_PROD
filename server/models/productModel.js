@@ -21,17 +21,81 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        img: {
-            type: DataTypes.STRING,
+        img1: {
+            type: DataTypes.TEXT('long'), 
             allowNull: false
         },
-        // category: {
-        //     type: DataTypes.JSON,
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true
-        //     }
-        // },
+        img2: {
+            type: DataTypes.TEXT('long'), 
+            allowNull: true
+        },
+        img3: {
+            type: DataTypes.TEXT('long'), 
+            allowNull: true
+        },
+        price: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+                isFloat: true
+            }
+        },
+        category: {
+            type: DataTypes.ENUM,
+            values: ['rings', 'earrings', 'bracelets', 'bangles', 'mangalsutras', 'nosePins', 'headJewelleries', 'pendantSets', 'weddingSets', 'pendants', 'anklets', 'toeRings', 'homeDecors'],
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
+        gender: {
+            type: DataTypes.ENUM,
+            values: ['men', 'women', 'kids'],
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
+        stock: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+                isInt: true
+            }
+        },
+        availableState: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
+        },
+        madeToOrder: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        },
+        popular: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        },
+        labor: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+                isFloat: true
+            }
+        },
+        packaging: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+                isFloat: true
+            }
+        },
         // purity: {
         //     type: DataTypes.JSON,
         //     allowNull: false,
@@ -46,60 +110,6 @@ module.exports = (sequelize, DataTypes) => {
         //         notEmpty: true
         //     }
         // },
-        // gender: {
-        //     type: DataTypes.JSON,
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true
-        //     }
-        // },
-        // price: {
-        //     type: DataTypes.FLOAT,
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true,
-        //         isFloat: true
-        //     }
-        // },
-        // popular: {
-        //     type: DataTypes.BOOLEAN,
-        //     allowNull: false,
-        //     defaultValue: false
-        // },
-        // state: {
-        //     type: DataTypes.BOOLEAN,
-        //     allowNull: false,
-        //     defaultValue: true
-        // },
-        // madeToOrder: {
-        //     type: DataTypes.BOOLEAN,
-        //     allowNull: false,
-        //     defaultValue: false
-        // },
-        // stock: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true,
-        //         isInt: true
-        //     }
-        // },
-        // labor: {
-        //     type: DataTypes.FLOAT,
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true,
-        //         isFloat: true
-        //     }
-        // },
-        // packaging: {
-        //     type: DataTypes.FLOAT,
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true,
-        //         isFloat: true
-        //     }
-        // },
         // grams: {
         //     type: DataTypes.JSON,
         //     allowNull: false,
@@ -109,16 +119,12 @@ module.exports = (sequelize, DataTypes) => {
         // }
     });
 
-    // You can define associations here if needed
-    // For example, if products belong to users:
-    // Product.associate = function(models) {
-    //     Product.belongsTo(models.User, {
-    //         foreignKey: {
-    //             allowNull: false,
-    //         },
-    //         onDelete: 'CASCADE',
-    //     });
-    // };
 
+    Product.associate = function (models) {
+        Product.belongsTo(models.User, {
+            foreignKey: 'UserId', // Specify the exact foreign key name
+            onDelete: 'CASCADE',
+        });
+    };
     return Product;
 };
