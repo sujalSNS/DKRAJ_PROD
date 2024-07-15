@@ -4,7 +4,7 @@ const xss = require('xss');
 
 
 // Create Product 
-exports.createProduct = async (req, res, next) => {
+exports.createProductAdmin = async (req, res, next) => {
   try {
     const {
       title, desc, img1, img2, img3, price, category, gender, stock, availableState, madeToOrder, popular, labor, packaging,
@@ -107,9 +107,10 @@ exports.createProduct = async (req, res, next) => {
 };
 
 
-// Create Product 
-exports.getProducts = async (req, res, next) => {
 
+
+// Fetch Products 
+exports.getProductsAdmin = async (req, res, next) => {
 
   try {
     const products = await Product.findAll();
@@ -121,19 +122,111 @@ exports.getProducts = async (req, res, next) => {
       });
     }
 
+    const sortedProducts = products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-    // Send the response with base64 img
     res.status(200).json({
       success: true,
-      products
+      products: sortedProducts
     });
   } catch (err) {
-    if (err.name === 'SequelizeValidationError') {
-      return res.status(400).json({
+    return next(err);
+  }
+};
+
+// Delete Product 
+exports.deleteProductAdmin = async (req, res, next) => {
+
+  try {
+    const { productID } = req.params
+
+    if (!productID) {
+      return res.status(404).json({
         success: false,
-        message: err.errors.map(e => e.message).join(', '),
+        message: 'Invalid Product ID!'
       });
     }
+
+    const product = await Product.findByPk(productID)
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found!'
+      });
+    }
+
+    await product.destroy();
+
+    res.status(200).json({
+      success: true,
+      message: "Product Deleted Successfully!",
+      product
+    });
+  } catch (err) {
+    return next(err);
+  }
+};
+
+// Get Product 
+exports.getProductAdmin = async (req, res, next) => {
+
+  try {
+    const { productID } = req.params
+
+    if (!productID) {
+      return res.status(404).json({
+        success: false,
+        message: 'Invalid Product ID!'
+      });
+    }
+
+    const product = await Product.findByPk(productID)
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found!'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Product fetched Successfully!",
+      product
+    });
+  } catch (err) {
+    return next(err);
+  }
+};
+
+// Update Product 
+exports.updateProductAdmin = async (req, res, next) => {
+
+  try {
+    const { productID } = req.params
+
+    if (!productID) {
+      return res.status(404).json({
+        success: false,
+        message: 'Invalid Product ID!'
+      });
+    }
+
+    const product = await Product.findByPk(productID)
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found!'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Product Updated Successfully!",
+      product
+    });
+  } catch (err) {
     return next(err);
   }
 };

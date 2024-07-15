@@ -23,7 +23,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   // Redux state access
-  const { isLogin, showLoginModal } = useSelector((state) => state.user);
+  const { isLogin, user, showLoginModal } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   // Toggle drawer function
@@ -129,6 +129,12 @@ export const Navbar = () => {
               }}>
                 <p className='font-semibold'>Profile</p>
               </MenuItem>
+             {user.isAdmin && <MenuItem onClick={() => {
+                navigate("/admin/dashboard");
+                handleMenuClose();
+              }}>
+                <p className='font-semibold'>Admin</p>
+              </MenuItem>}
               <MenuItem onClick={handleLogoutDialogOpen}>
                 <p className='font-semibold'>Logout</p>
               </MenuItem>

@@ -22,6 +22,7 @@ import { Dashboard } from './pages/Admin/Dashboard';
 import { DrawerNavigation } from './pages/Admin/DrawerNavigation';
 import { AddProduct } from './pages/Admin/AddProduct';
 import { Products } from './pages/Admin/Products';
+import { EditProduct } from './pages/Admin/EditProduct';
 import { Orders } from './pages/Admin/Orders';
 import { UserOrder } from './pages/Orders/UserOrder';
 import { verify, getUser } from './actions/userActions';
@@ -90,6 +91,7 @@ function App() {
         <Route path="/admin/dashboard" element={<Dashboard toggleDrawer={toggleDrawer} />} />
         <Route path="/admin/add-product" element={<AddProduct toggleDrawer={toggleDrawer} />} />
         <Route path="/admin/products" element={<Products toggleDrawer={toggleDrawer} />} />
+        <Route path="/admin/product/edit/:productID" element={<EditProduct toggleDrawer={toggleDrawer} />} />
         <Route path="/admin/orders" element={<Orders toggleDrawer={toggleDrawer} />} />
 
 

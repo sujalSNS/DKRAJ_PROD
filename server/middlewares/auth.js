@@ -67,3 +67,35 @@ exports.isAuthenticated = async (req, res, next) => {
         });
     }
 }
+
+
+// Check is Admin
+exports.isAdminUser = async (req, res, next) => {
+    try {
+        const user = req.user;
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                isLogin: false,
+                message: "User not found"
+            });
+        }
+
+        if(!user.isAdmin){
+            return res.status(403).json({
+                success: false,
+                message: "Forbidden access"
+            });
+        }
+
+        req.user = user;
+        next();
+
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+}
