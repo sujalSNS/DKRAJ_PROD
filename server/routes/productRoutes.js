@@ -8,7 +8,7 @@ router.post('/admin/product/create', isAuthenticated, isAdminUser, createProduct
 router.get('/admin/products',isAuthenticated, isAdminUser, getProductsAdmin);
 router.delete('/admin/product/delete/:productID',isAuthenticated, isAdminUser, deleteProductAdmin);
 router.get('/admin/product/:productID',isAuthenticated, isAdminUser, getProductAdmin);
-router.get('/admin/product/update/:productID',isAuthenticated, isAdminUser, updateProductAdmin);
+router.put('/admin/product/update/:productID',isAuthenticated, isAdminUser, updateProductAdmin);
 
 module.exports = router
 

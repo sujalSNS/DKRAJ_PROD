@@ -171,7 +171,7 @@ export const AddProduct = ({ toggleDrawer }) => {
                                 <div className="mb-4 flex flex-col">
                                     <label htmlFor="img" className="text-lg font-medium text-gray-700">Images:</label>
 
-                                    <label htmlFor="img" className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1 bg-white">
+                                    <label htmlFor="img" className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1 cursor-pointer bg-white">
                                         <span className="bg-gray-100 px-3 py-1 text-">
 
                                             {productData.imgs.length > 0 ?

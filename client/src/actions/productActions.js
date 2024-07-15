@@ -132,7 +132,7 @@ export const getProductAdmin = (productID) => async (dispatch) => {
 }
 
 // Admin Route
-export const updateProductAdmin = (productID) => async (dispatch) => {
+export const updateProductAdmin = (product, productID) => async (dispatch) => {
     try {
 
         dispatch(updateProductAdminRequest())
@@ -143,9 +143,11 @@ export const updateProductAdmin = (productID) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.get(`${API_KEY}/api/admin/product/update/${productID}`, config);
+        const { data } = await axios.put(`${API_KEY}/api/admin/product/update/${productID}`,product, config);
 
         dispatch(updateProductAdminSuccess())
+        dispatch(getProductAdmin(productID))
+        toast.success("Product updated successfully!");
 
     } catch (err) {
         dispatch(updateProductAdminFail(err.response.data.message));

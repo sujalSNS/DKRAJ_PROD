@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router";
 import { HiBars3BottomLeft } from "react-icons/hi2";
@@ -64,7 +64,7 @@ export const EditProduct = ({ toggleDrawer }) => {
             setProductData({
                 title: productAdmin.title,
                 desc: productAdmin.desc,
-                imgs: [productAdmin.img1], // Initialize imgs with img1
+                imgs: ["data:image/jpeg;base64," + productAdmin.img1], // Initialize imgs with img1
                 price: productAdmin.price.toString(),
                 category: productAdmin.category,
                 gender: productAdmin.gender,
@@ -80,13 +80,13 @@ export const EditProduct = ({ toggleDrawer }) => {
             if (productAdmin.img2) {
                 setProductData(prevState => ({
                     ...prevState,
-                    imgs: [...prevState.imgs, productAdmin.img2]
+                    imgs: [...prevState.imgs, "data:image/jpeg;base64,"+productAdmin.img2]
                 }));
             }
             if (productAdmin.img3) {
                 setProductData(prevState => ({
                     ...prevState,
-                    imgs: [...prevState.imgs, productAdmin.img3]
+                    imgs: [...prevState.imgs, "data:image/jpeg;base64,"+productAdmin.img3]
                 }));
             }
         }
@@ -142,8 +142,7 @@ export const EditProduct = ({ toggleDrawer }) => {
         }));
     };
 
-    // Reference to form for form submission
-    const formRef = useRef();
+   
 
     // Function to handle form submission
     const handleSubmit = async (e) => {
@@ -158,7 +157,7 @@ export const EditProduct = ({ toggleDrawer }) => {
             return;
         }
         if (productData.imgs.length === 0) {
-            toast.error("Please select product image(s)!");
+            toast.error("Please select product images!");
             return;
         }
 
@@ -170,7 +169,8 @@ export const EditProduct = ({ toggleDrawer }) => {
         delete product.imgs;
 
         // Dispatch updateProductAdmin action
-        dispatch(updateProductAdmin(product, productID, setProductData, formRef));
+        dispatch(updateProductAdmin(product, productID));
+        console.log("update product",product)
     };
 
     return (
@@ -185,7 +185,7 @@ export const EditProduct = ({ toggleDrawer }) => {
                         <div className="px-4 md:px-12 pt-5 pb-12 flex flex-col items-center">
                             <div className="md:w-2/4">
                                 <h2 className="text-2xl font-bold mb-4 text-center">Update Product</h2>
-                                <form ref={formRef} onSubmit={handleSubmit} className="max-w-lg mx-auto">
+                                <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
                                     <div className="mb-4">
                                         <label htmlFor="title" className="text-lg font-medium text-gray-700">Title:</label>
                                         <input type="text" id="title" name="title" value={productData.title} onChange={handleChange} required
@@ -200,7 +200,7 @@ export const EditProduct = ({ toggleDrawer }) => {
                                     </div>
                                     <div className="mb-4 flex flex-col">
                                         <label htmlFor="img" className="text-lg font-medium text-gray-700">Images:</label>
-                                        <label htmlFor="img" className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1 bg-white">
+                                        <label htmlFor="img" className="border py-2 w-full border-gray-400 px-2 focus:outline-none cursor-pointer focus:border-black mt-1 bg-white">
                                             <span className="bg-gray-100 px-3 py-1 text-">
                                                 {productData.imgs.length > 0 ?
                                                     productData.imgs.length === 1 ? `${productData.imgs.length} Image Selected` : `${productData.imgs.length} Images Selected` : "Select images"}
@@ -212,7 +212,7 @@ export const EditProduct = ({ toggleDrawer }) => {
                                         <div className="flex items-center gap-3">
                                             {productData.imgs.map((img, index) => (
                                                 <div key={index} className="relative">
-                                                    <img src={"data:image/jpeg;base64,"+img} alt={`Uploaded ${index + 1}`} className="mt-2 h-20 w-20 object-contain" />
+                                                    <img src={img} alt={`Uploaded ${index + 1}`} className="mt-2 h-20 w-20 object-contain" />
                                                     <button
                                                         type="button"
                                                         className="absolute top-1 -right-1 bg-red-500 text-white rounded-full   p-1"
