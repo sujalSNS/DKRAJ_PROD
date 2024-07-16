@@ -1,4 +1,6 @@
 const { User } = require('../models');
+const { Op } = require('sequelize');
+
 
 const bcrypt = require('bcrypt');
 const { createToken } = require('../middlewares/auth.js');
@@ -216,15 +218,14 @@ exports.getUser = async (req, res, next) => {
 
 // Update user
 exports.updateUser = async (req, res, next) => {
-  try{
+  try {
+    const { firstName, lastName, username, email, dob } = req.body;
 
-    const { firstName, lastName, username, email, dob } = req.body ;
-
-    if(!firstName || !lastName || !username || !email || !dob){
+    if (!firstName || !lastName || !username || !email || !dob) {
       return res.status(400).json({
         success: false,
-        message: "Invalid Data"
-      })
+        message: "Invalid Data",
+      });
     }
 
     const user = await User.findByPk(req.user.userID);
@@ -237,18 +238,41 @@ exports.updateUser = async (req, res, next) => {
       });
     }
 
-    const updatedUser = await user.update({firstName, lastName, username, email, dob});
+    // Check if the username is already taken by another user
+    const usernameExists = await User.findOne({
+      where: { username, userID: { [Op.ne]: user.userID } },
+    });
+
+    if (usernameExists) {
+      return res.status(400).json({
+        success: false,
+        message: "Username is already taken",
+      });
+    }
+
+    // Check if the email is already taken by another user
+    const emailExists = await User.findOne({
+      where: { email, userID: { [Op.ne]: user.userID } },
+    });
+
+    if (emailExists) {
+      return res.status(400).json({
+        success: false,
+        message: "Email is already taken",
+      });
+    }
+
+    const updatedUser = await user.update({ firstName, lastName, username, email, dob });
 
     res.status(200).json({
       success: true,
       message: "User updated successfully!",
-      updatedUser
-    })
-
-  }catch(err){
-    return next(err)
+      updatedUser,
+    });
+  } catch (err) {
+    return next(err);
   }
-}
+};
 
 
 // all users

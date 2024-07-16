@@ -8,7 +8,7 @@ const userSlice = createSlice({
         error: null,
         isLogin: false,
         showLoginModal: false,
-        user:{
+        user: {
             userID: "",
             firstName: "",
             lastName: "",
@@ -21,62 +21,75 @@ const userSlice = createSlice({
             updatedAt: ""
         }
     },
-    reducers:{
-        registerRequest: (state)=>{
+    reducers: {
+        registerRequest: (state) => {
             state.authLoading = true
         },
-        registerSuccess: (state)=>{
+        registerSuccess: (state) => {
             state.authLoading = false
         },
-        registerFail: (state, action)=>{
+        registerFail: (state, action) => {
             state.authLoading = false;
             state.error = action.payload
         },
 
-        loginRequest: (state)=>{
+        loginRequest: (state) => {
             state.authLoading = true
         },
-        loginSuccess: (state)=>{
+        loginSuccess: (state) => {
             state.authLoading = false
         },
-        loginFail: (state, action)=>{
+        loginFail: (state, action) => {
             state.authLoading = false;
             state.error = action.payload
         },
 
-        verifyLoginRequest: (state)=>{
+        verifyLoginRequest: (state) => {
             // state.loading = true
         },
-        verifyLoginSuccess: (state, action)=>{
+        verifyLoginSuccess: (state, action) => {
             state.isLogin = action.payload.isLogin
         },
-        verifyLoginFail: (state, action)=>{
+        verifyLoginFail: (state, action) => {
             state.isLogin = false;
             state.error = action.payload
         },
 
-        getUserRequest: (state)=>{
+        getUserRequest: (state) => {
             state.loading = true
         },
-        getUserSuccess: (state, action)=>{
+        getUserSuccess: (state, action) => {
             state.loading = false
             state.user = action.payload
         },
-        getUserFail: (state, action)=>{
+        getUserFail: (state, action) => {
             state.loading = false;
             state.error = action.payload
         },
 
-        setShowLoginModalTrue: (state)=>{
-            state.showLoginModal = true 
+        editUserRequest: (state) => {
+            state.loading = true
         },
-        setShowLoginModalFalse: (state)=>{
-            state.showLoginModal = false 
+        editUserSuccess: (state, action) => {
+            state.loading = false
+        },
+        editUserFail: (state, action) => {
+            state.loading = false;
+            state.error = action.payload
+        },
+
+        setShowLoginModalTrue: (state) => {
+            state.showLoginModal = true
+        },
+        setShowLoginModalFalse: (state) => {
+            state.showLoginModal = false
         }
     }
 })
 
-export const {registerRequest, registerSuccess,registerFail,loginRequest ,loginSuccess,loginFail, verifyLoginRequest, verifyLoginSuccess, verifyLoginFail, getUserRequest, getUserSuccess, getUserFail, setShowLoginModalTrue, setShowLoginModalFalse} = userSlice.actions 
+export const { registerRequest, registerSuccess, registerFail, loginRequest, loginSuccess, loginFail, verifyLoginRequest, verifyLoginSuccess, verifyLoginFail, getUserRequest, getUserSuccess, getUserFail,
+    editUserRequest, editUserSuccess, editUserFail,
+    setShowLoginModalTrue, setShowLoginModalFalse } = userSlice.actions
 
 
 export default userSlice.reducer

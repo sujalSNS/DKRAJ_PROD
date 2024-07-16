@@ -13,6 +13,7 @@ import { Cart } from './pages/Cart/Cart';
 import { NotFound } from './pages/NotFound/NotFound';
 import { Success } from './pages/Success/Success';
 import { Profile } from './pages/Profile/Profile';
+import { EditProfile } from './pages/EditProfile/EditProfile';
 import { UserOrders } from './pages/Orders/UserOrders';
 import { Wishlist } from './pages/Wishlist/Wishlist';
 import { Product } from './pages/Product/Product';
@@ -27,6 +28,7 @@ import { Orders } from './pages/Admin/Orders';
 import { UserOrder } from './pages/Orders/UserOrder';
 import { verify, getUser } from './actions/userActions';
 import { WelcomeModal } from './components/Global/WelcomeModal';
+import { DiscountModal } from './components/Global/DiscountModal';
 
 
 
@@ -82,6 +84,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/success" element={<Success />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/edit" element={<EditProfile/>} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/orders" element={<UserOrders />} />
         <Route path="/order/:orderID" element={<UserOrder />} />
@@ -104,6 +107,7 @@ function App() {
 
 
       <WelcomeModal />
+      <DiscountModal />
       <CookieConsentModal />
 
       <Toaster

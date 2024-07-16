@@ -1,5 +1,7 @@
 import axios from 'axios'
-import { registerRequest, registerSuccess, registerFail, loginRequest, loginSuccess, loginFail, verifyLoginSuccess, verifyLoginFail, getUserRequest, getUserSuccess, getUserFail } from '../slices/userSlice'
+import { registerRequest, registerSuccess, registerFail, loginRequest, loginSuccess, loginFail, verifyLoginSuccess, verifyLoginFail, getUserRequest, getUserSuccess, getUserFail,
+    editUserRequest, editUserSuccess, editUserFail,
+ } from '../slices/userSlice'
 import { toast } from 'react-hot-toast'
 import { signInSignUpWithFacebook, signInSignUpWithGoogle } from '../firebase';
 
@@ -166,5 +168,32 @@ export const getUser = () => async (dispatch) => {
 
     } catch (err) {
         dispatch(getUserFail());
+    }
+}
+
+
+
+export const editProfile = (updatedUserData) => async (dispatch) => {
+    try {
+
+        dispatch(editUserRequest())
+       
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }
+
+        const { data } = await axios.put(`${API_KEY}/api/user/update`,updatedUserData, config);
+
+        dispatch(editUserSuccess())
+        dispatch(getUser())
+
+        toast.success("Profile Updated Successfully!");
+        
+
+    } catch (err) {
+        dispatch(editUserFail(err.response.data.message));
+        toast.error(err.response.data.message);
     }
 }

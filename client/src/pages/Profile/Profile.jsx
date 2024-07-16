@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { UnAuthorized } from '../../components/Global/UnAuthorized'
+import { getUser } from '../../actions/userActions'
+import { Loader } from '../../components/Global/Loader'
 
 
 
@@ -22,12 +24,20 @@ export const Profile = () => {
 
     const dispatch = useDispatch();
 
+    useEffect(()=>{
+        dispatch(getUser())
+    },[dispatch])
+
 
     return (
         <>
 
             <div className='min-h-screen md:pt-32 pt-20'>
-                {isLogin ?
+            {loading ? (
+          <div className="flex items-center justify-center mt-36 ">
+            <Loader />
+          </div> )
+                : isLogin ?
                     <div className='md:pt-14  md:px-36 px-1 pb-20'>
                         <div className='flex justify-start md:items-center items-start md:flex-row flex-col gap-8 pb-3 md:pl-5 pl-10'>
 
@@ -76,7 +86,7 @@ export const Profile = () => {
                             <Link to="/cart" className='bg-black   mt-4 md:w-full w-4/5 text-center text-sm border border-black  text-white hover:text-black hover:bg-white px-12 py-2'>
                                 YOUR CART
                             </Link>
-                            <Link to="/edit-profile" className='bg-black   mt-4 md:w-full w-4/5 text-center text-sm border border-black  text-white hover:text-black hover:bg-white px-12 py-2'>
+                            <Link to="/profile/edit" className='bg-black   mt-4 md:w-full w-4/5 text-center text-sm border border-black  text-white hover:text-black hover:bg-white px-12 py-2'>
                                 EDIT PROFILE
                             </Link>
 
