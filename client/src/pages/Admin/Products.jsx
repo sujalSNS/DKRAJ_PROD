@@ -66,7 +66,7 @@ export const Products = ({ toggleDrawer }) => {
         {loading ? (
           <div className="flex items-center justify-center mt-36 ">
             <Loader />
-          </div>
+          </div> 
         ) : isLogin ? (
           user.isAdmin ? (
             <>
@@ -74,7 +74,7 @@ export const Products = ({ toggleDrawer }) => {
                 <HiBars3BottomLeft onClick={toggleDrawer(true)} size={35} />
               </button>
               <div className="text-center pt-6">
-                <p className="text-2xl font-semibold">Products</p>
+                <p className="text-3xl font-bold text-gray-800 ">Manage Products</p>
               </div>
               <div className="md:px-12 px-5 pt-2 ">
               

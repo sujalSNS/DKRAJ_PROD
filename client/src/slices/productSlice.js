@@ -29,6 +29,27 @@ const productSlice = createSlice({
             UserId: ""
 
         },
+        product: {
+            productID: "",
+            title: "",
+            desc: "",
+            img1: "",
+            img2: "",
+            img3: "",
+            price: "",
+            category: "",
+            gender: "",
+            stock: 0,
+            availableState: false,
+            madeToOrder: false,
+            popular: false,
+            labor: 0,
+            packaging: 0,
+            createdAt: "",
+            updatedAt: "",
+            UserId: ""
+
+        },
     },
     reducers: {
         createProductRequest: (state) => {
@@ -88,6 +109,18 @@ const productSlice = createSlice({
             state.error = action.payload
         },
 
+        getProductRequest: (state) => {
+            state.loading = true
+        },
+        getProductSuccess: (state, action) => {
+            state.loading = false;
+            state.product = action.payload
+        },
+        getProductFail: (state, action) => {
+            state.loading = false;
+            state.error = action.payload
+        },
+
 
     }
 })
@@ -96,7 +129,8 @@ export const { createProductRequest, createProductSuccess, createProductFail,
     getProductsAdminRequest, getProductsAdminSuccess, getProductsAdminFail,
     updateProductAdminRequest, updateProductAdminSuccess, updateProductAdminFail,
     deleteProductAdminRequest, deleteProductAdminSuccess, deleteProductAdminFail,
-    getProductAdminRequest, getProductAdminSuccess, getProductAdminFail
+    getProductAdminRequest, getProductAdminSuccess, getProductAdminFail,
+    getProductRequest, getProductSuccess, getProductFail
 } = productSlice.actions
 
 

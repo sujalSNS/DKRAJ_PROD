@@ -41,18 +41,10 @@ export const Home = () => {
   return (
     <div className='min-h-screen md:pt-28 pt-14'>
 
-      {/* <div className='py-4 md:flex hidden justify-center items-center gap-9'>
-        {
+     
 
-          categoriesList.map((e, i) => (
-            <Link to={`/shop/${e.name}`} className='font-medium text-sm animated-underline' key={e.name}>{e.label}</Link>
-          ))
-
-        }
-      </div> */}
-
-
-      <div className=' py-4 md:hidden flex'>
+      {/* <div className=' py-4 md:hidden flex'> */}
+      <div className=' py-4 xl:hidden flex'>
         <CategoriesNavigationList />
       </div>
 
@@ -130,12 +122,7 @@ export const Home = () => {
         <Testimonials />
 
       </div>
-      {/* <div className='my-6 '>
-
-        <CardSlider />
-
-      </div> */}
-
+   
 
 
       <div className=''>

@@ -1,12 +1,15 @@
 import React from "react";
 import { HiBars3BottomLeft } from "react-icons/hi2";
 import { MdTrendingUp, MdShoppingCart, MdAttachMoney, MdStar } from "react-icons/md";
+import { HiUsers } from "react-icons/hi2";
+
 
 const keyStats = [
   { title: "Total Sales", value: "$12,345", icon: <MdAttachMoney size={30} className="text-green-500" /> },
   { title: "Orders", value: "1,234", icon: <MdShoppingCart size={30} className="text-blue-500" /> },
   { title: "Products", value: "567", icon: <MdStar size={30} className="text-yellow-500" /> },
   { title: "Growth", value: "12%", icon: <MdTrendingUp size={30} className="text-red-500" /> },
+  { title: "Users", value: "23", icon: <HiUsers  size={30} className="text-purple-500" /> },
 ];
 
 const recentOrders = [
@@ -29,7 +32,7 @@ export const Dashboard = ({ toggleDrawer }) => {
         <div className="px-12 pt-5 mt-5">
           <h1 className="text-3xl font-bold text-gray-800">Welcome to the Dashboard</h1>
         </div>
-        <div className="px-12 pt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="px-12 pt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {keyStats.map((stat) => (
             <div key={stat.title} className="bg-white p-6 rounded-lg shadow-md flex items-center">
               <div className="p-4 bg-gray-100 rounded-full">

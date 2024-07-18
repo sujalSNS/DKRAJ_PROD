@@ -4,7 +4,8 @@ import {
     getProductsAdminRequest, getProductsAdminSuccess, getProductsAdminFail,
     updateProductAdminRequest, updateProductAdminSuccess, updateProductAdminFail,
     deleteProductAdminRequest, deleteProductAdminSuccess, deleteProductAdminFail,
-    getProductAdminRequest, getProductAdminSuccess, getProductAdminFail
+    getProductAdminRequest, getProductAdminSuccess, getProductAdminFail,
+    getProductRequest, getProductSuccess, getProductFail
 } from '../slices/productSlice'
 import { toast } from 'react-hot-toast'
 
@@ -131,6 +132,7 @@ export const getProductAdmin = (productID) => async (dispatch) => {
     }
 }
 
+
 // Admin Route
 export const updateProductAdmin = (product, productID) => async (dispatch) => {
     try {
@@ -153,5 +155,25 @@ export const updateProductAdmin = (product, productID) => async (dispatch) => {
         dispatch(updateProductAdminFail(err.response.data.message));
         console.log(err.response.data.message)
         toast.error(err.response.data.message);
+    }
+}
+
+
+
+
+// Normal User Route
+export const getProduct = (productID) => async (dispatch) => {
+    try {
+
+        dispatch(getProductRequest())
+
+        const { data } = await axios.get(`${API_KEY}/api/product/${productID}`);
+
+        dispatch(getProductSuccess(data.product))
+
+    } catch (err) {
+        dispatch(getProductFail(err.response.data.message));
+        console.log(err.response.data.message)
+      
     }
 }

@@ -128,7 +128,6 @@ export const AddProduct = ({ toggleDrawer }) => {
             return
         }
 
-
         const product = { ...productData }
         product.img1 = productData.imgs[0]
         product.img2 = productData.imgs[1] ?? ""
@@ -136,12 +135,7 @@ export const AddProduct = ({ toggleDrawer }) => {
 
         delete product.imgs;
 
-
         dispatch(addProduct(product, setProductData, formRef))
-
-
-
-
     };
 
     return (
@@ -154,7 +148,7 @@ export const AddProduct = ({ toggleDrawer }) => {
 
                     <div className="px-4 md:px-12 pt-5 pb-12 flex flex-col items-center">
                         <div className="md:w-2/4">
-                            <h2 className="text-2xl font-bold mb-4 text-center">Add Product</h2>
+                            <h2 className="text-3xl font-bold mb-4 text-center">Add Product</h2>
                             <form ref={formRef} onSubmit={handleSubmit} className="max-w-lg mx-auto">
                                 <div className="mb-4">
                                     <label htmlFor="title" className="text-lg font-medium text-gray-700">Title:</label>
@@ -255,7 +249,7 @@ export const AddProduct = ({ toggleDrawer }) => {
                         </div>
                     </div>
 
-                </> : <NotAdmin/> : <UnAuthorized />}
+                </> : <NotAdmin /> : <UnAuthorized />}
             </div>
         </>
     );

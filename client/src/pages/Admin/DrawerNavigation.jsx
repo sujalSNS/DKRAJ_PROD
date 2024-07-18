@@ -26,8 +26,8 @@ export const DrawerNavigation = ({ drawerOpen, toggleDrawer }) => {
                     className="pt-28 w-64 text-black "
                 >
                     <div>
-                        <button className='pl-2 mt-4  flex justify-start  '>
-                            <RxCross2 size={25} />
+                        <button className='pl-4 pt-3 mt-4  flex justify-start  '>
+                            <RxCross2 size={20} />
                         </button>
                         <div className='flex justify-center'>
                             <img src="/assets/images/dkrajLogoVariant1Black.png" alt="dkrajLogo" className='w-36' />

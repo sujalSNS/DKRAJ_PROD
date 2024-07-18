@@ -107,7 +107,7 @@ function App() {
 
 
       <WelcomeModal />
-      <DiscountModal />
+      {/* <DiscountModal /> */}
       <CookieConsentModal />
 
       <Toaster

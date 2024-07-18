@@ -1,11 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { ProductCarousal } from './ProductCarousal';
 import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
+import { getProduct } from '../../actions/productActions';
+import { Loader } from '../../components/Global/Loader'
+import { useParams } from 'react-router';
 
 
 export const Product = () => {
-    const product = {
+
+    const { loading, product } = useSelector(state => state.product)
+
+    const [productData, setProductData] = useState({})
+
+    const dispatch = useDispatch()
+
+    const { productID } = useParams()
+
+    useEffect(() => {
+        dispatch(getProduct(productID))
+    }, [dispatch])
+
+    useEffect(() => {
+        if (product) {
+            console.log("product", product)
+        }
+    }, [product])
+
+    const productTest = {
         productID: "411018RINGAA001EA001",
         title: "Elegant Diamond Ring",
         desc: "Elegant diamond ring set in 18 karat white gold. Perfect for engagements and special occasions. hese diamond-adorned stud earrings crafted in 18 karat white and rose gold",
@@ -28,7 +51,7 @@ export const Product = () => {
     const [qty, setQty] = useState(1);
 
     const addToCart = () => {
-        console.log("Added to cart:", product.title);
+        console.log("Added to cart:", productTest.title);
     };
 
     const formatPrice = (number) => {
@@ -54,46 +77,49 @@ export const Product = () => {
     return (
         <div className="min-h-screen md:pt-32 pt-20">
 
-            <div>
+            {loading ? (
+                <div className="flex items-center justify-center mt-36 ">
+                    <Loader />
+                </div>) : <div>
                 <div className='grid md:grid-cols-2  grid-cols-1 md:gap-10 gap-3 mb-20'>
                     <div className='md:p-14 md:pt-8 md:px-20 pt-8 px-5 flex justify-center '>
                         {/* <img src={product.img} className='object-cover h-5/6 ' alt="" /> */}
-                        <ProductCarousal />
+                        <ProductCarousal img1={product.img1} img2={product.img2} img3={product.img3} />
                     </div>
                     <div className='md:pl-3 md:px-0 px-6 md:pt-8'>
                         <div className='flex justify-between'>
-                            <p> {product.productID} </p>
+                            <p> {productTest.productID} </p>
                             {inWishList ? <button className='md:mr-20'>
                                 <FaHeart size={20} />
                             </button> : <button className='md:mr-20'>
                                 <FaRegHeart size={20} />
                             </button>
-                            
-                        }
+
+                            }
                         </div>
                         <p className='font-semibold md:text-4xl text-3xl mt-1'> {product.title} </p>
                         <div className='border-b border-black my-5 md:mr-20 mr-5'></div>
                         <p> {product.desc} </p>
                         <div className='mt-2'>
                             <span className='text-sm font-medium'>Category: </span>
-                            {product.category.map((e, index) => (
-                                <span className='text-sm font-medium' key={index}>
-                                    {e}{index !== product.category.length - 1 && ', '}
-                                </span>
-                            ))}
+
+                            <span className='text-sm font-medium' >
+                                {product.category}
+                            </span>
+
                         </div>
                         <div className='flex items-center gap-2 mt-3 mb-2'>
                             <p className='font-semibold text-xl'>Price:</p>
-                            <p className='font-semibold text-2xl'>₹ {formatPrice(product.price)}</p>
+                            <p className='font-semibold text-2xl'>₹ {formatPrice(productTest.price)}</p>
                         </div>
                         <div className='mb-3'>
                             <p>Price Inclusive of all taxes.</p>
                         </div>
                         <div>
                             <span className='text-xl font-medium'>Gender: </span>
-                            {product.gender.map((e, index) => (
+                            {productTest.gender.map((e, index) => (
                                 <span className='text-xl font-medium' key={index}>
-                                    {e}{index !== product.gender.length - 1 && ', '}
+                                    {e}{index !== productTest.gender.length - 1 && ', '}
                                 </span>
                             ))}
                         </div>
@@ -118,10 +144,10 @@ export const Product = () => {
                             <div className=' md:w-1/5 w-2/6'>
                                 <label htmlFor="size" className='font-medium text-lg'>Size:</label>
                                 <select id="size" className="bg-gray-50 w-full border border-gray-700 text-gray-900  rounded-lg text-lg outline-none  pr-3 block p-2.5 ">
-                                    <option className='text-lg' selected>{product.size[0]}</option>
+                                    <option className='text-lg' selected>{productTest.size[0]}</option>
                                     {
-                                        product.size.slice(1).map((e) => ((
-                                            <option className='text-lg py-3 ' value="US">{e}</option>
+                                        productTest.size.slice(1).map((e) => ((
+                                            <option key={e} className='text-lg py-3 ' value="US">{e}</option>
                                         )))
                                     }
 
@@ -130,10 +156,10 @@ export const Product = () => {
                             <div className=' md:w-1/5 w-2/6'>
                                 <label htmlFor="weight" className='font-medium text-lg'>Weight:</label>
                                 <select id="weight" className="bg-gray-50 w-full border border-gray-700 text-gray-900  rounded-lg text-lg outline-none  pr-3 block p-2.5 ">
-                                    <option className='text-lg' selected>{product.grams[0]}</option>
+                                    <option className='text-lg' selected>{productTest.grams[0]}</option>
                                     {
-                                        product.grams.slice(1).map((e) => ((
-                                            <option className='text-lg py-3 ' value="US">{e}</option>
+                                        productTest.grams.slice(1).map((e) => ((
+                                            <option key={e} className='text-lg py-3 ' value="US">{e}</option>
                                         )))
                                     }
 
@@ -142,10 +168,10 @@ export const Product = () => {
                             <div className=' md:w-1/5 w-2/6'>
                                 <label htmlFor="weight" className='font-medium text-lg'>Purity:</label>
                                 <select id="weight" className="bg-gray-50 w-full border border-gray-700 text-gray-900  rounded-lg text-lg outline-none  pr-3 block p-2.5 ">
-                                    <option className='text-lg' selected>{product.purity[0]}</option>
+                                    <option className='text-lg' selected>{productTest.purity[0]}</option>
                                     {
-                                        product.purity.slice(1).map((e) => ((
-                                            <option className='text-lg py-3 ' value="US">{e}</option>
+                                        productTest.purity.slice(1).map((e) => ((
+                                            <option key={e} className='text-lg py-3 ' value="US">{e}</option>
                                         )))
                                     }
 
@@ -161,7 +187,7 @@ export const Product = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
 
         </div>
     );

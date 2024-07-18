@@ -35,6 +35,7 @@ const PrevArrow = ({ onClick }) => {
     return (
         <div
             className="slick-prev cursor-pointer  absolute top-1/2 transform -translate-y-1/2 left-4 z-10"
+            
             onClick={onClick}
         >
             

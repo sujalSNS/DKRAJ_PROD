@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaInstagram } from 'react-icons/fa';
 import FastMarquee from "react-fast-marquee";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const testimonials = [
@@ -28,20 +28,23 @@ const testimonials = [
 ];
 
 export const Testimonials = () => {
+
+  const navigate = useNavigate()
+
   return (
     <div className="w-full flex justify-center flex-col items-center py-10 ">
       <div className="md:mb-4  text-center">
-        <Link to="/shop" className="md:text-3xl text-xl font-semibold text-gray-800">Testimonials</Link>
+        <div  className="md:text-3xl text-xl font-semibold text-gray-800">Testimonials</div>
         <p className="mt-2 md:text-base text-sm text-gray-600 md:px-0 px-12">
           Hear what our customers have to say about our exquisite jewelry.
         </p>
       </div>
 
 
-      <FastMarquee speed={50} loop={0} autoFill continuous className='flex  items-center justify-center'>
+      <FastMarquee speed={50} loop={0} autoFill pauseOnHover continuous className='flex  items-center justify-center'>
 
         {testimonials.map((testimonial, index) => (
-          <div key={index} className=" md:w-[28em] w-[20em]  md:mx-8 mx-3 my-12 md:px-12 px-4 py-10 bg-white-100  rounded-lg shadow-lg shadow-gray-300 ">
+          <div key={index}  className="cursor-pointer md:w-[28em] w-[20em]  md:mx-8 mx-3 my-12 md:px-12 px-4 py-10 bg-white-100  rounded-lg shadow-lg shadow-gray-300 ">
             <div className="  text-center">
               <div className="flex justify-center items-center mb-4">
                 <FaInstagram size={25} className="text-gray-800 text-2xl" />

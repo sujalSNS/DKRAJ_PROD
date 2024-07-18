@@ -15,7 +15,6 @@ import { setShowLoginModalTrue, setShowLoginModalFalse } from "../../slices/user
 export const Navbar = () => {
   // State variables
   const [drawerOpen, setDrawerOpen] = useState(false); // Drawer open state
-  const [searchValue, setSearchValue] = useState(''); // Search input value
   const [anchorEl, setAnchorEl] = useState(null); // Menu anchor element for user menu
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false); // Logout confirmation dialog state
 
@@ -77,14 +76,15 @@ export const Navbar = () => {
   return (
     <>
       {/* Navbar section */}
-      <nav className='fixed z-10 w-full bg-white border-b border-gray-300'>
+      <nav className='fixed z-20 w-full bg-white border-b border-gray-300'>
         {/* Promotion label */}
         <PromotionLabel text={"GET RS.1000 CASHBACK ON PURCHASE OF RS.6000 | GET RS.2000 CASHBACK ON PURCHASE OF RS.10000"} />
 
         {/* Navbar content */}
         <div className='flex justify-between items-center pl-3 md:gap-0 md:px-16 md:pt-0 pt-3 md:pb-1 pb-1'>
           {/* Mobile menu icon */}
-          <div className='md:hidden flex'>
+          {/* <div className='md:hidden flex'> */}
+          <div className='xl:hidden flex'>
             <IconButton onClick={toggleDrawer(true)}>
               <HiMiniBars3 size={29} />
             </IconButton>
@@ -97,10 +97,11 @@ export const Navbar = () => {
             </Link>
 
             {/* Desktop navigation links */}
-            <div className='md:flex items-center gap-12 ml-20 pt-3 justify-center hidden'>
-              <Link to="/" className='text-xs 2xl:text-lg animated-underline'>SHOP BY</Link>
+            {/* <div className='md:flex items-center gap-12 ml-20 pt-3 justify-center hidden'> */}
+            <div className='xl:flex items-center gap-12 ml-20 pt-3 justify-center hidden'>
+              <Link to="/" className='text-xs 2xl:text-lg animated-underline'>SHOP&nbsp;BY</Link>
               <Link to="/shop" className='text-xs 2xl:text-lg animated-underline'>NEW</Link>
-              <Link to="/shop" className='text-xs 2xl:text-lg animated-underline'>BEST SELLERS</Link>
+              <Link to="/shop" className='text-xs 2xl:text-lg animated-underline'>BEST&nbsp;SELLERS</Link>
               <Link to="/about" className='text-xs 2xl:text-lg animated-underline'>EARRINGS</Link>
               <Link to="/about" className='text-xs 2xl:text-lg animated-underline'>RINGS</Link>
               <Link to="/about" className='text-xs 2xl:text-lg animated-underline'>NECKLACES</Link>
@@ -110,7 +111,8 @@ export const Navbar = () => {
           </div>
 
           {/* User menu and icons */}
-          <div className='md:flex hidden justify-center items-center gap-6 mr-4'>
+          {/* <div className='md:flex hidden justify-center items-center gap-6 mr-4'> */}
+          <div className='xl:flex hidden justify-center items-center gap-6 mr-4'>
             <button onClick={handleMenuOpen} className='animated-underline'>
               <HiUser size={23} className="text-gray-500" />
             </button>
@@ -150,7 +152,8 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile user menu and icons */}
-          <div className='md:hidden flex justify-center items-center gap-5 mr-4'>
+          {/* <div className='md:hidden flex justify-center items-center gap-5 mr-4'> */}
+          <div className='xl:hidden flex justify-center items-center gap-5 mr-4'>
             <button onClick={handleMenuOpen} className='animated-underline'>
               <HiUser size={25} className="text-gray-500" />
             </button>
@@ -194,3 +197,5 @@ export const Navbar = () => {
     </>
   );
 };
+
+

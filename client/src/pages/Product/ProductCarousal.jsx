@@ -7,7 +7,7 @@ const images = [
     '/assets/images/goldRing.jpg',
 ];
 
-export const ProductCarousal = () => {
+export const ProductCarousal = (imgs) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToPrevious = () => {

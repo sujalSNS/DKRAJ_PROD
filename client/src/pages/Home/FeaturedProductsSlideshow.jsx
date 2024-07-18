@@ -61,7 +61,7 @@ export const FeaturedProductsSlideshow = () => {
                 </div>
                 <Slider {...settings}>
                     {images.map((img, idx) => (
-                        <div className={`${idx === imageIndex ? "slide activeSlide" : "slide"}  `}>
+                        <div key={idx} className={`${idx === imageIndex ? "slide activeSlide" : "slide"}  `}>
                             <div className="shadow-md shadow-gray-100">
 
                             <img src={img} alt={img} className={` ${idx === imageIndex ? "" : ""} `} />

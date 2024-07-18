@@ -3,7 +3,7 @@ const validator = require('validator');
 const xss = require('xss');
 
 
-// Create Product 
+// Create Product | Admin route
 exports.createProductAdmin = async (req, res, next) => {
   try {
     const {
@@ -106,10 +106,7 @@ exports.createProductAdmin = async (req, res, next) => {
   }
 };
 
-
-
-
-// Fetch Products 
+// Fetch Products | Admin route
 exports.getProductsAdmin = async (req, res, next) => {
 
   try {
@@ -133,7 +130,7 @@ exports.getProductsAdmin = async (req, res, next) => {
   }
 };
 
-// Delete Product 
+// Delete Product | Admin route
 exports.deleteProductAdmin = async (req, res, next) => {
 
   try {
@@ -167,7 +164,7 @@ exports.deleteProductAdmin = async (req, res, next) => {
   }
 };
 
-// Get Product 
+// Get Product | Admin route
 exports.getProductAdmin = async (req, res, next) => {
 
   try {
@@ -199,7 +196,7 @@ exports.getProductAdmin = async (req, res, next) => {
   }
 };
 
-// Update Product 
+// Update Product | Admin route
 exports.updateProductAdmin = async (req, res, next) => {
   try {
     const { productID } = req.params;
@@ -315,3 +312,59 @@ exports.updateProductAdmin = async (req, res, next) => {
     return next(err);
   }
 };
+
+
+// Normal user routes
+
+// Get Product
+exports.getProduct = async (req, res, next) => {
+
+  try {
+    const { productID } = req.params
+
+    if (!productID) {
+      return res.status(404).json({
+        success: false,
+        message: 'Invalid Product ID!'
+      });
+    }
+
+    const product = await Product.findByPk(productID)
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found!'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Product fetched Successfully!",
+      product
+    });
+  } catch (err) {
+    return next(err);
+  }
+};
+
+
+// Get All Product (does not includes filter just for testing)
+exports.getAllProducts = async (req, res, next) => {
+
+  try {
+   
+    const products = await Product.findAll()
+
+    
+
+    res.status(200).json({
+      success: true,
+      message: "Products fetched Successfully!",
+      products
+    });
+  } catch (err) {
+    return next(err);
+  }
+};
+
