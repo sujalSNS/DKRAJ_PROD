@@ -76,7 +76,7 @@ export const Navbar = () => {
   return (
     <>
       {/* Navbar section */}
-      <nav className='fixed z-20 w-full bg-white border-b border-gray-300'>
+      <nav className='fixed z-50 w-full bg-white border-b border-gray-300'>
         {/* Promotion label */}
         <PromotionLabel text={"GET RS.1000 CASHBACK ON PURCHASE OF RS.6000 | GET RS.2000 CASHBACK ON PURCHASE OF RS.10000"} />
 
