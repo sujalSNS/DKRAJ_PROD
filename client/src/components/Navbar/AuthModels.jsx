@@ -33,7 +33,7 @@ const loginForm = ({ setToggleAuth, dispatch, authLoading, userLoginData, setUse
     const handleChangeToRegister = (e) => {
         e.preventDefault();
         setUserLoginData({
-            email: "",
+            emailOrUsername: "",
             password: ""
         });
         setToggleAuth("register");
@@ -55,17 +55,17 @@ const loginForm = ({ setToggleAuth, dispatch, authLoading, userLoginData, setUse
                 </div>
                 <div className='mt-2'>
                     <input
-                        type="email"
+                        type="text"
                         required
                         name="loginEmail"
-                        value={userLoginData.email || ""}
+                        value={userLoginData.emailOrUsername || ""}
                         onChange={(e) => {
                             setUserLoginData({
                                 ...userLoginData,
-                                email: e.target.value
+                                emailOrUsername: e.target.value
                             });
                         }}
-                        placeholder='Email'
+                        placeholder='Email or Username'
                         className='border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black'
                     />
                 </div>
@@ -270,7 +270,7 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
     const [toggleAuth, setToggleAuth] = useState("login");
 
     const [userLoginData, setUserLoginData] = useState({
-        email: "",
+        emailOrUsername: "",
         password: ""
     });
 

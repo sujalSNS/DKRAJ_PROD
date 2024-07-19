@@ -1,78 +1,97 @@
-import { useState } from "react";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import Slider from "react-slick";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import React from 'react';
 
-import bangle from "/assets/images/bangle.jpg";
-import braclet from "/assets/images/braclet.jpg";
-import earring from "/assets/images/earring.jpg";
+// export const FeaturedProductsSlideshow = () => {
+  //  const images = [
+  //      "/assets/images/braclet.jpg",
+  //      "/assets/images/bangle.jpg",
+  //      "/assets/images/earring.jpg"
+  //  ];
 
+  
 
-
-const images = [bangle, braclet, earring,bangle, braclet, earring];
-
-export const FeaturedProductsSlideshow = () => {
-
-    const NextArrow = ({ onClick }) => {
-        return (
-            <div className="arrow next" onClick={onClick}>
-                <FaChevronRight size={27}/>
-            </div>
-        );
-    };
-
-    const PrevArrow = ({ onClick }) => {
-        return (
-            <div className="arrow prev" onClick={onClick}>
-                <FaChevronLeft size={27}/>
-            </div>
-        );
-    };
-
-
-    const [imageIndex, setImageIndex] = useState(0);
-
-    const settings = {
-        infinite: true,
-        lazyLoad: true,
-        speed: 300,
-        slidesToShow: 3,
-        centerMode: true,
-        centerPadding: 0,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
-        beforeChange: (current, next) => setImageIndex(next),
-    };
+//     return (
+//         <>
+//         </>
+//     );
+// };
 
 
 
-    return (
-        <>
 
-            <div className="py-12 md:px-20 px-8 md:flex hidden flex-col">
 
-                <div>
-                <p className='text-center font-semibold md:text-3xl text-xl mb-2'>Featured Products</p>
-                <p className="text-center md:text-base text-sm text-gray-600 ">
-                    Handpicked Selection of Our Most Featured Pieces
-                </p>
-                </div>
-                <Slider {...settings}>
-                    {images.map((img, idx) => (
-                        <div key={idx} className={`${idx === imageIndex ? "slide activeSlide" : "slide"}  `}>
-                            <div className="shadow-md shadow-gray-100">
+import './featured3dComponents/mainFile.css'
+import { v4 as uuidv4 } from "uuid";
+import Card from "./featured3dComponents/Card";
+import Carousel from "./featured3dComponents/Carousel";
 
-                            <img src={img} alt={img} className={` ${idx === imageIndex ? "" : ""} `} />
-                            <p className="-translate-y-16 px-6 py-4 md:text-3xl bg-opacity-35 absolute w-full bg-black text-white font-medium">Bangle</p>
-                            </div>
-                        </div>
-                    ))}
-                </Slider>
-            </div>
+export const FeaturedProductsSlideshow = ()=> {
 
-        </>
-    );
-};
+  const images = [
+    "/assets/images/braclet.jpg",
+    "/assets/images/bangle.jpg",
+    "/assets/images/earring.jpg"
+];
+
+
+let cards = [
+  {
+    key: uuidv4(),
+    content: (
+      <Card imagen="/assets/images/braclet.jpg"/>
+    )
+  },
+  {
+    key: uuidv4(),
+    content: (
+      <Card imagen="/assets/images/bangle.jpg" />
+    )
+  },
+  {
+    key: uuidv4(),
+    content: (
+      <Card imagen="/assets/images/earring.jpg" />
+    )
+  },
+  {
+    key: uuidv4(),
+    content: (
+      <Card imagen="/assets/images/braclet.jpg"/>
+    )
+  },
+  {
+    key: uuidv4(),
+    content: (
+      <Card imagen="/assets/images/bangle.jpg" />
+    )
+  },
+  {
+    key: uuidv4(),
+    content: (
+      <Card imagen="/assets/images/earring.jpg" />
+    )
+  }
+];
+ 
+
+  return (
+    <div className="flex justify-center md:px-0 px-8 bg-black ">
+      <Carousel
+        cards={cards}
+        height="600px"
+        width="70%"
+        margin="0 50"
+        offset={7}
+        showArrows={false}
+      />
+
+      <div>
+
+      </div>
+    </div>
+  );
+}
+
+
+
+
 

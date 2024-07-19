@@ -92,10 +92,10 @@ exports.register = async (req, res, next) => {
 // Login User 
 exports.login = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { emailOrUsername, password } = req.body;
 
     // Validate request data
-    if (!email || !password) {
+    if (!emailOrUsername || !password) {
       return res.status(400).json({
         success: false,
         message: 'Invalid data',
@@ -111,7 +111,14 @@ exports.login = async (req, res, next) => {
     }
 
     // Check if username already exists
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({
+      where: {
+        [Op.or]: [
+          { email: emailOrUsername },
+          { username: emailOrUsername },
+        ],
+      },
+    });
     if (!user) {
       return res.status(400).json({
         success: false,
