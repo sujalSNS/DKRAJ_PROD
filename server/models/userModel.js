@@ -61,6 +61,14 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'UserId', 
             onDelete: 'CASCADE',
         });
+        User.hasMany(models.Card, {
+            foreignKey: 'UserId', 
+            onDelete: 'CASCADE',
+        });
+        User.hasMany(models.Address, {
+            foreignKey: 'UserId', 
+            onDelete: 'CASCADE',
+        });
     };
 
     return User;

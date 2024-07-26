@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define("Product", {
         productID: {
@@ -33,7 +32,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT('long'), 
             allowNull: true
         },
-        price: {
+        totalPrice: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+                isFloat: true
+            }
+        },
+        sellingPrice: {
             type: DataTypes.FLOAT,
             allowNull: false,
             validate: {
@@ -97,28 +104,28 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         // purity: {
-        //     type: DataTypes.JSON,
+        //     type: DataTypes.ARRAY(DataTypes.STRING),
         //     allowNull: false,
         //     validate: {
         //         notEmpty: true
         //     }
         // },
         // size: {
-        //     type: DataTypes.JSON,
+        //     type: DataTypes.ARRAY(DataTypes.STRING),
         //     allowNull: false,
         //     validate: {
         //         notEmpty: true
         //     }
         // },
         // grams: {
-        //     type: DataTypes.JSON,
+        //     type: DataTypes.ARRAY(DataTypes.FLOAT),
         //     allowNull: false,
         //     validate: {
-        //         notEmpty: true
+        //         notEmpty: true,
+        //         isFloat: true
         //     }
-        // }
+        // },
     });
-
 
     Product.associate = function (models) {
         Product.belongsTo(models.User, {
@@ -126,5 +133,6 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: 'CASCADE',
         });
     };
+
     return Product;
 };
