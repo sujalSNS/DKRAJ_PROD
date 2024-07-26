@@ -365,10 +365,10 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
 
                         </div>
                         <div className='bg-gray-950 border-t py-2 border-white md:w-[35vw] w-[88vw]'>
-                            <Marquee autoFill speed={30} >
+                            <Marquee pauseOnHover autoFill speed={30} >
                                 {
                                     textMarquee.map((e) => (
-                                        <span key={e.label} className='font-medium text-white text-xs mx-4 ' >{e.label}</span>
+                                        <span key={e.label} className='font-medium cursor-pointer text-white text-xs mx-4 ' >{e.label}</span>
                                     ))
                                 }
                             </Marquee>

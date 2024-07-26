@@ -57,15 +57,17 @@ export const Home = () => {
       </div>
 
 
-      <div className='my-6'>
+      <div className='mb-4 mt-6'>
         <CategoriesList />
       </div>
 
-      <div className='my-6'>
-        <BestOfBest />
+      <div className='my-2 '>
+
+        <PopularProducts />
+
       </div>
 
-      <div className='my-6'>
+      <div className='mb-6 mt-4'>
         <Trending />
       </div>
 
@@ -81,11 +83,11 @@ export const Home = () => {
         <ShopByGender />
       </div>
 
-      <div className='my-6'>
+      <div className='mt-6'>
         <FeaturedProductsSlideshow />
       </div>
 
-      <div className='my-6 bg-gray-100  md:px-16 px-8 py-8 border-t border-b border-black'>
+      <div className=' bg-gray-100  md:px-16 px-8 py-12 border-t border-b border-black'>
 
         <div className='grid md:grid-cols-2 grid-cols-1 md:gap-1 gap-6 md:px-16'>
           <div className='flex justify-center'>
@@ -105,13 +107,9 @@ export const Home = () => {
 
       </div>
 
-      <div className='my-6 '>
+     
 
-        <PopularProducts />
-
-      </div>
-
-      <div className='my-6 '>
+      <div className='mb-6 '>
 
         <CredibilityBoxes />
 

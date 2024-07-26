@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useSearchParams } from 'react-router-dom'
 import { Home } from './pages/Home/Home';
 import { useDispatch, useSelector } from 'react-redux'
 import { Navbar } from './components/Navbar/Navbar';
@@ -39,6 +39,10 @@ function App() {
 
   const { isLogin, user } = useSelector(state => state.user);
 
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  console.log("searchParams", searchParams.get('lang') || 'eng')
 
   const dispatch = useDispatch()
 
@@ -84,7 +88,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/success" element={<Success />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/profile/edit" element={<EditProfile/>} />
+        <Route path="/profile/edit" element={<EditProfile />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/orders" element={<UserOrders />} />
         <Route path="/order/:orderID" element={<UserOrder />} />

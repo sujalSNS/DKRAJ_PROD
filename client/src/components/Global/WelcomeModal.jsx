@@ -78,9 +78,12 @@ export const WelcomeModal = () => {
                             <AiOutlineClose size={20} />
                         </button>
                     </div>
-                    <div className="mb-4 2xl:mt-12 xl:mt-3 mt-6">
-                        <p className="md:text-xl text-sm text-gray-600">
-                            You are visiting us from {country}. Would you like to:
+                    <div className="mb-3 2xl:mt-10 xl:mt-3 mt-4">
+                        <p className="md:text-2xl text-xl text-gray-600">
+                            You are visiting us from {country}. 
+                        </p>
+                        <p className="md:text-2xl text-xl text-gray-600">
+                        Would you like to: 
                         </p>
                     </div>
                     <div className="flex flex-col md:space-y-4 space-y-2 2xl:mt-12 xl:mt-3 mt-6">
