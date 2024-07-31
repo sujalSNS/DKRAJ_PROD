@@ -45,9 +45,9 @@ const loginForm = ({ setToggleAuth, dispatch, authLoading, userLoginData, setUse
                 <button onClick={handleContinueWithGoogle} type='button' className='flex hover:bg-gray-100 items-center justify-center  w-full mt-0 text-sm   border border-black px-3 py-2'>
                     <FaGoogle className='mr-2' /> CONTINUE WITH GOOGLE
                 </button>
-                <button onClick={handleContinueWithFacebook} type='button' className='flex items-center justify-center hover:bg-blue-700 bg-blue-600 w-full mt-2 text-sm border border-blue-600 text-white  px-3 py-2'>
+                {/* <button onClick={handleContinueWithFacebook} type='button' className='flex items-center justify-center hover:bg-blue-700 bg-blue-600 w-full mt-2 text-sm border border-blue-600 text-white  px-3 py-2'>
                     <FaFacebook className='mr-2' /> CONTINUE WITH FACEBOOK
-                </button>
+                </button> */}
                 <div className='flex items-center '>
                     <div className='flex-grow border-t border-gray-400'></div>
                     <span className='mx-4 text-gray-400'>OR</span>
@@ -137,9 +137,9 @@ const registerForm = ({ setToggleAuth, dispatch, authLoading, userRegisterData, 
                 <button onClick={handleContinueWithGoogle} type='button' className='flex hover:bg-gray-100 items-center justify-center  w-full mt-0 text-sm   border border-black px-3 py-2'>
                     <FaGoogle className='mr-2' /> CONTINUE WITH GOOGLE
                 </button>
-                <button onClick={handleContinueWithFacebook} type='button' className='flex items-center justify-center hover:bg-blue-700 bg-blue-600 w-full mt-2 text-sm border border-blue-600 text-white  px-3 py-2'>
+                {/* <button onClick={handleContinueWithFacebook} type='button' className='flex items-center justify-center hover:bg-blue-700 bg-blue-600 w-full mt-2 text-sm border border-blue-600 text-white  px-3 py-2'>
                     <FaFacebook className='mr-2' /> CONTINUE WITH FACEBOOK
-                </button>
+                </button> */}
                 <div className='flex items-center '>
                     <div className='flex-grow border-t border-gray-400'></div>
                     <span className='mx-4 text-gray-400'>OR</span>
@@ -346,11 +346,11 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
                         boxShadow: 24,
                         height: '83vh',
                         overflowY: 'auto',
-                        '::-webkit-scrollbar': {
-                            display: 'none'
-                        },
-                        '-ms-overflow-style': 'none',
-                        'scrollbar-width': 'none'
+                        // '::-webkit-scrollbar': {
+                        //     display: 'none'
+                        // },
+                        // '-ms-overflow-style': 'none',
+                        // 'scrollbar-width': 'none'
                     }}
                 >
 
@@ -363,7 +363,7 @@ export const AuthModel = ({ showLoginModal, handleCloseAuthModal }) => {
                                 Become a member and get multiple benefits.
                             </p>
 
-                        </div>
+                        </div> 
                         <div className='bg-gray-950 border-t py-2 border-white md:w-[35vw] w-[88vw]'>
                             <Marquee pauseOnHover autoFill speed={30} >
                                 {

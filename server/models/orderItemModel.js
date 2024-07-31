@@ -19,22 +19,20 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         image: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT('long'), 
             allowNull: false
         }
     });
 
     OrderItem.associate = models => {
         OrderItem.belongsTo(models.Order, {
-            foreignKey: {
-                allowNull: false
-            },
+            foreignKey: 'OrderId', 
+            allowNull: false,
             onDelete: 'CASCADE'
         });
         OrderItem.belongsTo(models.Product, {
-            foreignKey: {
-                allowNull: false
-            },
+            foreignKey: 'ProductId', 
+            allowNull: false,
             onDelete: 'CASCADE'
         });
     };

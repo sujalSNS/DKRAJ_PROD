@@ -5,30 +5,16 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
             allowNull: false
-        },
-        userID: {
-            type: DataTypes.UUID,
-            allowNull: false
-        },
-        createdAt: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW
-        },
-        updatedAt: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW
         }
     });
 
     Wishlist.associate = function(models) {
         Wishlist.belongsTo(models.User, {
-            foreignKey: 'userID',
+            foreignKey: 'UserId',
             onDelete: 'CASCADE'
         });
         Wishlist.hasMany(models.WishlistItem, {
-            foreignKey: 'wishlistID',
+            foreignKey: 'WishlistId',
             onDelete: 'CASCADE'
         });
     };

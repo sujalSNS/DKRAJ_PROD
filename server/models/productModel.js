@@ -103,35 +103,40 @@ module.exports = (sequelize, DataTypes) => {
                 isFloat: true
             }
         },
-        // purity: {
-        //     type: DataTypes.ARRAY(DataTypes.STRING),
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true
-        //     }
-        // },
-        // size: {
-        //     type: DataTypes.ARRAY(DataTypes.STRING),
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true
-        //     }
-        // },
-        // grams: {
-        //     type: DataTypes.ARRAY(DataTypes.FLOAT),
-        //     allowNull: false,
-        //     validate: {
-        //         notEmpty: true,
-        //         isFloat: true
-        //     }
-        // },
+        countryTax: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+                isFloat: true
+            }
+        },
+        country: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
+        active: {
+            type: DataTypes.ENUM,
+            values: ['freeze', 'active'],
+            allowNull: false,
+            defaultValue: "active",
+            validate: {
+                notEmpty: true
+            }
+        },
     });
 
     Product.associate = function (models) {
         Product.belongsTo(models.User, {
-            foreignKey: 'UserId', // Specify the exact foreign key name
+            foreignKey: 'UserId',
             onDelete: 'CASCADE',
         });
+        Product.hasMany(models.Purity, { foreignKey: 'ProductId', onDelete: 'CASCADE' });
+        Product.hasMany(models.Grams, { foreignKey: 'ProductId', onDelete: 'CASCADE' });
+        Product.hasMany(models.Size, { foreignKey: 'ProductId', onDelete: 'CASCADE' });
     };
 
     return Product;

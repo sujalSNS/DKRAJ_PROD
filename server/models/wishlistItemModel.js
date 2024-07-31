@@ -6,14 +6,6 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             allowNull: false
         },
-        wishlistID: {
-            type: DataTypes.UUID,
-            allowNull: false
-        },
-        productID: {
-            type: DataTypes.UUID,
-            allowNull: false
-        },
         addedAt: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -23,11 +15,11 @@ module.exports = (sequelize, DataTypes) => {
 
     WishlistItem.associate = function(models) {
         WishlistItem.belongsTo(models.Wishlist, {
-            foreignKey: 'wishlistID',
+            foreignKey: 'WishlistId',
             onDelete: 'CASCADE'
         });
         WishlistItem.belongsTo(models.Product, {
-            foreignKey: 'productID',
+            foreignKey: 'ProductId',
             onDelete: 'CASCADE'
         });
     };
