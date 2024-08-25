@@ -9,7 +9,7 @@ const { createToken } = require('../middlewares/auth.js');
 // Register User 
 exports.register = async (req, res, next) => {
   try {
-    const { firstName, lastName, username, email, dob, password, confirmPassword } = req.body;
+    const { firstName, lastName, username, email, dob, password, confirmPassword, isAdmin } = req.body;
 
     // Validate request data
     if (!firstName || !lastName || !username || !email || !dob || !password) {
@@ -33,8 +33,6 @@ exports.register = async (req, res, next) => {
         message: 'Password must be at least 6 characters long!',
       });
     }
-
-
 
     // Check if username already exists
     const existingUsername = await User.findOne({ where: { username } });
@@ -65,6 +63,7 @@ exports.register = async (req, res, next) => {
       email,
       dob,
       password: hashedPassword,
+      isAdmin: isAdmin || false // Default to false if not provided
     });
 
     // Generate a token
@@ -81,6 +80,7 @@ exports.register = async (req, res, next) => {
         username: user.username,
         email: user.email,
         dob: user.dob,
+        isAdmin: user.isAdmin
       },
       token,
     });
@@ -88,6 +88,7 @@ exports.register = async (req, res, next) => {
     return next(err);
   }
 };
+
 
 // Login User 
 exports.login = async (req, res, next) => {
@@ -119,6 +120,8 @@ exports.login = async (req, res, next) => {
         ],
       },
     });
+
+    
     if (!user) {
       return res.status(400).json({
         success: false,
@@ -286,7 +289,6 @@ exports.updateUser = async (req, res, next) => {
 exports.getUsers = async (req, res, next) => {
   try {
 
-    // Check if username already exists
     const users = await User.findAll();
 
     res.status(200).json({

@@ -243,11 +243,11 @@ export const Wishlist = () => {
             <Link to="/shop" className='bg-black mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-12 py-2'>Continue Shopping</Link>
           </>
         ) : <Link to="/shop" className='bg-black mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-12 py-2'>Continue Shopping</Link>}
-        <div className='w-full md:px-12 px-4 pt-12 pb-20'>
+        {/* <div className='w-full md:px-12 px-4 pt-12 pb-20'>
           <p className='text-left text-3xl font-semibold'>Shop more</p>
           <div className='flex items-center gap-5'>
             {products.map((product) => (
-              <Link to={`/shop/product/${product.productID}`} className="md:w-[16em] w-[10em] rounded shadow-gray-300 overflow-hidden shadow-lg my-5">
+              <Link to={`/shop/product/${product.productID}`} key={product.id} className="md:w-[16em] w-[10em] rounded shadow-gray-300 overflow-hidden shadow-lg my-5">
                 <img className="w-full" src={product.img} alt={product.title} />
                 <div className="px-6 py-4">
                   <div className="font-bold text-base mb-2">{product.title}</div>
@@ -257,7 +257,7 @@ export const Wishlist = () => {
             ))}
 
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

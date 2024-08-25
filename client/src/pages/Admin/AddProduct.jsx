@@ -1,26 +1,22 @@
 import { HiBars3BottomLeft } from "react-icons/hi2";
-import axios from 'axios';
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { RxCross2 } from "react-icons/rx";
-import { addProduct } from "../../actions/productActions";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import { CgSpinnerTwoAlt } from "react-icons/cg";
-import { UnAuthorized } from '../../components/Global/UnAuthorized'
+import { addProduct } from "../../actions/productActions";
+import { UnAuthorized } from '../../components/Global/UnAuthorized';
 import { NotAdmin } from "../../components/Global/NotAdmin";
-
-
 
 const genders = [
     { label: "Men", value: "men" },
     { label: "Women", value: "women" },
     { label: "Kids", value: "kids" }
-]
-
+];
 
 const categories = [
     { label: "Rings", value: "rings" },
-    { label: "Rarrings", value: "earrings" },
+    { label: "Earrings", value: "earrings" },
     { label: "Bracelets", value: "bracelets" },
     { label: "Bangles", value: "bangles" },
     { label: "Mangalsutras", value: "mangalsutras" },
@@ -32,74 +28,85 @@ const categories = [
     { label: "Anklets", value: "anklets" },
     { label: "Toe Rings", value: "toeRings" },
     { label: "Home Decors", value: "homeDecors" },
-]
+];
 
 export const AddProduct = ({ toggleDrawer }) => {
+    const { loading } = useSelector(state => state.product);
+    const { isLogin, user } = useSelector(state => state.user);
 
-    const { loading } = useSelector(state => state.product)
-    const { isLogin, user } = useSelector(state => state.user)
-
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const formRef = useRef();
 
     const [productData, setProductData] = useState({
         title: '',
         desc: '',
         imgs: [],
-        price: '',
+        totalPrice: '',
+        sellingPrice: '',
         category: '',
         gender: '',
         stock: '',
-        availableState: true, // Assuming default value
-        madeToOrder: false, // Assuming default value
-        popular: false, // Assuming default value
+        availableState: true,
+        madeToOrder: false,
+        popular: false,
         labor: '',
-        packaging: ''
+        packaging: '',
+        countryTax: '',
+        country: '',
+        active: 'active',
+        size: [],
+        purity: [],
+        weight: [],
     });
 
     // Function to handle file input change
     const handleFileChange = (e) => {
         const files = Array.from(e.target.files);
+
         if (files.length < 1 || files.length > 3) {
-            // Handle error or provide feedback to the user
             toast.error('Please select between 1 to 3 images.');
             return;
         }
 
-
-        const promises = files.map((file) => {
+        const convertToBase64 = (file) => {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
-                reader.onloadend = () => {
-                    resolve(reader.result);
-                };
-                reader.onerror = reject;
                 reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = (error) => reject(error);
             });
-        });
+        };
 
-
-
-        Promise.all(promises).then((base64Array) => {
-            if ([...productData.imgs, ...base64Array].length > 3) {
-                // Handle error or provide feedback to the user
-                toast.error('Please select between 1 to 3 images.');
-                return;
-            }
-            setProductData(prevState => ({
-                ...prevState,
-                imgs: [...prevState.imgs, ...base64Array]
-            }));
-        }).catch((error) => {
-            console.error('Error reading files:', error);
-        });
+        Promise.all(files.map(convertToBase64))
+            .then((base64Array) => {
+                if ([...productData.imgs, ...base64Array].length > 3) {
+                    toast.error('Please select between 1 to 3 images.');
+                    return;
+                }
+                setProductData(prevState => ({
+                    ...prevState,
+                    imgs: [...prevState.imgs, ...base64Array]
+                }));
+            })
+            .catch((error) => {
+                console.error('Error converting files:', error);
+                toast.error('Error converting files to base64.');
+            });
     };
 
-
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
         setProductData(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: type === 'checkbox' ? checked : value
+        }));
+    };
+    const handleInputChange = (setter) => (e) => {
+        const { name, value } = e.target;
+        const values = value.split(',').map((val) => val.trim());
+        setter((prevState) => ({
+            ...prevState,
+            [name]: values,
         }));
     };
 
@@ -110,32 +117,29 @@ export const AddProduct = ({ toggleDrawer }) => {
         }));
     };
 
-    const formRef = useRef()
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!productData.category) {
-            toast.error("Please select category!")
-            return
+            toast.error("Please select category!");
+            return;
         }
         if (!productData.gender) {
-            toast.error("Please select gender!")
-            return
+            toast.error("Please select gender!");
+            return;
         }
-
         if (productData.imgs.length === 0) {
-            toast.error("Please select product image!")
-            return
+            toast.error("Please select product images!");
+            return;
         }
 
-        const product = { ...productData }
-        product.img1 = productData.imgs[0]
-        product.img2 = productData.imgs[1] ?? ""
-        product.img3 = productData.imgs[2] ?? ""
+        const product = { ...productData };
+        product.img1 = productData.imgs[0];
+        product.img2 = productData.imgs[1] ?? "";
+        product.img3 = productData.imgs[2] ?? "";
 
         delete product.imgs;
 
-        dispatch(addProduct(product, setProductData, formRef))
+        dispatch(addProduct(product, setProductData, formRef));
     };
 
     return (
@@ -167,9 +171,9 @@ export const AddProduct = ({ toggleDrawer }) => {
 
                                     <label htmlFor="img" className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1 cursor-pointer bg-white">
                                         <span className="bg-gray-100 px-3 py-1 text-">
-
                                             {productData.imgs.length > 0 ?
-                                                productData.imgs.length === 1 ? `${productData.imgs.length} Image Selected` : `${productData.imgs.length} Images Selected` : "Select images"}</span>
+                                                productData.imgs.length === 1 ? `${productData.imgs.length} Image Selected` : `${productData.imgs.length} Images Selected` : "Select images"}
+                                        </span>
                                     </label>
 
                                     <input type="file" id="img" accept="image/*" name="file" multiple onChange={handleFileChange}
@@ -181,7 +185,7 @@ export const AddProduct = ({ toggleDrawer }) => {
                                                 <img src={img} alt={`Uploaded ${index + 1}`} className="mt-2 h-20 w-20 object-contain" />
                                                 <button
                                                     type="button"
-                                                    className="absolute top-1 -right-1 bg-red-500 text-white rounded-full   p-1"
+                                                    className="absolute top-1 -right-1 bg-red-500 text-white rounded-full p-1"
                                                     onClick={() => removeImage(index)}
                                                 >
                                                     <RxCross2 size={14} />
@@ -191,31 +195,37 @@ export const AddProduct = ({ toggleDrawer }) => {
                                     </div>
                                 </div>
                                 <div className="mb-4">
-                                    <label htmlFor="price" className="text-lg font-medium text-gray-700">Price:</label>
-                                    <input type="number" id="price" name="price" value={productData.price} onChange={handleChange} required
+                                    <label htmlFor="totalPrice" className="text-lg font-medium text-gray-700">Total Price:</label>
+                                    <input type="number" id="totalPrice" name="totalPrice" value={productData.totalPrice} onChange={handleChange} required
                                         className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
                                     />
                                 </div>
                                 <div className="mb-4">
-                                    <label htmlFor="category" className="text-lg font-medium text-gray-700">Category:</label>                                 <select id="category" name="category" onChange={handleChange} className=" border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 focus:outline-none focus:border-black placeholder-gray-400 dark:text-white  ">
-                                        <option selected>Choose a Category</option>
-                                        {
-                                            categories.map((e) => (
-                                                <option value={e.value}>{e.label}</option>
-                                            ))
-                                        }
+                                    <label htmlFor="sellingPrice" className="text-lg font-medium text-gray-700">Selling Price:</label>
+                                    <input type="number" id="sellingPrice" name="sellingPrice" value={productData.sellingPrice} onChange={handleChange} required
+                                        className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label htmlFor="category" className="text-lg font-medium text-gray-700">Category:</label>
+                                    <select id="category" name="category" value={productData.category} onChange={handleChange} required
+                                        className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
+                                    >
+                                        <option value="">Select a category</option>
+                                        {categories.map((cat) => (
+                                            <option key={cat.value} value={cat.value}>{cat.label}</option>
+                                        ))}
                                     </select>
                                 </div>
                                 <div className="mb-4">
                                     <label htmlFor="gender" className="text-lg font-medium text-gray-700">Gender:</label>
-
-                                    <select id="gender" name="gender" onChange={handleChange} className=" border border-gray-300 text-gray-900 text-sm  block w-full p-2.5 focus:outline-none focus:border-black placeholder-gray-400 dark:text-white  ">
-                                        <option selected>Choose a gender</option>
-                                        {
-                                            genders.map((e) => (
-                                                <option value={e.value}>{e.label}</option>
-                                            ))
-                                        }
+                                    <select id="gender" name="gender" value={productData.gender} onChange={handleChange} required
+                                        className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
+                                    >
+                                        <option value="">Select a gender</option>
+                                        {genders.map((gen) => (
+                                            <option key={gen.value} value={gen.value}>{gen.label}</option>
+                                        ))}
                                     </select>
                                 </div>
                                 <div className="mb-4">
@@ -225,33 +235,102 @@ export const AddProduct = ({ toggleDrawer }) => {
                                     />
                                 </div>
                                 <div className="mb-4">
+                                    <label htmlFor="availableState" className="flex items-center">
+                                        <input type="checkbox" id="availableState" name="availableState" checked={productData.availableState} onChange={handleChange}
+                                            className="mr-2"
+                                        />
+                                        Available
+                                    </label>
+                                </div>
+                                <div className="mb-4">
+                                    <label htmlFor="madeToOrder" className="flex items-center">
+                                        <input type="checkbox" id="madeToOrder" name="madeToOrder" checked={productData.madeToOrder} onChange={handleChange}
+                                            className="mr-2"
+                                        />
+                                        Made to Order
+                                    </label>
+                                </div>
+                                <div className="mb-4">
+                                    <label htmlFor="popular" className="flex items-center">
+                                        <input type="checkbox" id="popular" name="popular" checked={productData.popular} onChange={handleChange}
+                                            className="mr-2"
+                                        />
+                                        Popular
+                                    </label>
+                                </div>
+                                <div className="mb-4">
                                     <label htmlFor="labor" className="text-lg font-medium text-gray-700">Labor Cost:</label>
-                                    <input type="number" id="labor" name="labor" value={productData.labor} onChange={handleChange} required
+                                    <input type="number" id="labor" name="labor" value={productData.labor} onChange={handleChange}
                                         className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
                                     />
                                 </div>
                                 <div className="mb-4">
                                     <label htmlFor="packaging" className="text-lg font-medium text-gray-700">Packaging Cost:</label>
-                                    <input type="number" id="packaging" name="packaging" value={productData.packaging} onChange={handleChange} required
+                                    <input type="number" id="packaging" name="packaging" value={productData.packaging} onChange={handleChange}
                                         className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
                                     />
                                 </div>
-                                {
+                                <div className="mb-4">
+                                    <label htmlFor="countryTax" className="text-lg font-medium text-gray-700">Country Tax:</label>
+                                    <input type="number" id="countryTax" name="countryTax" value={productData.countryTax} onChange={handleChange}
+                                        className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label htmlFor="country" className="text-lg font-medium text-gray-700">Country:</label>
+                                    <input type="text" id="country" name="country" value={productData.country} onChange={handleChange}
+                                        className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label htmlFor="size" className="text-lg font-medium text-gray-700">Size:</label>
+                                    <input
+                                        type="text"
+                                        id="size"
+                                        name="size"
+                                        value={productData.size ? productData.size.join(', ') : ''}
+                                        onChange={handleInputChange(setProductData)}
+                                        placeholder="Enter sizes separated by comma"
+                                        className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label htmlFor="purity" className="text-lg font-medium text-gray-700">Purity:</label>
+                                    <input
+                                        type="text"
+                                        id="purity"
+                                        name="purity"
+                                        value={productData.purity ? productData.purity.join(', ') : ''}
+                                        onChange={handleInputChange(setProductData)}
+                                        placeholder="Enter purities separated by comma"
+                                        className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label htmlFor="weight" className="text-lg font-medium text-gray-700">Weight:</label>
+                                    <input
+                                        type="text"
+                                        id="weight"
+                                        name="weight"
+                                        value={productData.weight ? productData.weight.join(', ') : ''}
+                                        onChange={handleInputChange(setProductData)}
+                                        placeholder="Enter weights separated by comma"
+                                        className="border py-2 w-full border-gray-400 px-2 focus:outline-none focus:border-black mt-1"
+                                    />
+                                </div>
 
-                                    loading ?
-                                        <button disbaled className='bg-white w-full mt-4 flex items-center justify-center text-sm border border-black text-black cursor-default px-3 py-2'>
-                                            <CgSpinnerTwoAlt className='animate-spin my-0.5' size={24} />
-                                        </button> : <button type="submit" className='bg-black w-full flex items-center justify-center mt-4 text-sm border border-black text-white hover:text-black hover:bg-white px-3 py-3'>Submit</button>
-
-
-                                }
+                                <button
+                                    type="submit"
+                                    disabled={loading}
+                                    className="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                >
+                                    {loading ? <CgSpinnerTwoAlt size={20} className="animate-spin" /> : 'Add Product'}
+                                </button>
                             </form>
                         </div>
                     </div>
-
                 </> : <NotAdmin /> : <UnAuthorized />}
             </div>
         </>
     );
 };
-

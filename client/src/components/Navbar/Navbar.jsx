@@ -99,7 +99,7 @@ export const Navbar = () => {
             {/* Desktop navigation links */}
             {/* <div className='md:flex items-center gap-12 ml-20 pt-3 justify-center hidden'> */}
             <div className='xl:flex items-center gap-12 ml-20 pt-3 justify-center hidden'>
-              <Link to="/" className='text-xs 2xl:text-lg animated-underline'>SHOP&nbsp;BY</Link>
+              <Link to="/shop" className='text-xs 2xl:text-lg animated-underline'>SHOP</Link>
               <Link to="/shop" className='text-xs 2xl:text-lg animated-underline'>NEW</Link>
               <Link to="/shop" className='text-xs 2xl:text-lg animated-underline'>BEST&nbsp;SELLERS</Link>
               <Link to="/about" className='text-xs 2xl:text-lg animated-underline'>EARRINGS</Link>

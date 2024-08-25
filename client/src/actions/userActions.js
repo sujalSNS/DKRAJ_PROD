@@ -160,7 +160,7 @@ export const getUser = () => async (dispatch) => {
 
         const { data } = await axios.get(`${API_KEY}/api/user`, config);
 
-        console.log("data", data.user)
+        // console.log("data", data.user)
 
         dispatch(getUserSuccess(data.user))
 

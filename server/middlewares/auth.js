@@ -43,6 +43,8 @@ exports.isAuthenticated = async (req, res, next) => {
                     attributes: { exclude: ['password'] }
                 });
 
+                // console.log(user)
+
                 if (!user) {
                     return res.status(404).json({
                         success: false,
@@ -78,7 +80,7 @@ exports.isAdminUser = async (req, res, next) => {
             return res.status(404).json({
                 success: false,
                 isLogin: false,
-                message: "User not found"
+                message: "Admin not found"
             });
         }
 

@@ -56,6 +56,27 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
+        size: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+            }
+        },
+        weight: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+            }
+        },
+        purity: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+            }
+        },
         gender: {
             type: DataTypes.ENUM,
             values: ['men', 'women', 'kids'],
